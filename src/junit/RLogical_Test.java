@@ -20,9 +20,11 @@ public class RLogical_Test extends MyTestCase{
 
         assertEquals(rLog1.getLength(), 4);
 
+        assertEquals(null, null);
         assertEquals(rLog1.get(0), true);
         assertEquals(rLog1.get(1), false);
-        assertEquals(rLog1.get(2), RLogical.NA_VAL);
+        assertEquals((Boolean) rLog1.get(2), (Boolean) RLogical.NA_VAL);
+
         assertEquals(rLog1.get(3), true);
 
         assertFalse(rLog1.isNA(0));

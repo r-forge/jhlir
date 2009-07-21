@@ -120,6 +120,8 @@ public class REngineServicesREngine implements REngineServices {
         else if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
             if (robj.hasAttribute("class") && robj.getAttribute("class").equals("data.frame"))
                 return new RDataFrameREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
+            if (robj.hasAttribute("class")) // should we better call is.object here?
+                return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
             // default
             return new RListREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
         }

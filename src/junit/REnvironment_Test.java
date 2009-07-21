@@ -19,7 +19,7 @@ public class REnvironment_Test extends MyTestCase{
         getRServices().evalVoid("ee$xx <- 1:3");
         getRServices().evalVoid("assign(\"aa\", 3:5, ee)");
         rEnv1 = getRServices().eval("ee").asREnvironment();
-        rEnv2 = getRServices().eval(".GlobalEnv").asREnvironment();
+//        rEnv2 = getRServices().eval(".GlobalEnv").asREnvironment();
 
     }
 

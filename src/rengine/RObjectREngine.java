@@ -85,5 +85,9 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
     public REnvironment asREnvironment() {
         return new REnvironmentREngine(rs, (org.rosuda.REngine.REXPEnvironment) getWrapped());
     }
+
+    public S3ObjREngine asS3Obj() {
+        return new S3ObjREngine(rs, (org.rosuda.REngine.REXPGenericVector) getWrapped());
+    }
 }
 

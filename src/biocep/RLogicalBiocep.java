@@ -26,7 +26,9 @@ public class RLogicalBiocep
     }
 
     public Boolean get(int i) {
-        return isNA(i) ?  RLogical.NA_VAL : getWrapped().getValue()[i];
+        if (isNA(i))
+            return RLogical.NA_VAL;
+        return getWrapped().getValue()[i];
     }
 
 

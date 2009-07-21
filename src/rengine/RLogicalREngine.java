@@ -26,14 +26,20 @@ public class RLogicalREngine
     public Boolean[] getDataAsObjArr() {
         byte[] bs = getWrapped().asBytes();
         Boolean[] res = new Boolean[getLength()];
-        for (int i = 0; i < res.length; i++)
-            res[i] = REXPLogical.isNA(bs[i]) ? RLogical.NA_VAL : bs[i] != 0;
+        for (int i = 0; i < res.length; i++) {
+            if (REXPLogical.isNA(bs[i]))
+                res[i] = RLogical.NA_VAL;
+            else
+                res[i] = (bs[i] != 0);
+        }
         return res;
     }
 
     public Boolean get(int i) {
         byte b = getWrapped().asBytes()[i];
-        return REXPLogical.isNA(b) ? RLogical.NA_VAL : b != 0;
+        if (REXPLogical.isNA(b))
+            return RLogical.NA_VAL;
+        return b != 0;
     }
 
     public Byte getAsByte(int i) {

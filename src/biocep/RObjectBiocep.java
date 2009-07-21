@@ -119,6 +119,9 @@ public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject> implements
         return new REnvironmentBiocep(rs, (org.kchine.r.REnvironment) getWrapped());
     }
 
+    public S3ObjBiocep asS3Obj() {
+        return new S3ObjBiocep(rs, (org.kchine.r.RS3) getWrapped());
+    }
 
 //
 //    public RListRef asListRef() {
