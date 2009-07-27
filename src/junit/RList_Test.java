@@ -7,13 +7,14 @@ import jhlir.RMatrix;
 import org.junit.Test;
 
 public class RList_Test extends MyTestCase {
-    private RList rList1;
+    protected RList rList1;
 
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        rList1 = getRServices().eval("list(xx=1:3, yy=list(), matrix(c(1,2,3,4),4,1), zz=\"foo\")").asRList();
+        getRServices().assign("rlist1", "list(xx=1:3, yy=list(), matrix(c(1,2,3,4),4,1), zz=\"foo\")");
+        rList1 = getRServices().eval("rlist1").asRList();
     }
 
     @Test

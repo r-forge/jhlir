@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 public interface REngineServices {
      public void evalVoid(String expression) throws REngineException;
      public RObj eval(String expression) throws REngineException;
-//     public RRef evalAndGetRef(String expression) throws RemoteException;
+     public RRef evalAndGetRef(String expression) throws RemoteException;
      public void assign(String varName, String expression) throws RemoteException;
 //     public void callVoid(String function, Object... args) throws RemoteException;
      public RObj call(String function, Object... args) throws RemoteException;

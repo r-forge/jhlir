@@ -3,6 +3,7 @@ package biocep;
 import jhlir.REngineException;
 import jhlir.REngineServices;
 import jhlir.RObj;
+import jhlir.RRef;
 import org.kchine.r.RMatrix;
 import org.kchine.r.server.RServices;
 
@@ -38,9 +39,9 @@ public class REngineServicesBiocep implements REngineServices {
         return wrapObject(robj);
     }
 
-//    public RRef evalAndGetRef(String expression) throws RemoteException {
-//        return null;  //To change body of implemented methods use File | Settings | File Templates.
-//    }
+    public RRef evalAndGetRef(String expression) throws RemoteException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
     //
     public void assign(String varName, String expression) throws RemoteException {

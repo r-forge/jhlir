@@ -3,8 +3,10 @@ package rengine;
 import jhlir.REngineException;
 import jhlir.REngineServices;
 import jhlir.RObj;
+import jhlir.RRef;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPMismatchException;
+import org.rosuda.REngine.REXPReference;
 import org.rosuda.REngine.REngine;
 
 import java.rmi.RemoteException;
@@ -12,9 +14,17 @@ import java.rmi.RemoteException;
 
 public class REngineServicesREngine implements REngineServices {
     private REngine rs;
+    private REXP globalEnv;
 
     public REngineServicesREngine(REngine rs) {
         this.rs = rs;
+        try {
+            globalEnv = rs.parseAndEval(".GlobalEnv");
+        } catch (org.rosuda.REngine.REngineException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (REXPMismatchException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     public REngine getREngine() {
@@ -39,15 +49,20 @@ public class REngineServicesREngine implements REngineServices {
         return wrapObject(robj);
     }
 
-
-//    public RRef evalAndGetRef(String expression) throws RemoteException {
-//        return null;  //To change body of implemented methods use File | Settings | File Templates.
-//    }
+    public RRef evalAndGetRef(String expression) throws RemoteException {
+        REXPReference rr = null;
+        try {
+            rr = (REXPReference)rs.parseAndEval(expression, globalEnv, false);
+        } catch (Exception e) {
+            throw new REngineException(e);
+        }
+        return wrapObject(rr);
+    }
 
     public void assign(String varName, String expression) throws RemoteException {
         evalVoid(varName + "<-" + expression);
     }
-
+     
     //
 //
 //    public void callVoid(String function, Object... args) throws RemoteException {
@@ -87,6 +102,14 @@ public class REngineServicesREngine implements REngineServices {
 //    public void freeAllReferences() throws RemoteException {
 //        //To change body of implemented methods use File | Settings | File Templates.
 //    }
+
+
+    public RRef wrapObject(REXPReference robj) {
+        if (robj.isList())
+            return new RListRefREngine(this, robj);
+        return null;
+
+    }
 
 
     public RObjectREngine wrapObject(org.rosuda.REngine.REXP robj) {

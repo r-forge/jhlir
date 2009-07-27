@@ -3,6 +3,8 @@ package rengine;
 import jhlir.RDataFrame;
 import jhlir.REnvironment;
 import jhlir.RObj;
+import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.REXPReference;
 
 
 public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
@@ -10,6 +12,8 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
 
     protected REngineServicesREngine rs;
     private WRAPPED_TYPE wrapped;
+    private REXP cached;
+    protected REXPReference ref;
 
     protected RObjectREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
         if (wrapped == null)
@@ -21,9 +25,33 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
     }
 
 
-    public WRAPPED_TYPE getWrapped() {
-        return wrapped;
+    protected RObjectREngine(REngineServicesREngine rs, REXPReference ref) {
+        if (ref == null)
+            throw new RuntimeException("Tried to create RObhjectWrapper on null!");
+        this.rs = rs;
+        this.ref = ref;
     }
+
+    protected REXP getResolved() {
+//        if (getWrapped() instanceof REXPReference)
+//            return cached;
+//        else
+//            return getWrapped();
+        return null;
+    }
+
+    protected WRAPPED_TYPE getRef() {
+//        if (getWrapped() instanceof REXPReference)
+//            return getWrapped();
+//        else
+            return null;
+    }
+
+
+
+//    public WRAPPED_TYPE getWrapped() {
+//        return wrapped;
+//    }
 
 //    public ROBJ_TYPE getObj() {
 //        if (obj instanceof ReferenceInterface)
@@ -49,7 +77,11 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
 //        return (RNumeric) getObj();
 //    }
 
-    //
+    public boolean isRef() {
+        return ref != null;
+    }
+
+
     public RNumericREngine asRNumeric() {
         return new RNumericREngine(rs, (org.rosuda.REngine.REXPDouble) getWrapped());
     }

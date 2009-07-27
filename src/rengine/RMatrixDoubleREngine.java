@@ -25,7 +25,7 @@ public class RMatrixDoubleREngine
 
 
     public Double get(int i, int j) {
-        return getWrapped().asDoubles()[getIndex(i,j)];
+        return getResolved().asDoubles()[getIndex(i,j)];
     }
 
     public Double getNAVal() {
