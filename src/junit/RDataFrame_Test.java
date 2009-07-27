@@ -11,7 +11,8 @@ public class RDataFrame_Test extends MyTestCase{
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        rDf1 = getRServices().eval("data.frame(xx=1:3, c(1.5, 5, -4), zz=c(\"foo\", \"bar\", \"bla\"), yy=4:6)").asRDataFrame();
+        getRServices().assign("rdf1", "data.frame(xx=1:3, c(1.5, 5, -4), zz=c(\"foo\", \"bar\", \"bla\"), yy=4:6)");
+        rDf1 = getRServices().eval("rdf1").asRDataFrame();
     }
 
     @Test

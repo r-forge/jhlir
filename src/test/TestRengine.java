@@ -1,4 +1,4 @@
-//package test;
+package test;
 
 import org.rosuda.REngine.JRI.JRIEngine;
 import org.rosuda.REngine.REngine;

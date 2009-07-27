@@ -4,10 +4,7 @@ import jhlir.REngineException;
 import jhlir.REngineServices;
 import jhlir.RObj;
 import jhlir.RRef;
-import org.rosuda.REngine.REXP;
-import org.rosuda.REngine.REXPMismatchException;
-import org.rosuda.REngine.REXPReference;
-import org.rosuda.REngine.REngine;
+import org.rosuda.REngine.*;
 
 import java.rmi.RemoteException;
 
@@ -109,7 +106,7 @@ public class REngineServicesREngine implements REngineServices {
     public RRef wrapObject(REXPReference ref) {
         REXP robj = ref.resolve();
         if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
-            if (robj.hasAttribute("class") && robj.getAttribute("class").equals("data.frame"))
+            if (robj.hasAttribute("class") && ((REXPString)robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
                 return new RDataFrameRefREngine(this, ref);
 //            if (robj.hasAttribute("class")) // should we better call is.object here?
 //                return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
@@ -149,7 +146,7 @@ public class REngineServicesREngine implements REngineServices {
 //            return w.asFactorW();
 //
         else if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
-            if (robj.hasAttribute("class") && robj.getAttribute("class").equals("data.frame"))
+            if (robj.hasAttribute("class") && ((REXPString)robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
                 return new RDataFrameREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
             if (robj.hasAttribute("class")) // should we better call is.object here?
                 return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
