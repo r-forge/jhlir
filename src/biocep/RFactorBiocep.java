@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class RFactorBiocep
-        extends RVectorFactorBiocep<org.kchine.r.RFactor, String[], String>
+        extends RVectorFactorBiocep<org.kchine.r.RFactor, org.kchine.r.RFactor, String[], String>
         implements RFactor<org.kchine.r.RFactor> {
 
     public RFactorBiocep(REngineServicesBiocep rs, org.kchine.r.RFactor wrapped) {
@@ -16,7 +16,7 @@ public class RFactorBiocep
     }
 
     public int getLength() {
-        return getWrapped().getCode().length;
+        return getResolved().getCode().length;
     }
 
     public String[] getData() {
@@ -37,7 +37,7 @@ public class RFactorBiocep
     }
 
     public String[] getLevels() {
-        return getWrapped().getLevels();
+        return getResolved().getLevels();
     }
 
     public List<String> getLevelsAsList() {
@@ -45,7 +45,7 @@ public class RFactorBiocep
     }
 
     public int[] getCodes() {
-        return getWrapped().getCode();
+        return getResolved().getCode();
     }
 
     public int getCode(int i) {
@@ -53,12 +53,12 @@ public class RFactorBiocep
     }
 
     public String get(int i) {
-        int code = getWrapped().getCode()[i];
-        return code < 0 ? RFactor.NA_VAL : getWrapped().getLevels()[code - 1];
+        int code = getResolved().getCode()[i];
+        return code < 0 ? RFactor.NA_VAL : getResolved().getLevels()[code - 1];
     }
 
     public boolean isNA(int i) {
-        return getWrapped().getCode()[i] < 0;
+        return getResolved().getCode()[i] < 0;
     }
 
     //    protected void _set(int i, String val) {

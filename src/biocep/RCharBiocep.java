@@ -3,7 +3,7 @@ package biocep;
 import jhlir.RChar;
 
 public class RCharBiocep
-        extends RVectorBiocep<org.kchine.r.RChar, String[], String>
+        extends RVectorBiocep<org.kchine.r.RChar, org.kchine.r.RChar, String[], String>
         implements RChar<org.kchine.r.RChar> {
 
 
@@ -12,15 +12,15 @@ public class RCharBiocep
     }
 
     public String[] getData() {
-        return getWrapped().getValue();
+        return getResolved().getValue();
     }
 
     public String[] getDataAsObjArr() {
-        return getWrapped().getValue();
+        return getResolved().getValue();
     }
 
     public String get(int i) {
-        return getWrapped().getValue()[i];
+        return getResolved().getValue()[i];
     }
 
 

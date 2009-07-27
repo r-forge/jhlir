@@ -3,7 +3,7 @@ package biocep;
 import org.apache.commons.lang.ArrayUtils;
 
 public class RNumericBiocep
-        extends RVectorBiocep<org.kchine.r.RNumeric, double[], Double>
+        extends RVectorBiocep<org.kchine.r.RNumeric, org.kchine.r.RNumeric, double[], Double>
         implements jhlir.RNumeric<org.kchine.r.RNumeric>{
 
     public RNumericBiocep(REngineServicesBiocep rs, org.kchine.r.RNumeric wrapped) {

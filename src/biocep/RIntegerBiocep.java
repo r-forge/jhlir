@@ -4,7 +4,7 @@ import jhlir.RInteger;
 import org.apache.commons.lang.ArrayUtils;
 
 public class RIntegerBiocep
-        extends RVectorBiocep<org.kchine.r.RInteger, int[], Integer>
+        extends RVectorBiocep<org.kchine.r.RInteger, org.kchine.r.RInteger, int[], Integer>
         implements jhlir.RInteger<org.kchine.r.RInteger> {
 
     public RIntegerBiocep(REngineServicesBiocep rs, org.kchine.r.RInteger wrapped) {
@@ -12,7 +12,7 @@ public class RIntegerBiocep
     }
 
     public int[] getData() {
-        return getWrapped().getValue();
+        return getResolved().getValue();
     }
 
     public Integer[] getDataAsObjArr() {
@@ -20,7 +20,7 @@ public class RIntegerBiocep
     }
 
     public Integer get(int i) {
-        return getWrapped().getValue()[i];
+        return getResolved().getValue()[i];
     }
 
     public boolean isNA(int i) {

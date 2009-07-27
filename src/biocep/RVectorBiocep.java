@@ -2,8 +2,8 @@ package biocep;
 
 import jhlir.RVectorFactor;
 
-abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, ARR_TYPE, EL_TYPE>
-        extends RVectorFactorBiocep<WRAPPED_TYPE, ARR_TYPE, EL_TYPE>
+abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, RESOLVED_TYPE extends org.kchine.r.RVector, ARR_TYPE, EL_TYPE>
+        extends RVectorFactorBiocep<WRAPPED_TYPE, RESOLVED_TYPE, ARR_TYPE, EL_TYPE>
         implements RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {
 
     protected RVectorBiocep(REngineServicesBiocep rs, WRAPPED_TYPE wrapped) {
@@ -11,7 +11,7 @@ abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, A
     }
 
     public int getLength() {
-        return getWrapped().length();
+        return getResolved().length();
     }
 
 

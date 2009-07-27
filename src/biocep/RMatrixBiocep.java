@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
-        extends RObjectBiocep<org.kchine.r.RMatrix>
+        extends RObjectBiocep<org.kchine.r.RMatrix, org.kchine.r.RMatrix>
         implements RMatrix<org.kchine.r.RMatrix, ARR_TYPE, EL_TYPE> {
 
     public RMatrixBiocep(REngineServicesBiocep rs, org.kchine.r.RMatrix wrapped) {
@@ -17,19 +17,19 @@ public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
     }
 
     public int getRowNr() {
-        return getWrapped().getDim()[0];
+        return getResolved().getDim()[0];
     }
 
     public int getColNr() {
-        return getWrapped().getDim()[1];
+        return getResolved().getDim()[1];
     }
 
     public String[] getRowNames() {
-        return ((RChar)getWrapped().getDimnames().getValue()[0]).getValue();
+        return ((RChar)getResolved().getDimnames().getValue()[0]).getValue();
     }
 
     public String[] getColNames() {
-        return ((RChar)getWrapped().getDimnames().getValue()[1]).getValue();
+        return ((RChar)getResolved().getDimnames().getValue()[1]).getValue();
     }
 
     public List<String> getRowNamesAsList() {
