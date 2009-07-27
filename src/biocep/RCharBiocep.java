@@ -1,6 +1,7 @@
 package biocep;
 
 import jhlir.RChar;
+import jhlir.REngineServices;
 
 public class RCharBiocep
         extends RVectorBiocep<org.kchine.r.RChar, org.kchine.r.RChar, String[], String>
@@ -25,8 +26,7 @@ public class RCharBiocep
 
 
     public boolean isNA(int i) {
-        // todo this is wrong.
-        return get(i) == null;
+        return get(i).equals(REngineServices.NA_CHAR);
     }
 
     //    protected void _set(int i, String val) {
@@ -45,14 +45,6 @@ public class RCharBiocep
 //
 //    public void setIndexNA(int[] ind) {
 //        getObj().setIndexNA(ind);
-//    }
-//
-//    public static boolean isNA(String v) {
-//        return ObjectUtils.equals(v, NA_VAL);
-//    }
-//
-//    public String getNaVal() {
-//        return NA_VAL;
 //    }
 
 }

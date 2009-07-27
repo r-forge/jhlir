@@ -36,7 +36,7 @@ public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
     
     /**
      * Returns the name at the specified position of this list.
-     * If the name is not set {@code null} is returned.
+     * If the name is not set {@code REngineServices.NA_CHAR} is returned.
      * @param i index of the position 
      * @return the name of the specified position of this list
      */
@@ -46,15 +46,16 @@ public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
      * If no name is set {@code null} is returned.
      * Otherwise returns a String Array of length equal to {@code getLength()}
      * that contains the names of the positions in this list.
-     * If a name is not set {@code null} is included. 
+     * If a name is not set {@code REngineServices.NA_CHAR} is used.
      * @return the names of this list
      */
     String[] getNames();
     
     /**
+     * If no name is set {@code null} is returned.
      * Returns a List of Strings of size equal to {@code getLength()}
      * that contains the names of the positions in this list.
-     * If a name is not set {@code null} is included.
+     * If a name is not set {@code REngineServices.NA_CHAR} is used.
      * @return the names of this list
      */
     List<String> getNamesAsList();

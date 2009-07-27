@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.RLogical;
+import jhlir.REngineServices;
 import org.apache.commons.lang.ArrayUtils;
 
 public class RLogicalBiocep
@@ -21,13 +21,13 @@ public class RLogicalBiocep
         Boolean[] bs = ArrayUtils.toObject(getData());
         int[] naInds = getResolved().getIndexNA();
         for (int i=0; i<naInds.length; i++)
-            bs[naInds[i]] = RLogical.NA_VAL;
+            bs[naInds[i]] = REngineServices.NA_RLOGICAL;
         return bs;
     }
 
     public Boolean get(int i) {
         if (isNA(i))
-            return RLogical.NA_VAL;
+            return REngineServices.NA_RLOGICAL;
         return getResolved().getValue()[i];
     }
 

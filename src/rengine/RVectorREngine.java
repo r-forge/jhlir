@@ -13,4 +13,5 @@ abstract public class RVectorREngine<WRAPPED_TYPE extends REXPVector, RESOLVED_T
     public int getLength() {
         return getResolved().length();
     }
+
 }

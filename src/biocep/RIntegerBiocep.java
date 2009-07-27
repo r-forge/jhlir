@@ -1,12 +1,14 @@
 package biocep;
 
-import jhlir.RInteger;
+import jhlir.REngineServices;
 import org.apache.commons.lang.ArrayUtils;
 
 public class RIntegerBiocep
         extends RVectorBiocep<org.kchine.r.RInteger, org.kchine.r.RInteger, int[], Integer>
         implements jhlir.RInteger<org.kchine.r.RInteger> {
 
+//    public static final int NA_VAL = Integer.MIN_VALUE;
+    
     public RIntegerBiocep(REngineServicesBiocep rs, org.kchine.r.RInteger wrapped) {
         super(rs, wrapped);
     }
@@ -24,7 +26,7 @@ public class RIntegerBiocep
     }
 
     public boolean isNA(int i) {
-        return get(i).equals(RInteger.NA_VAL);
+        return get(i).equals(REngineServices.NA_RINTEGER);
     }
 
 

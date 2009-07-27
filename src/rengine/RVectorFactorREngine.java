@@ -2,6 +2,7 @@ package rengine;
 
 import jhlir.RVectorFactor;
 import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.REXPString;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,5 +18,19 @@ abstract public class RVectorFactorREngine<WRAPPED_TYPE extends REXP, RESOLVED_T
         return Arrays.asList(getDataAsObjArr());
     }
 
+    public String getName(int i) {
+        return getNames()[i];
+    }
 
+    public String[] getNames() {
+        if (!getResolved().hasAttribute("names"))
+            return null;
+        return ((REXPString) getResolved().getAttribute("names")).asStrings();
+    }
+
+    public List<String> getNamesAsList() {
+        if (getNames() == null)
+            return null;
+        return Arrays.asList(getNames());
+    }
 }

@@ -15,7 +15,11 @@ abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, R
     }
 
 
-//    public int[] getIndexNA () {
+    public String[] getNames() {
+        return getResolved().getNames();
+    }
+
+    //    public int[] getIndexNA () {
 //        int[] ind = _getIndexNA();
 //        return (ind == null) ? new int[0] : ind;
 //    }

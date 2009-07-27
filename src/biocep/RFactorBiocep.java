@@ -1,6 +1,7 @@
 package biocep;
 
 
+import jhlir.REngineServices;
 import jhlir.RFactor;
 
 import java.util.Arrays;
@@ -54,7 +55,12 @@ public class RFactorBiocep
 
     public String get(int i) {
         int code = getResolved().getCode()[i];
-        return code < 0 ? RFactor.NA_VAL : getResolved().getLevels()[code - 1];
+        return code < 0 ? REngineServices.NA_FACTOR : getResolved().getLevels()[code - 1];
+    }
+
+    //todo how are factor names handled in biocep?
+    public String[] getNames() {
+        return null;
     }
 
     public boolean isNA(int i) {
@@ -68,10 +74,6 @@ public class RFactorBiocep
 //            throw new RuntimeException("Tried to set RFactorBiocep to nonex. level:" + val);
 //        codes[i] = j+1;
 //        getObj().setCode(codes);
-//    }
-//
-//    public String getNaVal() {
-//        return NA_VAL;
 //    }
 //
 //

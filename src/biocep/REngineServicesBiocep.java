@@ -9,7 +9,15 @@ import org.kchine.r.server.RServices;
 
 import java.rmi.RemoteException;
 
-public class REngineServicesBiocep implements REngineServices {
+public class REngineServicesBiocep extends REngineServices {
+
+    static {
+        REngineServices.NA_RINTEGER = Integer.MIN_VALUE;
+        REngineServices.NA_RNUMERIC = Double.NaN;
+        REngineServices.NA_RLOGICAL = null;
+        REngineServices.NA_CHAR = "NA";
+        REngineServices.NA_FACTOR = null;
+    }
 
     private RServices rs;
 
@@ -76,7 +84,9 @@ public class REngineServicesBiocep implements REngineServices {
 
     public void put(String varName, Object obj) throws REngineException {
         try {
-            rs.putAndAssign(obj, varName);
+            if (obj instanceof RObjectBiocep) {
+                rs.putAndAssign(((RObjectBiocep) obj).getWrapped(), varName);
+            }
         } catch (RemoteException e) {
             throw new REngineException(e);
         }

@@ -3,6 +3,7 @@ package jhlir;
 
 public interface RObj<WRAPPED_TYPE> {
 //    WRAPPED_TYPE getWrapped();
+    
     RNumeric asRNumeric();
     RInteger asRInteger();
     RLogical asRLogical();

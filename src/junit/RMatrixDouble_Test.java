@@ -1,5 +1,6 @@
 package junit;
 
+import jhlir.REngineServices;
 import jhlir.RMatrixDouble;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class RMatrixDouble_Test extends MyTestCase{
          assertEquals(rMat1.get(0,0), 1.1);
          assertEquals(rMat1.get(1,0), 2.0);
          assertEquals(rMat1.get(0,1), 3.0);
-         assertEquals(rMat1.get(1,1), RMatrixDouble.NA_VAL);
+         assertEquals(rMat1.get(1,1), REngineServices.NA_RNUMERIC);
          assertEquals(rMat1.get(0,2), 5.1);
          assertEquals(rMat1.get(1,2), 66.0);
 
@@ -34,14 +35,14 @@ public class RMatrixDouble_Test extends MyTestCase{
          assertEquals(rMat1.getData()[0][0], 1.1);
          assertEquals(rMat1.getData()[1][0], 2.0);
          assertEquals(rMat1.getData()[0][1], 3.0);
-         assertEquals(rMat1.getData()[1][1], RMatrixDouble.NA_VAL);
+         assertEquals(rMat1.getData()[1][1], REngineServices.NA_RNUMERIC);
          assertEquals(rMat1.getData()[0][2], 5.1);
          assertEquals(rMat1.getData()[1][2], 66.0);
 
          assertEquals(rMat1.getDataAsObjArr()[0][0], 1.1);
          assertEquals(rMat1.getDataAsObjArr()[1][0], 2.0);
          assertEquals(rMat1.getDataAsObjArr()[0][1], 3.0);
-         assertEquals(rMat1.getDataAsObjArr()[1][1], RMatrixDouble.NA_VAL);
+         assertEquals(rMat1.getDataAsObjArr()[1][1], REngineServices.NA_RNUMERIC);
          assertEquals(rMat1.getDataAsObjArr()[0][2], 5.1);
          assertEquals(rMat1.getDataAsObjArr()[1][2], 66.0);
      }

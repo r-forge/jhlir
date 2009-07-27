@@ -18,6 +18,15 @@ abstract public class RVectorFactorBiocep<WRAPPED_TYPE extends RObject, RESOLVED
         return Arrays.asList(getDataAsObjArr());
     }
 
+    public String getName(int i) {
+        return getNames()[i];
+    }
+
+    public List<String> getNamesAsList() {
+        if (getNames() == null)
+            return null;
+        return Arrays.asList(getNames());
+    }
 
 //    public RVectorFactorBiocep(RServices rs, RVector rVector) {
 //        super(rs, rVector);

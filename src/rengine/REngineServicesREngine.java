@@ -9,7 +9,16 @@ import org.rosuda.REngine.*;
 import java.rmi.RemoteException;
 
 
-public class REngineServicesREngine implements REngineServices {
+public class REngineServicesREngine extends REngineServices {
+
+    static {
+        REngineServices.NA_RINTEGER = Integer.MIN_VALUE;
+        REngineServices.NA_RNUMERIC = Double.NaN;
+        REngineServices.NA_RLOGICAL = null;
+        REngineServices.NA_CHAR = "NA";
+        REngineServices.NA_FACTOR = null;
+    }
+
     private REngine rs;
     private REXP globalEnv;
 
@@ -83,8 +92,11 @@ public class REngineServicesREngine implements REngineServices {
     //
 
     public void put(String varName, Object obj) throws REngineException {
+
         try {
-            rs.assign(varName, (REXP) obj);
+            if (obj instanceof RObjectREngine) {
+                rs.assign(varName, ((RObjectREngine)obj).getWrapped());
+            }
         } catch (Exception e) {
             throw new REngineException(e);
         }

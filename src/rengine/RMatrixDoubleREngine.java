@@ -1,5 +1,6 @@
 package rengine;
 
+import jhlir.REngineServices;
 import jhlir.RMatrixDouble;
 import org.rosuda.REngine.REXPDouble;
 import org.rosuda.REngine.REXPMismatchException;
@@ -29,6 +30,6 @@ public class RMatrixDoubleREngine
     }
 
     public Double getNAVal() {
-        return RMatrixDouble.NA_VAL;
+        return REngineServices.NA_RNUMERIC;
     }
 }

@@ -19,7 +19,7 @@ public class REnvironmentREngine
     public String[] getNames() {
         try {
             //todo bad!!!! and exc !!!
-            rs.put("tmp", getWrapped());
+            rs.put("tmp", this);
             String[] res = rs.eval("ls(tmp)").asRChar().getData();
             rs.evalVoid("rm(tmp)");
             return res;
