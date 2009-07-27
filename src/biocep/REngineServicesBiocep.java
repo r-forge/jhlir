@@ -40,7 +40,13 @@ public class REngineServicesBiocep implements REngineServices {
     }
 
     public RRef evalAndGetRef(String expression) throws RemoteException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        org.kchine.r.server.ReferenceInterface ref = null;
+        try {
+            ref = (org.kchine.r.server.ReferenceInterface) rs.getReference(expression);
+        } catch (Exception e) {
+            throw new REngineException(e);
+        }
+        return wrapObject(ref);
     }
 
     //
@@ -89,6 +95,11 @@ public class REngineServicesBiocep implements REngineServices {
 //        //To change body of implemented methods use File | Settings | File Templates.
 //    }
 
+    public RRef wrapObject(org.kchine.r.server.ReferenceInterface ref) {
+        if (ref instanceof org.kchine.r.RListRef)
+            return new RListRefBiocep(this, (org.kchine.r.RListRef) ref);
+        return null;
+    }
 
     public RObjectBiocep wrapObject(org.kchine.r.RObject robj) {
         if (robj == null)

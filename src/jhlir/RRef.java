@@ -1,7 +1,5 @@
 package jhlir;
 
-public interface RRef<WRAPPED_REF, WRAPPED_TYPE> {
-    WRAPPED_TYPE deref();
-
-        
+public interface RRef<WRAPPED_REF, RESOLVED_TYPE> {
+    RESOLVED_TYPE getResolved();
 }

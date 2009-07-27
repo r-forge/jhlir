@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RDataFrameBiocep 
-        extends RObjectBiocep<org.kchine.r.RDataFrame>
+        extends RObjectBiocep<org.kchine.r.RDataFrame, org.kchine.r.RDataFrame>
     implements jhlir.RDataFrame<RDataFrame> {
 
     public RDataFrameBiocep(REngineServicesBiocep rs, RDataFrame wrapped) {
@@ -16,19 +16,19 @@ public class RDataFrameBiocep
     }
 
     public int getRowNr() {
-        return getWrapped().getRowNames().length;
+        return getResolved().getRowNames().length;
     }
 
     public int getColNr() {
-       return  getWrapped().getData().getValue().length;
+       return  getResolved().getData().getValue().length;
     }
 
     public String[] getRowNames() {
-        return getWrapped().getRowNames();
+        return getResolved().getRowNames();
     }
 
     public String[] getColNames() {
-        return getWrapped().getData().getNames();
+        return getResolved().getData().getNames();
     }
 
     public List<String> getRowNamesAsList() {
@@ -40,11 +40,11 @@ public class RDataFrameBiocep
     }
 
     public String getRowName(int i) {
-        return getWrapped().getRowNames()[i];
+        return getResolved().getRowNames()[i];
     }
 
     public String getColName(int i) {
-        return getWrapped().getData().getNames()[i];
+        return getResolved().getData().getNames()[i];
     }
 
     public int getRowIndex(String name) {
@@ -70,7 +70,7 @@ public class RDataFrameBiocep
 
 
     protected org.kchine.r.RObject getColWrappedObj(int i) {
-        return getWrapped().getData().getValue()[i];
+        return getResolved().getData().getValue()[i];
     }
 
     public RVectorFactorBiocep getCol(int i) {

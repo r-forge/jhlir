@@ -13,26 +13,23 @@ public class RObjectREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REX
 
     protected REngineServicesREngine rs;
     private RESOLVED_TYPE cached;
-    protected REXPReference ref;
+    private REXPReference ref;
 
     protected RObjectREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
         if (wrapped == null)
             throw new RuntimeException("Tried to create RObhjectWrapper on null!");
         this.rs = rs;
         this.cached = (RESOLVED_TYPE) wrapped;
-//        if (obj instanceof ReferenceInterface)
-//            extracted = (ROBJ_TYPE)((ReferenceInterface)obj).extractRObject();
     }
 
-
-    protected RObjectREngine(REngineServicesREngine rs, REXPReference ref) {
-        if (ref == null)
+    protected RObjectREngine(REngineServicesREngine rs, REXPReference wrapped) {
+        if (wrapped == null)
             throw new RuntimeException("Tried to create RObhjectWrapper on null!");
         this.rs = rs;
-        this.ref = ref;
+        this.ref = wrapped;
     }
 
-    protected RESOLVED_TYPE getResolved() {
+    public RESOLVED_TYPE getResolved() {
         if (getWrapped() instanceof REXPReference) {
             if (cached == null)
                 cached = (RESOLVED_TYPE) ref.resolve();

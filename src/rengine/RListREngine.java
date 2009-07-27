@@ -14,12 +14,12 @@ public class RListREngine
         implements RList<REXPGenericVector> {
 
 
-    public RListREngine(REngineServicesREngine rs, REXPGenericVector rList) {
-        super(rs, rList);
+    protected RListREngine(REngineServicesREngine rs, REXPGenericVector wrapped) {
+        super(rs, wrapped);
     }
 
-    protected RListREngine(REngineServicesREngine rs, REXPReference rList) {
-        super(rs, rList);
+    protected RListREngine(REngineServicesREngine rs, REXPReference wrapped) {
+        super(rs, wrapped);
     }
 
     public int getLength() {

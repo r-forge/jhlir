@@ -8,8 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class RListBiocep extends RObjectBiocep<org.kchine.r.RList>
-    implements RList<org.kchine.r.RList> {
+public class RListBiocep
+        extends RObjectBiocep<org.kchine.r.RList, org.kchine.r.RList>
+        implements RList<org.kchine.r.RList> {
 
     public RListBiocep(REngineServicesBiocep rs, org.kchine.r.RList rList) {
         super(rs, rList);
@@ -24,7 +25,7 @@ public class RListBiocep extends RObjectBiocep<org.kchine.r.RList>
     }
 
     public RObjectBiocep get(String name) {
-        int i = ArrayUtils.indexOf(getNames() ,name);
+        int i = ArrayUtils.indexOf(getNames(), name);
         return i == -1 ? null : get(i);
     }
 

@@ -2,23 +2,52 @@ package biocep;
 
 import jhlir.REnvironment;
 import jhlir.RObj;
+import jhlir.RRef;
 
-public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject> implements RObj<WRAPPED_TYPE> {
+public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject, RESOLVED_TYPE extends org.kchine.r.RObject>
+        implements RObj<WRAPPED_TYPE> {
     protected REngineServicesBiocep rs;
-    private WRAPPED_TYPE wrapped;
-//    private ROBJ_TYPE extracted;
-//    private String rClass = null;
-//    public static enum RType {NUMERIC, INTEGER, FACTOR, CHAR, LOGICAL}
+    private RESOLVED_TYPE cached;
+    private org.kchine.r.server.ReferenceInterface ref;
 
     // TODO find a way that this is never called
     protected RObjectBiocep(REngineServicesBiocep rs, WRAPPED_TYPE wrapped) {
         if (wrapped == null)
             throw new RuntimeException("Tried to create RObhjectWrapper on null!");
         this.rs = rs;
-        this.wrapped = wrapped;
-//        if (obj instanceof ReferenceInterface)
-//            extracted = (ROBJ_TYPE)((ReferenceInterface)obj).extractRObject();
+        if (wrapped instanceof org.kchine.r.server.ReferenceInterface) {
+            this.ref = (org.kchine.r.server.ReferenceInterface) wrapped;
+        } else {
+            this.cached = (RESOLVED_TYPE) wrapped;
+        }
     }
+
+    public RESOLVED_TYPE getResolved() {
+        if (this instanceof RRef) {
+            if (cached == null)
+                cached = (RESOLVED_TYPE) ref.extractRObject();
+            return cached;
+        }
+        else
+            return (RESOLVED_TYPE) getWrapped();
+    }
+
+    protected WRAPPED_TYPE getRef() {
+        if (this instanceof RRef) 
+            return getWrapped();
+        else
+            return null;
+    }
+
+    public WRAPPED_TYPE getWrapped() {
+        if (this instanceof RRef)
+            return (WRAPPED_TYPE) ref;
+        else
+            return (WRAPPED_TYPE) cached;
+    }
+
+
+
 
 //    public static RObjectBiocep makeW(RServices rs, RObject obj, String rClass) {
 //        if (obj == null)
@@ -54,9 +83,6 @@ public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject> implements
 //    }
 //
 
-    public WRAPPED_TYPE getWrapped() {
-        return wrapped;
-    }
 
 //    public ROBJ_TYPE getObj() {
 //        if (obj instanceof ReferenceInterface)

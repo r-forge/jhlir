@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class REnvironmentBiocep
-            extends RObjectBiocep<org.kchine.r.REnvironment>
+            extends RObjectBiocep<org.kchine.r.REnvironment, org.kchine.r.REnvironment>
             implements REnvironment<org.kchine.r.REnvironment> {
 
     public REnvironmentBiocep(REngineServicesBiocep rs, org.kchine.r.REnvironment wrapped) {
@@ -16,7 +16,7 @@ public class REnvironmentBiocep
     }
 
     public String[] getNames() {
-        return getWrapped().getData().keySet().toArray(new String[0]);
+        return getResolved().getData().keySet().toArray(new String[0]);
     }
 
     public List<String> getNamesAsList() {

@@ -1,5 +1,5 @@
 package jhlir;
 
-public interface RListRef<WRAPPED_REF, WRAPPED_TYPE>
-        extends RList<WRAPPED_TYPE>, RRef<WRAPPED_REF, WRAPPED_TYPE>{
+public interface RListRef<WRAPPED_REF, RESOLVED_TYPE>
+        extends RList<RESOLVED_TYPE>, RRef<WRAPPED_REF, RESOLVED_TYPE>{
 }
