@@ -6,7 +6,7 @@ import jhlir.RNumeric;
 import org.junit.Test;
 
 public class RDataFrame_Test extends MyTestCase{
-    private RDataFrame rDf1;
+    protected RDataFrame rDf1;
 
     @Override
     protected void setUp() throws Exception {

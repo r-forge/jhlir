@@ -52,7 +52,7 @@ public class REngineServicesREngine implements REngineServices {
     public RRef evalAndGetRef(String expression) throws RemoteException {
         REXPReference rr = null;
         try {
-            rr = (REXPReference)rs.parseAndEval(expression, globalEnv, false);
+            rr = (REXPReference) rs.parseAndEval(expression, globalEnv, false);
         } catch (Exception e) {
             throw new REngineException(e);
         }
@@ -62,7 +62,7 @@ public class REngineServicesREngine implements REngineServices {
     public void assign(String varName, String expression) throws RemoteException {
         evalVoid(varName + "<-" + expression);
     }
-     
+
     //
 //
 //    public void callVoid(String function, Object... args) throws RemoteException {
@@ -70,6 +70,7 @@ public class REngineServicesREngine implements REngineServices {
 //    }
 
     //
+
     public RObj call(String function, Object... args) throws RemoteException {
         return null;
     }
@@ -83,8 +84,9 @@ public class REngineServicesREngine implements REngineServices {
 //    }
 
     //
+
     public void put(String varName, Object obj) throws REngineException {
-         try {
+        try {
             rs.assign(varName, (REXP) obj);
         } catch (Exception e) {
             throw new REngineException(e);
@@ -104,11 +106,17 @@ public class REngineServicesREngine implements REngineServices {
 //    }
 
 
-    public RRef wrapObject(REXPReference robj) {
-        if (robj.isList())
-            return new RListRefREngine(this, robj);
+    public RRef wrapObject(REXPReference ref) {
+        REXP robj = ref.resolve();
+        if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
+            if (robj.hasAttribute("class") && robj.getAttribute("class").equals("data.frame"))
+                return new RDataFrameRefREngine(this, ref);
+//            if (robj.hasAttribute("class")) // should we better call is.object here?
+//                return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
+//            // default
+            return new RListRefREngine(this, ref);
+        }
         return null;
-
     }
 
 
@@ -147,8 +155,7 @@ public class REngineServicesREngine implements REngineServices {
                 return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
             // default
             return new RListREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
-        }
-        else if (robj instanceof org.rosuda.REngine.REXPEnvironment)
+        } else if (robj instanceof org.rosuda.REngine.REXPEnvironment)
             return new REnvironmentREngine(this, (org.rosuda.REngine.REXPEnvironment) robj);
         return null;
     }

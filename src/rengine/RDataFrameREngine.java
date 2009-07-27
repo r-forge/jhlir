@@ -2,6 +2,7 @@ package rengine;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPGenericVector;
+import org.rosuda.REngine.REXPReference;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +17,17 @@ public class RDataFrameREngine
         super(rs, wrapped);
     }
 
+    public RDataFrameREngine(REngineServicesREngine rs, REXPReference wrapped) {
+        super(rs, wrapped);
+    }
+
     public int getRowNr() {
         return getColNr() == 0 ? 0 : getCol(0).getLength(); 
 //        return getWrapped().length();
     }
 
     public int getColNr() {
-        return getWrapped().length();
+        return getResolved().length();
     }
 
     public String[] getRowNames() {
@@ -30,7 +35,7 @@ public class RDataFrameREngine
     }
 
     public String[] getColNames() {
-        return getWrapped().asList().keys();
+        return getResolved().asList().keys();
     }
 
     public List<String> getRowNamesAsList() {
@@ -46,7 +51,7 @@ public class RDataFrameREngine
     }
 
     public String getColName(int i) {
-        return getWrapped().asList().keyAt(i);
+        return getResolved().asList().keyAt(i);
     }
 
     public int getRowIndex(String name) {
@@ -72,7 +77,7 @@ public class RDataFrameREngine
 
 
     protected org.rosuda.REngine.REXP getColWrappedObj(int i) {
-        return getWrapped().asList().at(i);
+        return getResolved().asList().at(i);
     }
 
     public RVectorFactorREngine getCol(int i) {
