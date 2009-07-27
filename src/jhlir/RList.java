@@ -3,8 +3,8 @@ package jhlir;
 import java.util.List;
 
 /**
- * 
- * @param <WRAPPED_TYPE> Type of 
+ * Interface for a RList Object that extends RObj.
+ * @param <WRAPPED_TYPE> underlying type of the used backend. @see RObj
  */
 public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
 	
@@ -37,16 +37,16 @@ public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
     /**
      * Returns the name at the specified position of this list.
      * If the name is not set {@code null} is returned.
-     * This is equivalent to getNames()[i].
      * @param i index of the position 
      * @return the name of the specified position of this list
      */
     String getName(int i);
     
     /**
-     * Returns a String Array of length equal to {@code getLength()}
+     * If no name is set {@code null} is returned.
+     * Otherwise returns a String Array of length equal to {@code getLength()}
      * that contains the names of the positions in this list.
-     * If a name is not set {@code null} is included.  
+     * If a name is not set {@code null} is included. 
      * @return the names of this list
      */
     String[] getNames();
