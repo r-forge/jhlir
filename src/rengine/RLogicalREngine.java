@@ -4,7 +4,7 @@ import jhlir.RLogical;
 import org.rosuda.REngine.REXPLogical;
 
 public class RLogicalREngine
-        extends RVectorREngine<org.rosuda.REngine.REXPLogical, boolean[], Boolean>
+        extends RVectorREngine<REXPLogical, REXPLogical, boolean[], Boolean>
         implements jhlir.RLogical<REXPLogical>{
 
     public RLogicalREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPLogical wrapped) {
@@ -12,7 +12,7 @@ public class RLogicalREngine
     }
 
     public boolean[] getData() {
-        byte[] bs = getWrapped().asBytes();
+        byte[] bs = getResolved().asBytes();
         boolean[] res = new boolean[getLength()];
         for (int i=0;i<res.length; i++)
             res[i] = bs[i] != 0;
@@ -20,11 +20,11 @@ public class RLogicalREngine
     }
 
     public byte[] getDataAsBytes() {
-        return getWrapped().asBytes();
+        return getResolved().asBytes();
     }
 
     public Boolean[] getDataAsObjArr() {
-        byte[] bs = getWrapped().asBytes();
+        byte[] bs = getResolved().asBytes();
         Boolean[] res = new Boolean[getLength()];
         for (int i = 0; i < res.length; i++) {
             if (REXPLogical.isNA(bs[i]))
@@ -36,7 +36,7 @@ public class RLogicalREngine
     }
 
     public Boolean get(int i) {
-        byte b = getWrapped().asBytes()[i];
+        byte b = getResolved().asBytes()[i];
         if (REXPLogical.isNA(b))
             return RLogical.NA_VAL;
         return b != 0;
@@ -47,7 +47,7 @@ public class RLogicalREngine
     }
 
     public boolean isNA(int i) {
-        byte b = getWrapped().asBytes()[i];
+        byte b = getResolved().asBytes()[i];
         return REXPLogical.isNA(b);
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class RDataFrameREngine
-        extends RObjectREngine<REXPGenericVector>
+        extends RObjectREngine<REXPGenericVector, REXPGenericVector>
     implements jhlir.RDataFrame<REXPGenericVector> {
 
     //todo: some row stuff, names, etc

@@ -5,7 +5,7 @@ import org.rosuda.REngine.REXPDouble;
 import org.rosuda.REngine.REXPMismatchException;
 
 public class RMatrixDoubleREngine
-        extends RMatrixREngine<org.rosuda.REngine.REXPDouble, double[][], Double>
+        extends RMatrixREngine<REXPDouble, REXPDouble, double[][], Double>
         implements RMatrixDouble<REXPDouble> {
 
     public RMatrixDoubleREngine(REngineServicesREngine rs, REXPDouble wrapped) {

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RFactorREngine
-          extends RVectorFactorREngine<org.rosuda.REngine.REXPFactor, String[], String>
+          extends RVectorFactorREngine<REXPFactor, REXPFactor, String[], String>
         implements RFactor<org.rosuda.REngine.REXPFactor> {
 
     public RFactorREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPFactor wrapped) {
@@ -16,11 +16,11 @@ public class RFactorREngine
     }
 
     public int getLength() {
-        return getWrapped().length();
+        return getResolved().length();
     }
 
     public String[] getData() {
-        return getWrapped().asStrings();
+        return getResolved().asStrings();
     }
 
     public String[] getDataAsObjArr() {
@@ -28,7 +28,7 @@ public class RFactorREngine
     }
 
     public String[] getLevels() {
-        return getWrapped().asFactor().levels();
+        return getResolved().asFactor().levels();
     }
 
     public List<String> getLevelsAsList() {
@@ -36,7 +36,7 @@ public class RFactorREngine
     }
 
     public int[] getCodes() {
-        return getWrapped().asIntegers();
+        return getResolved().asIntegers();
     }
 
     public int getCode(int i) {
@@ -44,7 +44,7 @@ public class RFactorREngine
     }
 
     public String get(int i) {
-        return getWrapped().asStrings()[i];
+        return getResolved().asStrings()[i];
     }
 
     public boolean isNA(int i) {

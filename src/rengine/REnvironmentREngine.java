@@ -9,7 +9,7 @@ import java.util.List;
 
 //todo handle excs
 public class REnvironmentREngine
-            extends RObjectREngine<REXPEnvironment>
+            extends RObjectREngine<REXPEnvironment, REXPEnvironment>
             implements jhlir.REnvironment<REXPEnvironment> {
 
     public REnvironmentREngine(REngineServicesREngine rs, REXPEnvironment wrapped) {

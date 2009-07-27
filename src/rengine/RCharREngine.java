@@ -1,9 +1,11 @@
 package rengine;
 
+import org.rosuda.REngine.REXPString;
+
 
 public class RCharREngine
-        extends RVectorREngine<org.rosuda.REngine.REXPString, String[], String>
-        implements jhlir.RChar<org.rosuda.REngine.REXPString> {
+        extends RVectorREngine<REXPString, REXPString, String[], String>
+        implements jhlir.RChar<REXPString> {
 
 
     public RCharREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPString wrapped) {

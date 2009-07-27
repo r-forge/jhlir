@@ -3,16 +3,15 @@ package rengine;
 import jhlir.RDataFrame;
 import jhlir.REnvironment;
 import jhlir.RObj;
-import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPReference;
 
 
-public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
+public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP, RESOLVED_TYPE extends org.rosuda.REngine.REXP>
         implements RObj<WRAPPED_TYPE> {
 
     protected REngineServicesREngine rs;
     private WRAPPED_TYPE wrapped;
-    private REXP cached;
+    private RESOLVED_TYPE cached;
     protected REXPReference ref;
 
     protected RObjectREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
@@ -32,12 +31,11 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
         this.ref = ref;
     }
 
-    protected REXP getResolved() {
-//        if (getWrapped() instanceof REXPReference)
-//            return cached;
-//        else
-//            return getWrapped();
-        return null;
+    protected RESOLVED_TYPE getResolved() {
+        if (getWrapped() instanceof REXPReference)
+            return cached;
+        else
+            return (RESOLVED_TYPE) getWrapped();
     }
 
     protected WRAPPED_TYPE getRef() {
@@ -47,11 +45,9 @@ public class RObjectREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP>
             return null;
     }
 
-
-
-//    public WRAPPED_TYPE getWrapped() {
-//        return wrapped;
-//    }
+    public WRAPPED_TYPE getWrapped() {
+        return wrapped;
+    }
 
 //    public ROBJ_TYPE getObj() {
 //        if (obj instanceof ReferenceInterface)

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class S3ObjREngine
-        extends RObjectREngine<REXPGenericVector>
+        extends RObjectREngine<REXPGenericVector, REXPGenericVector>
         implements S3Obj<REXPGenericVector> {
 
     public S3ObjREngine(REngineServicesREngine rs, REXPGenericVector wrapped) {

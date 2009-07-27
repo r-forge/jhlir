@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class RListREngine
-        extends RObjectREngine<REXPGenericVector>
+        extends RObjectREngine<REXPGenericVector, REXPGenericVector>
         implements RList<REXPGenericVector> {
 
 
@@ -20,11 +20,6 @@ public class RListREngine
 
     protected RListREngine(REngineServicesREngine rs, REXPReference rList) {
         super(rs, rList);
-    }
-
-    @Override
-    protected REXPGenericVector getResolved() {
-        return (REXPGenericVector) super.getResolved();
     }
 
     public int getLength() {

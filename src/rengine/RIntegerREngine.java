@@ -4,7 +4,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPInteger;
 
 public class RIntegerREngine
-        extends RVectorREngine<org.rosuda.REngine.REXPInteger, int[], Integer>
+        extends RVectorREngine<REXPInteger, REXPInteger, int[], Integer>
         implements jhlir.RInteger<org.rosuda.REngine.REXPInteger>{
 
     public RIntegerREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPInteger wrapped) {
@@ -12,7 +12,7 @@ public class RIntegerREngine
     }
 
     public int[] getData() {
-        return getWrapped().asIntegers();
+        return getResolved().asIntegers();
     }
 
     public Integer[] getDataAsObjArr() {

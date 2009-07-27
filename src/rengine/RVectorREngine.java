@@ -1,14 +1,16 @@
 package rengine;
 
+import org.rosuda.REngine.REXPVector;
 
-abstract public class RVectorREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXPVector, ARR_TYPE, EL_TYPE> 
-        extends RVectorFactorREngine<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {
+
+abstract public class RVectorREngine<WRAPPED_TYPE extends REXPVector, RESOLVED_TYPE extends REXPVector, ARR_TYPE, EL_TYPE>
+        extends RVectorFactorREngine<WRAPPED_TYPE, RESOLVED_TYPE, ARR_TYPE, EL_TYPE> {
 
     protected RVectorREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
         super(rs, wrapped);
     }
 
     public int getLength() {
-        return getWrapped().length();
+        return getResolved().length();
     }
 }

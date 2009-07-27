@@ -2,13 +2,14 @@ package rengine;
 
 import jhlir.RMatrix;
 import org.apache.commons.lang.ArrayUtils;
+import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPMismatchException;
 
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class RMatrixREngine<WRAPPED_TYPE extends org.rosuda.REngine.REXP, ARR_TYPE, EL_TYPE>
-        extends RObjectREngine<WRAPPED_TYPE>
+public abstract class RMatrixREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REXP, ARR_TYPE, EL_TYPE>
+        extends RObjectREngine<WRAPPED_TYPE, RESOLVED_TYPE>
         implements RMatrix<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {
 
     public RMatrixREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
