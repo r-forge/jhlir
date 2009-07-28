@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Interface for a RList Object that extends RObj.
- * @param <WRAPPED_TYPE> underlying type of the used backend. @see RObj
+ * @param <WRAPPED_TYPE> underlying type of the used back-end, @see RObj
  */
 public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
 	
