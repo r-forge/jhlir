@@ -34,12 +34,12 @@ public class RMatrixDouble_Test extends MyTestCase{
          assertFalse(rMat1.isNA(0,2));
          assertFalse(rMat1.isNA(1,2));
 
-         assertEquals(rMat1.getData()[0][0], 1.1);
-         assertEquals(rMat1.getData()[1][0], 2.0);
-         assertEquals(rMat1.getData()[0][1], 3.0);
-         assertEquals((Double)rMat1.getData()[1][1], (Double)REngineServices.NA_RNUMERIC);
-         assertEquals(rMat1.getData()[0][2], 5.1);
-         assertEquals(rMat1.getData()[1][2], 66.0);
+         assertEquals(rMat1.getData()[0][0], 1.1, eps);
+         assertEquals(rMat1.getData()[1][0], 2.0, eps);
+         assertEquals(rMat1.getData()[0][1], 3.0, eps);
+         assertEquals((Double)rMat1.getData()[1][1], (Double)REngineServices.NA_RNUMERIC, eps);
+         assertEquals(rMat1.getData()[0][2], 5.1, eps);
+         assertEquals(rMat1.getData()[1][2], 66.0, eps);
 
          assertEquals(rMat1.getDataAsObjArr()[0][0], 1.1);
          assertEquals(rMat1.getDataAsObjArr()[1][0], 2.0);

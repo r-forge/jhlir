@@ -11,6 +11,8 @@ import rengine.REngineServicesREngine;
 
 public abstract class MyTestCase {
     private static REngineServices rs;
+    
+    public static Double eps = 0.0001;
 
 
     @Before

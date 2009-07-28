@@ -70,13 +70,13 @@ public class RInteger_Test extends RVector_Test {
 
     @Test
     public void testAsList()  {
-        List<Double> xs = rInt1.getDataAsList();
+        List<Integer> xs = rInt1.getDataAsList();
         assertEquals(xs.size(), 6);
-        assertEquals(xs.get(0), (Double)1.0);
-        assertEquals(xs.get(1), (Double)5.0);
+        assertEquals(xs.get(0), (Integer)1);
+        assertEquals(xs.get(1), (Integer)5);
         assertEquals(xs.get(2), REngineServices.NA_RINTEGER);
-        assertEquals(xs.get(3), (Double)3.0);
-        assertEquals(xs.get(4), (Double)10.0);
+        assertEquals(xs.get(3), (Integer)3);
+        assertEquals(xs.get(4), (Integer)10);
         assertEquals(xs.get(5), REngineServices.NA_RINTEGER);
     }
 

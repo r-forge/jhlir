@@ -17,14 +17,14 @@ public class RObjectREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REX
 
     protected RObjectREngine(REngineServicesREngine rs, WRAPPED_TYPE wrapped) {
         if (wrapped == null)
-            throw new RuntimeException("Tried to create RObhjectWrapper on null!");
+            throw new RuntimeException("Tried to create RObjectWrapper on null!");
         this.rs = rs;
         this.cached = (RESOLVED_TYPE) wrapped;
     }
 
     protected RObjectREngine(REngineServicesREngine rs, REXPReference wrapped) {
         if (wrapped == null)
-            throw new RuntimeException("Tried to create RObhjectWrapper on null!");
+            throw new RuntimeException("Tried to create RObjectWrapper on null!");
         this.rs = rs;
         this.ref = wrapped;
     }
