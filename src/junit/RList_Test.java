@@ -1,8 +1,10 @@
 package junit;
 
-import jhlir.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import jhlir.RChar;
+import jhlir.RInteger;
+import jhlir.RList;
+import jhlir.RMatrix;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,22 +36,18 @@ public class RList_Test extends MyTestCase {
         assertEquals(rList1.getName(2), "");
         assertEquals(rList1.getName(3), "zz");
 
-        assertEquals(rList2.getName(0), REngineServices.NA_CHAR);
-        assertEquals(rList2.getName(1), REngineServices.NA_CHAR);
-        assertEquals(rList2.getName(2), REngineServices.NA_CHAR);
-        assertEquals(rList2.getName(3), REngineServices.NA_CHAR);        
-        
         assertEquals(rList1.getNames()[0], "xx");
         assertEquals(rList1.getNames()[1], "yy");
         assertEquals(rList1.getNames()[3], "zz");
         
-        assertEquals(rList2.getNames(), REngineServices.NA_CHAR);
-        assertEquals(rList3.getNames(), REngineServices.NA_CHAR);
-        
+        assertNull(rList2.getNames());
+        assertNull(rList3.getNames());
+
         assertTrue(rList1.get("xx") instanceof RInteger);
         assertTrue(rList1.get("yy") instanceof RList);        
         assertTrue(rList1.get("zz") instanceof RChar);
-        
+        assertNull(rList1.get("blah"));
+
         assertTrue(rList1.get(0) instanceof RInteger);
         assertTrue(rList1.get(1) instanceof RList);
         assertTrue(rList1.get(2) instanceof RMatrix);
@@ -57,17 +55,30 @@ public class RList_Test extends MyTestCase {
         
         assertEquals(rList1.getNamesAsList().size(), 4);
         assertEquals(rList1.getNamesAsList().get(0), "xx");
-    }    
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testNullPointerException1() {
+        rList2.getName(0);
+    }
 
     @Test(expected=IndexOutOfBoundsException.class)
     public void testIndexOutOfBoundsException1() {
-    	rList3.get(1);
+    	rList1.get(-1);
     }
 
     @Test(expected=IndexOutOfBoundsException.class)
     public void testIndexOutOfBoundsException2() {
-    	rList1.get("blah");
+    	rList1.get(4);
     }
 
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void testIndexOutOfBoundsException3() {
+    	rList3.get(0);
+    }
 
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void testIndexOutOfBoundsException4() {
+    	rList1.getName(9);
+    }
 }

@@ -1,7 +1,6 @@
 package rengine;
 
 import jhlir.RList;
-import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPReference;
 
@@ -27,16 +26,21 @@ public class RListREngine
     }
 
     public RObjectREngine get(int i) {
+        if (i < 0 || i >= getLength())
+            throw new IndexOutOfBoundsException();
         return rs.wrapObject(getResolved().asList().at(i));
     }
 
     public RObjectREngine get(String name) {
-        int i = ArrayUtils.indexOf(getNames(), name);
-        return i == -1 ? null : get(i);
+        return rs.wrapObject(getResolved().asList().at(name));
+    }
+
+    public boolean hasNames() {
+        return getResolved().asList().names == null;
     }
 
     public String getName(int i) {
-        return getResolved().asList().keys()[i];
+        return getResolved().asList().names.get(i).toString();
     }
 
     public String[] getNames() {

@@ -9,7 +9,13 @@ public class TestRengine {
         try {
 //            Rengine re = new Rengine();
             REngine re = new JRIEngine();
-//            REXP g = re.parseAndEval(".GlobalEnv");
+            re.parseAndEval("xx <- list(1,2)");
+            re.parseAndEval("names(xx)[1] <- \"foo\"");
+            re.parseAndEval("yy <- list(foo=1,2)");
+            System.out.println(re.parseAndEval("xx").asList().keyAt(1));
+            System.out.println(re.parseAndEval("yy").asList().keyAt(1));
+
+
 //            REXP r = re.parseAndEval("list()",g, false);
 //            System.out.println(r);
 ////            re.eval("plot(1:3)");

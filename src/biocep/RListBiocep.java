@@ -17,16 +17,28 @@ public class RListBiocep
     }
 
     public int getLength() {
-        return getWrapped().getValue().length;
+        // empty list in biocep
+        Object[] o = getWrapped().getValue();
+        if (o == null)
+            return 0;
+        return o.length;
     }
 
     public RObjectBiocep get(int i) {
+        // empty list in biocep
+        Object[] o = getWrapped().getValue();
+        if (o == null)
+            throw new IndexOutOfBoundsException();
         return rs.wrapObject(getWrapped().getValue()[i]);
     }
 
     public RObjectBiocep get(String name) {
         int i = ArrayUtils.indexOf(getNames(), name);
         return i == -1 ? null : get(i);
+    }
+
+    public boolean hasNames() {
+        return getWrapped().getNames() == null;
     }
 
     public String getName(int i) {
