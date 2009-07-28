@@ -4,14 +4,14 @@ import jhlir.RDataFrame;
 import jhlir.RInteger;
 import jhlir.RNumeric;
 import static org.junit.Assert.assertEquals;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class RDataFrame_Test extends MyTestCase{
     protected RDataFrame rDf1;
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         getRServices().assign("rdf1", "data.frame(xx=1:3, c(1.5, 5, -4), zz=c(\"foo\", \"bar\", \"bla\"), yy=4:6)");
         rDf1 = getRServices().eval("rdf1").asRDataFrame();

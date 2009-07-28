@@ -3,7 +3,7 @@ package junit;
 import jhlir.RChar;
 import jhlir.REngineServices;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class RChar_Test extends RVector_Test{
     private RChar rChar2;
 
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         rChar1 = getRServices().eval("as.character(c(\"b\", NA,\"b\", \"a\"))").asRChar();
         rChar2 = getRServices().eval("as.character(c(\"b\", NA, \"a\"))").asRChar();

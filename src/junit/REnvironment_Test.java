@@ -5,7 +5,7 @@ import jhlir.RInteger;
 import org.apache.commons.lang.ArrayUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,8 +15,8 @@ public class REnvironment_Test extends MyTestCase{
     private REnvironment rEnv2;
 
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         getRServices().assign("ee", "new.env()");
         getRServices().evalVoid("ee$xx <- 1:3");

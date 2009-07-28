@@ -2,15 +2,15 @@ package junit;
 
 import jhlir.S3Obj;
 import static org.junit.Assert.assertEquals;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class S3_Test extends MyTestCase {
     private S3Obj s3Obj;
 
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         getRServices().evalVoid("library(rpart)");
         s3Obj = getRServices().eval("rpart(Species~., data=iris)").asS3Obj();

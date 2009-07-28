@@ -3,7 +3,7 @@ package junit;
 import jhlir.REngineServices;
 import jhlir.RInteger;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class RInteger_Test extends RVector_Test {
     private RInteger rInt2;
 
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         rInt1 = getRServices().eval("as.integer(c(1, 5, NA, 3, 10, NA))").asRInteger();
         rInt2 = getRServices().eval("1:3").asRInteger();

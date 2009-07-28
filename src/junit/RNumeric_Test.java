@@ -3,7 +3,7 @@ package junit;
 import jhlir.REngineServices;
 import jhlir.RNumeric;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public abstract class RNumeric_Test extends RVector_Test {
     private RNumeric rNumW2;
 
 
-    @BeforeClass
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         super.setUp();
         rNumW1 = getRServices().eval("c(1.1, 5, NA, 3, 10.1, NA)").asRNumeric();
         rNumW2 = getRServices().eval("c(1.2, 2, 3)").asRNumeric();
