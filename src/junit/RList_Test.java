@@ -1,6 +1,7 @@
 package junit;
 
 import jhlir.RChar;
+import jhlir.REngineServices;
 import jhlir.RInteger;
 import jhlir.RList;
 import jhlir.RMatrix;
@@ -31,20 +32,20 @@ public class RList_Test extends MyTestCase {
 
         assertEquals(rList1.getName(0), "xx");
         assertEquals(rList1.getName(1), "yy");
-        assertEquals(rList1.getName(2), null);
+        assertEquals(rList1.getName(2), "");
         assertEquals(rList1.getName(3), "zz");
 
-        assertEquals(rList1.getName(0), null);
-        assertEquals(rList1.getName(1), null);
-        assertEquals(rList1.getName(2), null);
-        assertEquals(rList1.getName(3), null);        
+        assertEquals(rList2.getName(0), REngineServices.NA_CHAR);
+        assertEquals(rList2.getName(1), REngineServices.NA_CHAR);
+        assertEquals(rList2.getName(2), REngineServices.NA_CHAR);
+        assertEquals(rList2.getName(3), REngineServices.NA_CHAR);        
         
         assertEquals(rList1.getNames()[0], "xx");
         assertEquals(rList1.getNames()[1], "yy");
         assertEquals(rList1.getNames()[3], "zz");
         
-        assertEquals(rList2.getNames(), null);
-        assertEquals(rList3.getNames(), null);
+        assertEquals(rList2.getNames(), REngineServices.NA_CHAR);
+        assertEquals(rList3.getNames(), REngineServices.NA_CHAR);
         
         assertTrue(rList1.get("xx") instanceof RInteger);
         assertTrue(rList1.get("yy") instanceof RList);        
