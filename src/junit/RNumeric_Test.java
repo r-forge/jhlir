@@ -2,6 +2,8 @@ package junit;
 
 import jhlir.REngineServices;
 import jhlir.RNumeric;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,7 +13,7 @@ public abstract class RNumeric_Test extends RVector_Test {
     private RNumeric rNumW2;
 
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         rNumW1 = getRServices().eval("c(1.1, 5, NA, 3, 10.1, NA)").asRNumeric();
@@ -56,11 +58,11 @@ public abstract class RNumeric_Test extends RVector_Test {
     public void testGetDataAsObjArr()  {
         Double[] xs = rNumW1.getDataAsObjArr();
         assertEquals(xs.length, 6);
-        assertEquals(xs[0], 1.1);
-        assertEquals(xs[1], 5.0);
+        assertEquals(xs[0], (Double)1.1);
+        assertEquals(xs[1], (Double)5.0);
         assertEquals(xs[2], REngineServices.NA_RNUMERIC);
-        assertEquals(xs[3], 3.0);
-        assertEquals(xs[4], 10.1);
+        assertEquals(xs[3], (Double)3.0);
+        assertEquals(xs[4], (Double)10.1);
         assertEquals(xs[5], REngineServices.NA_RNUMERIC);
     }
 
@@ -69,11 +71,11 @@ public abstract class RNumeric_Test extends RVector_Test {
     public void testAsList()  {
         List<Double> xs = rNumW1.getDataAsList();
         assertEquals(xs.size(), 6);
-        assertEquals(xs.get(0), 1.1);
-        assertEquals(xs.get(1), 5.0);
+        assertEquals(xs.get(0), (Double)1.1);
+        assertEquals(xs.get(1), (Double)5.0);
         assertEquals(xs.get(2), REngineServices.NA_RNUMERIC);
-        assertEquals(xs.get(3), 3.0);
-        assertEquals(xs.get(4), 10.1);
+        assertEquals(xs.get(3), (Double)3.0);
+        assertEquals(xs.get(4), (Double)10.1);
         assertEquals(xs.get(5), REngineServices.NA_RNUMERIC);
     }
 

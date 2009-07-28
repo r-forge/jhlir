@@ -2,6 +2,8 @@ package junit;
 
 import jhlir.REngineServices;
 import jhlir.RFactor;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,7 +12,7 @@ public class RFactor_Test extends MyTestCase {
     private RFactor rFact1;
 
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         rFact1 = getRServices().eval("as.factor(c(\"b\", NA,\"b\", \"a\"))").asRFactor();

@@ -2,6 +2,8 @@ package junit;
 
 import jhlir.REngineServices;
 import jhlir.RVector;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 import java.util.List;

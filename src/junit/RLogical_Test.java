@@ -2,6 +2,8 @@ package junit;
 
 import jhlir.REngineServices;
 import jhlir.RLogical;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,7 +13,7 @@ public class RLogical_Test extends RVector_Test{
     private RLogical rLog2;
 
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         rLog1 = getRServices().eval("as.logical(c(T, F, NA, TRUE))").asRLogical();
@@ -24,7 +26,6 @@ public class RLogical_Test extends RVector_Test{
 
         assertEquals(rLog1.getLength(), 4);
 
-        assertEquals(null, null);
         assertEquals(rLog1.get(0), true);
         assertEquals(rLog1.get(1), false);
         assertEquals((Boolean) rLog1.get(2), (Boolean) REngineServices.NA_RLOGICAL);

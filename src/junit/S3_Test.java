@@ -1,13 +1,15 @@
 package junit;
 
 import jhlir.S3Obj;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 import org.junit.Test;
 
 public class S3_Test extends MyTestCase {
     private S3Obj s3Obj;
 
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         getRServices().evalVoid("library(rpart)");

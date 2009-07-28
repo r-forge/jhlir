@@ -2,6 +2,8 @@ package junit;
 
 import jhlir.REngineServices;
 import jhlir.RInteger;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,7 +13,7 @@ public class RInteger_Test extends RVector_Test {
     private RInteger rInt2;
 
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         rInt1 = getRServices().eval("as.integer(c(1, 5, NA, 3, 10, NA))").asRInteger();
@@ -70,11 +72,11 @@ public class RInteger_Test extends RVector_Test {
     public void testAsList()  {
         List<Double> xs = rInt1.getDataAsList();
         assertEquals(xs.size(), 6);
-        assertEquals(xs.get(0), 1);
-        assertEquals(xs.get(1), 5);
+        assertEquals(xs.get(0), (Double)1.0);
+        assertEquals(xs.get(1), (Double)5.0);
         assertEquals(xs.get(2), REngineServices.NA_RINTEGER);
-        assertEquals(xs.get(3), 3);
-        assertEquals(xs.get(4), 10);
+        assertEquals(xs.get(3), (Double)3.0);
+        assertEquals(xs.get(4), (Double)10.0);
         assertEquals(xs.get(5), REngineServices.NA_RINTEGER);
     }
 

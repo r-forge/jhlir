@@ -1,10 +1,9 @@
 package junit;
 
-import jhlir.RChar;
-import jhlir.REngineServices;
-import jhlir.RInteger;
-import jhlir.RList;
-import jhlir.RMatrix;
+import jhlir.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
 import org.junit.Test;
 
 public class RList_Test extends MyTestCase {
@@ -12,7 +11,7 @@ public class RList_Test extends MyTestCase {
     protected RList rList2;
     protected RList rList3;
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
         getRServices().assign("rlist1", "list(xx=1:3, yy=list(), matrix(c(1,2,3,4),4,1), zz=\"foo\")");

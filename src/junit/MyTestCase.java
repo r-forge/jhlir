@@ -2,15 +2,17 @@ package junit;
 
 import biocep.REngineServicesBiocep;
 import jhlir.REngineServices;
-import junit.framework.TestCase;
+import org.junit.Before;
 import org.kchine.r.server.DirectJNI;
 import org.rosuda.REngine.JRI.JRIEngine;
 import rengine.REngineServicesREngine;
 
-public abstract class MyTestCase extends TestCase {
+
+
+public abstract class MyTestCase {
     private static REngineServices rs;
 
-    @Override
+    @Before
     protected void setUp() throws Exception {
         if (rs == null) {
             if (this.getClass().toString().startsWith("class junit.biocep")) {
