@@ -3,13 +3,13 @@ package junit;
 import jhlir.REngineServices;
 import jhlir.RMatrixDouble;
 import static org.junit.Assert.*;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class RMatrixDouble_Test extends MyTestCase{
     private RMatrixDouble rMat1;
 
-     @Before
+     @BeforeClass
      protected void setUp() throws Exception {
         super.setUp();
         rMat1 = getRServices().eval("matrix(c(1.1,2,3,NA,5.1,66), 2, 3)").asRMatrixDouble();

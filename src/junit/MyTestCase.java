@@ -2,7 +2,7 @@ package junit;
 
 import biocep.REngineServicesBiocep;
 import jhlir.REngineServices;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.kchine.r.server.DirectJNI;
 import org.rosuda.REngine.JRI.JRIEngine;
 import rengine.REngineServicesREngine;
@@ -12,7 +12,7 @@ import rengine.REngineServicesREngine;
 public abstract class MyTestCase {
     private static REngineServices rs;
 
-    @Before
+    @BeforeClass
     protected void setUp() throws Exception {
         if (rs == null) {
             if (this.getClass().toString().startsWith("class junit.biocep")) {

@@ -3,7 +3,7 @@ package junit;
 import jhlir.REngineServices;
 import jhlir.RLogical;
 import static org.junit.Assert.*;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class RLogical_Test extends RVector_Test{
     private RLogical rLog2;
 
 
-    @Before
+    @BeforeClass
     protected void setUp() throws Exception {
         super.setUp();
         rLog1 = getRServices().eval("as.logical(c(T, F, NA, TRUE))").asRLogical();

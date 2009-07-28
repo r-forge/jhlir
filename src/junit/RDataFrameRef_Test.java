@@ -1,11 +1,11 @@
 package junit;
 
 import jhlir.RDataFrameRef;
-import org.junit.Before;
+import org.junit.BeforeClass;
 
 public class RDataFrameRef_Test extends RDataFrame_Test {
 
-    @Before
+    @BeforeClass
     protected void setUp() throws Exception {
         super.setUp();
         rDf1 = (RDataFrameRef) getRServices().evalAndGetRef("rdf1");
