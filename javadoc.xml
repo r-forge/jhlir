@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc" name="JHLIR JavaDoc">
     <target name="javadoc">
-        <javadoc access="public" author="true" classpath="lib/REngine.jar:lib/biocepunsigned.jar:lib/commons-collections-3.2.1.jar:lib/junit-4.4.jar:lib/JRIEngine.jar:lib/commons-lang-2.4.jar" destdir="doc" doctitle="Java High-Level Interface to R" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="jhlir.rscript,jhlir" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+        <javadoc access="public" author="true" destdir="doc" doctitle="Java High-Level Interface to R" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="jhlir.rscript,jhlir" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
     </target>
 </project>

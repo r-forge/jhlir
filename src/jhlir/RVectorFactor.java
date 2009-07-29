@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * Common interface for Vectors and Factors. Extends RObj.
- * @param <WRAPPED_TYPE> underlying type of the used back-end, @see RObj
+ * @param <WRAPPED_TYPE> underlying type of the used back-end, see {@link jhlir.RObj RObj}
  * @param <ARR_TYPE> used Java array to store the data.
- * @param <EL_TYPE> Boxed type of an element of ARR_TYPE. Extends Object.
+ * @param <EL_TYPE> boxed type of an element of ARR_TYPE. Extends Object.
  * Example: For RInteger {@code ARR_TYPE} equals {@code int[]} and 
  * @code EL_TYPE} equals {@code Integer}.
  */
