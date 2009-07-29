@@ -25,7 +25,7 @@ public class RList_Test extends MyTestCase {
         getRServices().assign("rlist3", "list()");
         rList3 = getRServices().eval("rlist3").asRList();
         getRServices().assign("rlist4", "list(1:3, list(1,2,3), matrix(c(1,2,3,4),4,1), \"foo\")");
-        getRServices().evalVoid("names(rlist4)<-c(\"A\",\"B\"");
+        getRServices().evalVoid("names(rlist4)<-c(\"A\",\"B\")");
         rList4 = getRServices().eval("rlist4").asRList();
         
     }

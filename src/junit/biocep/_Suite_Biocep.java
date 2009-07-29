@@ -17,7 +17,8 @@ import org.junit.runners.Suite;
         RMatrixDouble_Test_Biocep.class,
         RNumeric_Test_Biocep.class,
         RObj_Test_Biocep.class,
-        S3_Test_Biocep.class
+        S3_Test_Biocep.class,
+        REngineServices_Test_Biocep.class
 })
 
 public class _Suite_Biocep {

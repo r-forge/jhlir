@@ -18,7 +18,8 @@ import org.junit.runners.Suite;
         RMatrixDouble_Test_JRI.class,
         RNumeric_Test_JRI.class,
         RObj_Test_JRI.class,
-        S3_Test_JRI.class
+        S3_Test_JRI.class,
+        REngineServices_Test_JRI.class
 })
 
 public class _Suite_JRI {
