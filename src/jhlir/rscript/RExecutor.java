@@ -1,4 +1,5 @@
-//package jhlir.rscript;
+package jhlir.rscript;
+
 //
 //import java.io.BufferedReader;
 //import java.io.File;
@@ -21,7 +22,11 @@
 //*/
 //
 //// TODO comment it and move some consts ---> props. probly go through it and make it proper.
-//public abstract class RExecutor {
+
+/**
+ * This RExecutor allows to executes R-code in batch mode 
+ */
+public abstract class RExecutor {
 //    protected static Log logger = LogFactory.getLog(RExecutor.class);
 //
 //    public static final String[] RPARAMETER //= {"--vanilla","--slave"};
@@ -246,4 +251,4 @@
 //    }
 //
 //
-//}
+}

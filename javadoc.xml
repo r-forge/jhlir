@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc" name="JHLIR JavaDoc">
+	
+	<dirname property="content.root" file="${ant.file.imported}/"/>
+	
+	<property file="${content.root}/imported.properties"/>
+	
+	<property name="javadoc.dir" value="${content.root}/doc"/> 
+	
+	<property name="server.algo.ip" value="85.214.22.10"/>
+	<property name="server.algo.login" value="rjavaweb"/>
+	<property name="server.algo.pass" value="${passwd.algof}"/>
+	<property name="server.algo.htdocs" value="/var/www/rjavaclient/jhlir/doc/"/>
+	
     <target name="javadoc">
         <javadoc access="public" author="true" destdir="doc" doctitle="Java High-Level Interface to R" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="jhlir.rscript,jhlir" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+    	<scp trust="true" todir="${server.algo.login}:${server.algo.pass}@${server.algo.ip}:${server.algo.htdocs}" verbose="true">
+    	   	<fileset dir="${javadoc.dir}">
+    	 		<include name="**/**"/>
+    		</fileset>
+    	</scp>    	
     </target>
+	
 </project>
