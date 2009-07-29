@@ -1,6 +1,7 @@
 package junit;
 
 import jhlir.RChar;
+import jhlir.REngineServices;
 import jhlir.RInteger;
 import jhlir.RList;
 import jhlir.RMatrix;
@@ -12,6 +13,7 @@ public class RList_Test extends MyTestCase {
     protected RList rList1;
     protected RList rList2;
     protected RList rList3;
+    protected RList rList4;
 
     @Before
     public void setUp() throws Exception {
@@ -22,6 +24,9 @@ public class RList_Test extends MyTestCase {
         rList2 = getRServices().eval("rlist2").asRList();
         getRServices().assign("rlist3", "list()");
         rList3 = getRServices().eval("rlist3").asRList();
+        getRServices().assign("rlist4", "list(1:3, list(1,2,3), matrix(c(1,2,3,4),4,1), \"foo\")");
+        getRServices().evalVoid("names(rlist4)<-c(\"A\",\"B\"");
+        rList4 = getRServices().eval("rlist4").asRList();
         
     }
 
@@ -55,6 +60,11 @@ public class RList_Test extends MyTestCase {
         
         assertEquals(rList1.getNamesAsList().size(), 4);
         assertEquals(rList1.getNamesAsList().get(0), "xx");
+     
+        assertEquals(rList4.getName(0), "A");
+        assertEquals(rList4.getName(1), "B");
+        assertEquals(rList4.getName(2), REngineServices.NA_CHAR);
+        assertEquals(rList4.getName(3), REngineServices.NA_CHAR);
     }
 
     @Test(expected=NullPointerException.class)
