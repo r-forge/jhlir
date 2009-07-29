@@ -20,7 +20,32 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
     public int getLength();
 
 
+    /**
+     * Returns an array containing all of the elements
+     * in this vector/factor in proper sequence
+     * @return an array containing all of the elements
+     * in this vector/factor in proper sequence
+     */
     public ARR_TYPE getData();
+
+    /**
+     * Returns an array containing all of the elements
+     * in this vector/factor in proper sequence.
+     * If getData() returns an array of primitives, this methods converts to an array of Java Objects.
+     * Note that this takes linear time for long arrays. 
+     * @return an array containing all of the elements
+     * in this vector/factor in proper sequence
+     */
+    public EL_TYPE[] getDataAsObjArr();
+
+    /**
+     * Returns a list containing all of the elements
+     * in this vector/factor in proper sequence
+     * @return a list containing all of the elements
+     * in this vector/factor in proper sequence
+     */
+    public List<EL_TYPE> getDataAsList();
+
 
     /**
      * Returns the element at the specified position in this vector/factor.
@@ -65,19 +90,4 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
      */
     public boolean isNA(int i);
     
-    /**
-     * Returns an array containing all of the elements 
-     * in this vector/factor in proper sequence
-     * @return an array containing all of the elements 
-     * in this vector/factor in proper sequence
-     */
-    public EL_TYPE[] getDataAsObjArr();
-    
-    /**
-     * Returns a list containing all of the elements 
-     * in this vector/factor in proper sequence
-     * @return a list containing all of the elements 
-     * in this vector/factor in proper sequence
-     */
-    public List<EL_TYPE> getDataAsList();
 }
