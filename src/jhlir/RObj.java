@@ -1,6 +1,10 @@
 package jhlir;
 
-
+/**
+ * 
+ *
+ * @param <WRAPPED_TYPE> underlying type of the used back-end
+ */
 public interface RObj<WRAPPED_TYPE> {
     WRAPPED_TYPE getWrapped();
 

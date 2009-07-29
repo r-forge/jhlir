@@ -3,10 +3,12 @@ package jhlir;
 import java.util.List;
 
 /**
- * Common interface for a Vectors and Factors. Extends RObj.
- * @param <WRAPPED_TYPE> underlying type of the used backend. @see RObj
- * @param <WRAPPED_TYPE> used Java array to store the data.
- * @param <EL_TYPE> Type of an element of ARR_TYPE.
+ * Common interface for Vectors and Factors. Extends RObj.
+ * @param <WRAPPED_TYPE> underlying type of the used back-end, @see RObj
+ * @param <ARR_TYPE> used Java array to store the data.
+ * @param <EL_TYPE> Boxed type of an element of ARR_TYPE. Extends Object.
+ * Example: For RInteger {@code ARR_TYPE} equals {@code int[]} and 
+ * @code EL_TYPE} equals {@code Integer}.
  */
 
 public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRAPPED_TYPE>{
@@ -56,8 +58,26 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
      */
     List<String> getNamesAsList();
 
-
+    /**
+     * Returns true if the specified element is NA. 
+     * @param i index of the element to test for NA
+     * @return true if the specified element is NA
+     */
     public boolean isNA(int i);
+    
+    /**
+     * Returns an array containing all of the elements 
+     * in this vector/factor in proper sequence
+     * @return an array containing all of the elements 
+     * in this vector/factor in proper sequence
+     */
     public EL_TYPE[] getDataAsObjArr();
+    
+    /**
+     * Returns a list containing all of the elements 
+     * in this vector/factor in proper sequence
+     * @return a list containing all of the elements 
+     * in this vector/factor in proper sequence
+     */
     public List<EL_TYPE> getDataAsList();
 }

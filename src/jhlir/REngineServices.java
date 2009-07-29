@@ -51,7 +51,7 @@ abstract public class REngineServices {
      
      /**
       * TODO
-      * @param varname
+      * @param varName
       * @param obj
       * @throws RemoteException
       */     

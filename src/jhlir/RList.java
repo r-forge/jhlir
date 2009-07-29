@@ -47,7 +47,7 @@ public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
      * Returns the name at the specified position of this list.
      * @param i index of the position
      * @return the name of the specified position of this list
-     * @throws NullPointerException if hasNames is false {@see hasNames}.
+     * @throws NullPointerException if {@code hasNames()} is false
      */
     String getName(int i);
     
