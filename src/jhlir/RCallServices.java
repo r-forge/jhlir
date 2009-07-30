@@ -2,7 +2,7 @@ package jhlir;
 
 import java.rmi.RemoteException;
 
-abstract public class REngineServices {
+abstract public class RCallServices {
 	
 	/**
 	 * Evaluates an expression.

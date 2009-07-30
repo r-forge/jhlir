@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RFactor;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class RFactor_Test extends MyTestCase {
         assertEquals(rFact1.get(0), "b");
         assertFalse(rFact1.isNA(0));
 
-        assertEquals(rFact1.get(1), REngineServices.NA_FACTOR);
+        assertEquals(rFact1.get(1), RCallServices.NA_FACTOR);
         assertTrue(rFact1.isNA(1));
 
         assertEquals(rFact1.get(2), "b");
@@ -48,7 +48,7 @@ public class RFactor_Test extends MyTestCase {
         String[] xs = rFact1.getDataAsObjArr();
         assertEquals(xs.length, 4);
         assertEquals(xs[0], "b");
-        assertEquals(xs[1], REngineServices.NA_FACTOR);
+        assertEquals(xs[1], RCallServices.NA_FACTOR);
         assertEquals(xs[2], "b");
         assertEquals(xs[3], "a");
     }
@@ -59,7 +59,7 @@ public class RFactor_Test extends MyTestCase {
         List<String> xs = rFact1.getDataAsList();
         assertEquals(xs.size(), 4);
         assertEquals(xs.get(0), "b");
-        assertEquals(xs.get(1), REngineServices.NA_FACTOR);
+        assertEquals(xs.get(1), RCallServices.NA_FACTOR);
         assertEquals(xs.get(2), "b");
         assertEquals(xs.get(3), "a");
     }

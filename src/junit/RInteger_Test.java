@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RInteger;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class RInteger_Test extends RVector_Test {
         assertFalse(rInt1.isNA(1));
 
 
-        assertEquals(rInt1.get(2), REngineServices.NA_RINTEGER);
+        assertEquals(rInt1.get(2), RCallServices.NA_RINTEGER);
         assertTrue(rInt1.isNA(2));
 
         assertEquals(rInt1.get(3), 3);
@@ -42,7 +42,7 @@ public class RInteger_Test extends RVector_Test {
         assertEquals(rInt1.get(4), 10);
         assertFalse(rInt1.isNA(4));
 
-        assertEquals(rInt1.get(5), REngineServices.NA_RINTEGER);
+        assertEquals(rInt1.get(5), RCallServices.NA_RINTEGER);
         assertTrue(rInt1.isNA(5));
 
     }
@@ -61,10 +61,10 @@ public class RInteger_Test extends RVector_Test {
         assertEquals(xs.length, 6);
         assertEquals((int)xs[0], 1);
         assertEquals((int)xs[1], 5);
-        assertEquals((int)xs[2], (int)REngineServices.NA_RINTEGER);
+        assertEquals((int)xs[2], (int) RCallServices.NA_RINTEGER);
         assertEquals((int)xs[3], 3);
         assertEquals((int)xs[4], 10);
-        assertEquals((int)xs[5], (int)REngineServices.NA_RINTEGER);
+        assertEquals((int)xs[5], (int) RCallServices.NA_RINTEGER);
     }
 
 
@@ -74,10 +74,10 @@ public class RInteger_Test extends RVector_Test {
         assertEquals(xs.size(), 6);
         assertEquals(xs.get(0), (Integer)1);
         assertEquals(xs.get(1), (Integer)5);
-        assertEquals(xs.get(2), REngineServices.NA_RINTEGER);
+        assertEquals(xs.get(2), RCallServices.NA_RINTEGER);
         assertEquals(xs.get(3), (Integer)3);
         assertEquals(xs.get(4), (Integer)10);
-        assertEquals(xs.get(5), REngineServices.NA_RINTEGER);
+        assertEquals(xs.get(5), RCallServices.NA_RINTEGER);
     }
 
     

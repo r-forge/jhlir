@@ -1,10 +1,6 @@
 package junit;
 
-import jhlir.RChar;
-import jhlir.REngineServices;
-import jhlir.RInteger;
-import jhlir.RList;
-import jhlir.RMatrix;
+import jhlir.*;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,8 +59,8 @@ public class RList_Test extends MyTestCase {
      
         assertEquals(rList4.getName(0), "A");
         assertEquals(rList4.getName(1), "B");
-        assertEquals(rList4.getName(2), REngineServices.NA_CHAR);
-        assertEquals(rList4.getName(3), REngineServices.NA_CHAR);
+        assertEquals(rList4.getName(2), RCallServices.NA_CHAR);
+        assertEquals(rList4.getName(3), RCallServices.NA_CHAR);
     }
 
     @Test(expected=NullPointerException.class)

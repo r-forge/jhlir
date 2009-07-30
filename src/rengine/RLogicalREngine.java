@@ -1,6 +1,6 @@
 package rengine;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import org.rosuda.REngine.REXPLogical;
 
 public class RLogicalREngine
@@ -28,7 +28,7 @@ public class RLogicalREngine
         Boolean[] res = new Boolean[getLength()];
         for (int i = 0; i < res.length; i++) {
             if (REXPLogical.isNA(bs[i]))
-                res[i] = REngineServices.NA_RLOGICAL;
+                res[i] = RCallServices.NA_RLOGICAL;
             else
                 res[i] = (bs[i] != 0);
         }
@@ -38,7 +38,7 @@ public class RLogicalREngine
     public Boolean get(int i) {
         byte b = getResolved().asBytes()[i];
         if (REXPLogical.isNA(b))
-            return REngineServices.NA_RLOGICAL;
+            return RCallServices.NA_RLOGICAL;
         return b != 0;
     }
 

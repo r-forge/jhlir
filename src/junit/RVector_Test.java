@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RVector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -26,18 +26,18 @@ public class RVector_Test extends MyTestCase {
 
         assertEquals(rNamedVec.getName(0), "xa");
         assertEquals(rNamedVec.getName(1), "xb");
-        assertEquals(rNamedVec.getName(2), REngineServices.NA_CHAR);
+        assertEquals(rNamedVec.getName(2), RCallServices.NA_CHAR);
 
         String[] ns1 = rNamedVec.getNames();
         assertEquals(ns1.length, 3);
         assertEquals(ns1[0], "xa");
         assertEquals(ns1[1], "xb");
-        assertEquals(ns1[2], REngineServices.NA_CHAR);
+        assertEquals(ns1[2], RCallServices.NA_CHAR);
 
         List<String> ns2 = rNamedVec.getNamesAsList();
         assertEquals(ns2.size(), 3);
         assertEquals(ns2.get(0), "xa");
         assertEquals(ns2.get(1), "xb");
-        assertEquals(ns2.get(2), REngineServices.NA_CHAR);
+        assertEquals(ns2.get(2), RCallServices.NA_CHAR);
     }
 }

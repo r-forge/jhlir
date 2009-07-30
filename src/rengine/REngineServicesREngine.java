@@ -1,7 +1,6 @@
 package rengine;
 
-import jhlir.REngineException;
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RErrorException;
 import jhlir.RObj;
 import jhlir.RRef;
@@ -10,14 +9,14 @@ import org.rosuda.REngine.*;
 import java.rmi.RemoteException;
 
 
-public class REngineServicesREngine extends REngineServices {
+public class REngineServicesREngine extends RCallServices {
 
     static {
-        REngineServices.NA_RINTEGER = Integer.MIN_VALUE;
-        REngineServices.NA_RNUMERIC = Double.NaN;
-        REngineServices.NA_RLOGICAL = null;
-        REngineServices.NA_CHAR = "NA";
-        REngineServices.NA_FACTOR = null;
+        RCallServices.NA_RINTEGER = Integer.MIN_VALUE;
+        RCallServices.NA_RNUMERIC = Double.NaN;
+        RCallServices.NA_RLOGICAL = null;
+        RCallServices.NA_CHAR = "NA";
+        RCallServices.NA_FACTOR = null;
     }
 
     private REngine rs;

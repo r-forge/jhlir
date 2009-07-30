@@ -1,14 +1,14 @@
 package junit.biocep;
 
 import biocep.REngineServicesBiocep;
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import org.kchine.r.server.DirectJNI;
 
 
 public abstract class RServiceFactoryBiocep{
-    private static REngineServices rServices;
+    private static RCallServices rServices;
 
-    public static REngineServices getRServices() {
+    public static RCallServices getRServices() {
         if (rServices == null)
             rServices = new REngineServicesBiocep(DirectJNI.getInstance().getRServices());
         return rServices;

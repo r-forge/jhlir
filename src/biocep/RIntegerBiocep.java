@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import org.apache.commons.lang.ArrayUtils;
 
 public class RIntegerBiocep
@@ -26,7 +26,7 @@ public class RIntegerBiocep
     }
 
     public boolean isNA(int i) {
-        return get(i).equals(REngineServices.NA_RINTEGER);
+        return get(i).equals(RCallServices.NA_RINTEGER);
     }
 
 

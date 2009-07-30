@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RMatrixDouble;
 import org.kchine.r.RMatrix;
 
@@ -30,6 +30,6 @@ public class RMatrixDoubleBiocep
     }
 
     public Double getNAVal() {
-        return REngineServices.NA_RNUMERIC;
+        return RCallServices.NA_RNUMERIC;
     }
 }

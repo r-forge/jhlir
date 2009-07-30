@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RNumeric;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public abstract class RNumeric_Test extends RVector_Test {
         assertEquals(rNumW1.get(1), 5.0);
         assertFalse(rNumW1.isNA(1));
 
-        assertEquals(rNumW1.get(2), REngineServices.NA_RNUMERIC);
+        assertEquals(rNumW1.get(2), RCallServices.NA_RNUMERIC);
         assertTrue(rNumW1.isNA(2));
 
         assertEquals(rNumW1.get(3), 3.0);
@@ -41,7 +41,7 @@ public abstract class RNumeric_Test extends RVector_Test {
         assertEquals(rNumW1.get(4), 10.1);
         assertFalse(rNumW1.isNA(4));
 
-        assertEquals(rNumW1.get(5), REngineServices.NA_RNUMERIC);
+        assertEquals(rNumW1.get(5), RCallServices.NA_RNUMERIC);
         assertTrue(rNumW1.isNA(5));
 
     }
@@ -60,10 +60,10 @@ public abstract class RNumeric_Test extends RVector_Test {
         assertEquals(xs.length, 6);
         assertEquals(xs[0], (Double)1.1);
         assertEquals(xs[1], (Double)5.0);
-        assertEquals(xs[2], REngineServices.NA_RNUMERIC);
+        assertEquals(xs[2], RCallServices.NA_RNUMERIC);
         assertEquals(xs[3], (Double)3.0);
         assertEquals(xs[4], (Double)10.1);
-        assertEquals(xs[5], REngineServices.NA_RNUMERIC);
+        assertEquals(xs[5], RCallServices.NA_RNUMERIC);
     }
 
 
@@ -73,10 +73,10 @@ public abstract class RNumeric_Test extends RVector_Test {
         assertEquals(xs.size(), 6);
         assertEquals(xs.get(0), (Double)1.1);
         assertEquals(xs.get(1), (Double)5.0);
-        assertEquals(xs.get(2), REngineServices.NA_RNUMERIC);
+        assertEquals(xs.get(2), RCallServices.NA_RNUMERIC);
         assertEquals(xs.get(3), (Double)3.0);
         assertEquals(xs.get(4), (Double)10.1);
-        assertEquals(xs.get(5), REngineServices.NA_RNUMERIC);
+        assertEquals(xs.get(5), RCallServices.NA_RNUMERIC);
     }
 
 }

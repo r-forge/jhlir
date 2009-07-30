@@ -1,6 +1,6 @@
 package rengine;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import org.rosuda.REngine.REXPString;
 
 
@@ -27,7 +27,7 @@ public class RCharREngine
 
 
     public boolean isNA(int i) {
-        return get(i).equals(REngineServices.NA_CHAR) ;
+        return get(i).equals(RCallServices.NA_CHAR) ;
     }
 
     //    protected void _set(int i, String val) {

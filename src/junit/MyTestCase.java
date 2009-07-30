@@ -1,7 +1,7 @@
 package junit;
 
 import biocep.REngineServicesBiocep;
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import org.junit.Before;
 import org.kchine.r.server.DirectJNI;
 import org.rosuda.REngine.JRI.JRIEngine;
@@ -10,7 +10,7 @@ import rengine.REngineServicesREngine;
 
 
 public abstract class MyTestCase {
-    private static REngineServices rs;
+    private static RCallServices rs;
     
     public static Double eps = 0.0001;
 
@@ -27,7 +27,7 @@ public abstract class MyTestCase {
         }
     }
 
-    public REngineServices getRServices() {
+    public RCallServices getRServices() {
         return rs;
     }
 

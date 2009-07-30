@@ -1,7 +1,7 @@
 package junit;
 
+import jhlir.RCallServices;
 import jhlir.RChar;
-import jhlir.REngineServices;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class RChar_Test extends RVector_Test{
         assertEquals(rChar1.get(0), "b");
         assertFalse(rChar1.isNA(0));
 
-        assertEquals(rChar1.get(1), REngineServices.NA_CHAR);
+        assertEquals(rChar1.get(1), RCallServices.NA_CHAR);
         assertTrue(rChar1.isNA(1));
 
         assertEquals(rChar1.get(2), "b");
@@ -51,7 +51,7 @@ public class RChar_Test extends RVector_Test{
         String[] xs = rChar1.getDataAsObjArr();
         assertEquals(xs.length, 4);
         assertEquals(xs[0], "b");
-        assertEquals(xs[1], REngineServices.NA_CHAR);
+        assertEquals(xs[1], RCallServices.NA_CHAR);
         assertEquals(xs[2], "b");
         assertEquals(xs[3], "a");
     }
@@ -62,7 +62,7 @@ public class RChar_Test extends RVector_Test{
         List<String> xs = rChar1.getDataAsList();
         assertEquals(xs.size(), 4);
         assertEquals(xs.get(0), "b");
-        assertEquals(xs.get(1), REngineServices.NA_CHAR);
+        assertEquals(xs.get(1), RCallServices.NA_CHAR);
         assertEquals(xs.get(2), "b");
         assertEquals(xs.get(3), "a");
     }

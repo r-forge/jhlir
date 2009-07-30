@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.REngineServices;
+import jhlir.RCallServices;
 import jhlir.RLogical;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -28,7 +28,7 @@ public class RLogical_Test extends RVector_Test{
 
         assertEquals(rLog1.get(0), true);
         assertEquals(rLog1.get(1), false);
-        assertEquals((Boolean) rLog1.get(2), (Boolean) REngineServices.NA_RLOGICAL);
+        assertEquals((Boolean) rLog1.get(2), (Boolean) RCallServices.NA_RLOGICAL);
 
         assertEquals(rLog1.get(3), true);
 
@@ -65,7 +65,7 @@ public class RLogical_Test extends RVector_Test{
         assertEquals(xs.length, 4);
         assertEquals((Boolean)xs[0], (Boolean)true);
         assertEquals((Boolean)xs[1], (Boolean)false);
-        assertEquals((Boolean)xs[2], (Boolean)REngineServices.NA_RLOGICAL);
+        assertEquals((Boolean)xs[2], (Boolean) RCallServices.NA_RLOGICAL);
         assertEquals((Boolean)xs[3], (Boolean) true);
     }
 
@@ -76,7 +76,7 @@ public class RLogical_Test extends RVector_Test{
         assertEquals(xs.size(), 4);
         assertEquals(xs.get(0), true);
         assertEquals(xs.get(1), false);
-        assertEquals(xs.get(2), REngineServices.NA_RLOGICAL);
+        assertEquals(xs.get(2), RCallServices.NA_RLOGICAL);
         assertEquals(xs.get(3), true);
     }
 
