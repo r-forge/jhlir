@@ -2,6 +2,7 @@ package rengine;
 
 import jhlir.REngineException;
 import jhlir.REngineServices;
+import jhlir.RErrorException;
 import jhlir.RObj;
 import jhlir.RRef;
 import org.rosuda.REngine.*;
@@ -31,37 +32,74 @@ public class REngineServicesREngine extends REngineServices {
         } catch (REXPMismatchException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+        try {
+			rs.parseAndEval("options(error = function() {sgtk.global.err <<- geterrmessage()})");
+		} catch (org.rosuda.REngine.REngineException e) {
+			throw new REngineException(e);
+		} catch (REXPMismatchException e) {
+			throw new REngineException(e);
+		}
     }
 
     public REngine getREngine() {
         return rs;
     }
+    
+    public void beforeCall() throws REngineException {
+    	try {
+    		rs.parseAndEval("sgtk.global.err <<- NULL");
+    		rs.parseAndEval("warning(\"NO_WARNING\")");
+    	} catch (Exception e) {
+            throw new REngineException(e);
+        }	
+    }
+    
+    public void afterCall() throws REngineException {
+    	String error = null;
+    	try {
+    		REXP rexp = rs.parseAndEval("sgtk.global.err");
+    		if (rexp instanceof REXPNull) return;
+    		error = rs.parseAndEval("sgtk.global.err").asString();
+    	} catch (Exception e) {
+            throw new REngineException(e);
+    	}	
+    	if (error != null) {
+    		RErrorException e = new RErrorException(error);                
+    		throw e;
+    	}
+    }
 
     public void evalVoid(String expression) throws REngineException {
+    	beforeCall();
         try {
             rs.parseAndEval(expression);
         } catch (Exception e) {
             throw new REngineException(e);
         }
+        afterCall();
     }
 
     public RObj eval(String expression) throws REngineException {
+    	beforeCall();
         org.rosuda.REngine.REXP robj = null;
         try {
             robj = rs.parseAndEval(expression);
         } catch (Exception e) {
             throw new REngineException(e);
         }
+        afterCall();
         return wrapObject(robj);
     }
 
     public RRef evalAndGetRef(String expression) throws RemoteException {
+    	beforeCall();
         REXPReference rr = null;
         try {
             rr = (REXPReference) rs.parseAndEval(expression, globalEnv, false);
         } catch (Exception e) {
             throw new REngineException(e);
         }
+        afterCall();
         return wrapObject(rr);
     }
 
@@ -92,7 +130,7 @@ public class REngineServicesREngine extends REngineServices {
     //
 
     public void put(String varName, Object obj) throws REngineException {
-
+    	beforeCall();
         try {
             if (obj instanceof RObjectREngine) {
                 rs.assign(varName, ((RObjectREngine)obj).getWrapped());
@@ -100,6 +138,7 @@ public class REngineServicesREngine extends REngineServices {
         } catch (Exception e) {
             throw new REngineException(e);
         }
+        afterCall();
     }
 //
 //    public boolean symbolExists(String symbol) throws RemoteException {
@@ -170,8 +209,14 @@ public class REngineServicesREngine extends REngineServices {
     }
 
 	@Override
-	public String getWarning() {
-		// TODO Auto-generated method stub
+	public String[] getWarning() {
+		String[] warning;
+		try {
+			warning = rs.parseAndEval("names(warnings())").asStrings();
+		} catch (Exception e) {
+			throw new REngineException(e);
+		}
+		if (warning.length>0 && !warning[0].equals("NO_WARNING")) return warning;	
 		return null;
 	}
 

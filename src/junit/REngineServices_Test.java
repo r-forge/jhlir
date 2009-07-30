@@ -17,18 +17,19 @@ public class REngineServices_Test extends MyTestCase {
     @Test
     public void testWarnings() {
     	getRServices().evalVoid("warning(\"Warning!\")");
-    	String warning = getRServices().getWarning();
-    	assertEquals("Warning", warning);
+    	String[] warning = getRServices().getWarning();
+    	assertEquals("Warning!", warning[0]);
     }
     
     @Test
     public void testErrors() {
+    	String error = "";
     	try {
     		getRServices().evalVoid("stop(\"error\")");
-    	} catch(REngineException re) {
-    		String error = re.getMessage();
-        	assertEquals("error", error);	
+    	} catch(RErrorException re) {
+    		error = re.getMessage();        		
     	}    	
+    	assertEquals("error", error.substring(error.length()-6, error.length()-1));
     }
 
     @Test(expected=RErrorException.class)

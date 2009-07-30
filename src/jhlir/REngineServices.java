@@ -79,6 +79,6 @@ abstract public class REngineServices {
      * Otherwise it returns null. 
      * @return the warning and null if no warning was generated. 
      */
-	abstract public String getWarning();
+	abstract public String[] getWarning();
 
 }

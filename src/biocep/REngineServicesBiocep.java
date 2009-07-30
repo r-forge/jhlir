@@ -2,10 +2,13 @@ package biocep;
 
 import jhlir.REngineException;
 import jhlir.REngineServices;
+import jhlir.RErrorException;
 import jhlir.RObj;
 import jhlir.RRef;
 import org.kchine.r.RMatrix;
 import org.kchine.r.server.RServices;
+import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.REXPNull;
 
 import java.rmi.RemoteException;
 
@@ -23,37 +26,71 @@ public class REngineServicesBiocep extends REngineServices {
 
     public REngineServicesBiocep(RServices rs) {
         this.rs = rs;
+        try {
+			rs.evaluate("options(error = function() {sgtk.global.err <<- geterrmessage()})");
+		} catch (RemoteException e) {
+			throw new REngineException(e);
+		}
     }
 
     public RServices getRServices() {
         return rs;
     }
+    
+    
+    public void beforeCall() throws REngineException {
+    	try {
+    		rs.evaluate("sgtk.global.err <<- NULL");
+    		rs.evaluate("warning(\"NO_WARNING\")");
+    	} catch (Exception e) {
+            throw new REngineException(e);
+        }	
+    }
+    
+    public void afterCall() throws REngineException {
+    	String error = null;
+    	try {
+    		error = (String) rs.getObjectConverted("sgtk.global.err");    		
+    	} catch (Exception e) {
+            throw new REngineException(e);
+    	}	
+    	if (error != null && !error.equals("")) {
+    		RErrorException e = new RErrorException(error);                
+    		throw e;
+    	}
+    }
 
     public void evalVoid(String expression) throws REngineException {
+    	beforeCall();
         try {
             rs.evaluate(expression);
         } catch (RemoteException e) {
             throw new REngineException(e);
         }
+        afterCall();
     }
 
     public RObj eval(String expression) throws REngineException {
+    	beforeCall();
         org.kchine.r.RObject robj = null;
         try {
             robj = rs.getObject(expression);
         } catch (RemoteException e) {
             throw new REngineException(e);
         }
+        afterCall();
         return wrapObject(robj);
     }
 
     public RRef evalAndGetRef(String expression) throws RemoteException {
+    	beforeCall();
         org.kchine.r.server.ReferenceInterface ref = null;
         try {
             ref = (org.kchine.r.server.ReferenceInterface) rs.getReference(expression);
         } catch (Exception e) {
             throw new REngineException(e);
         }
+        afterCall();
         return wrapObject(ref);
     }
 
@@ -68,8 +105,10 @@ public class REngineServicesBiocep extends REngineServices {
 
     //
     public RObj call(String function, Object... args) throws RemoteException {
+    	beforeCall();
         org.kchine.r.RObject robj = null;
         robj = rs.call(function, args);
+        afterCall();
         return wrapObject(robj);
     }
 //
@@ -83,6 +122,7 @@ public class REngineServicesBiocep extends REngineServices {
 //
 
     public void put(String varName, Object obj) throws REngineException {
+    	beforeCall();
         try {
             if (obj instanceof RObjectBiocep) {
                 rs.putAndAssign(((RObjectBiocep) obj).getWrapped(), varName);
@@ -90,6 +130,7 @@ public class REngineServicesBiocep extends REngineServices {
         } catch (RemoteException e) {
             throw new REngineException(e);
         }
+        afterCall();
     }
 
 //
@@ -148,8 +189,14 @@ public class REngineServicesBiocep extends REngineServices {
     }
 
 	@Override
-	public String getWarning() {
-		// TODO Auto-generated method stub
+	public String[] getWarning() {
+		String[] warning;
+		try {
+			warning = (String[]) rs.callAndConvert("names(warnings())");
+		} catch (Exception e) {
+			throw new REngineException(e);
+		}
+		if (warning.length>0 && !warning[0].equals("NO_WARNING")) return warning;	
 		return null;
 	}
 
