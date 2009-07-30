@@ -2,10 +2,10 @@ package org.af.jhlir.call;
 
 /**
  * A RErrorException (which extends RuntimeException) 
- * is thrown in the methods of REngineServices, when
+ * is thrown in the methods of RCallServices, when
  * an error occurred on the R side.
  * 
- * Example: For a REngineServices object res the 
+ * Example: For a RCallServices object res the 
  * following calls should produce RErrorExceptions:
  * 
  * {@code res.evalVoid("rnorm(100"); // missing bracket

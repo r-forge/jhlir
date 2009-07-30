@@ -59,7 +59,7 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
 
     /**
      * Returns the name at the specified position of this vector/factor.
-     * If the name is not set {@code REngineServices.NA_CHAR} is returned.
+     * If the name is not set {@code RCallServices.NA_CHAR} is returned.
      * @param i index of the position
      * @return the name of the specified position of this vector/factor
      */
@@ -69,7 +69,7 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
      * If no name is set {@code null} is returned.
      * Otherwise returns a String Array of length equal to {@code getLength()}
      * that contains the names of the positions in this vector/factor.
-     * If a name is not set {@code REngineServices.NA_CHAR} is used.
+     * If a name is not set {@code RCallServices.NA_CHAR} is used.
      * @return the names of this vector/factor
      */
     String[] getNames();
@@ -78,7 +78,7 @@ public interface RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRA
      * If no name is set {@code null} is returned.
      * Returns a List of Strings of size equal to {@code getLength()}
      * that contains the names of the positions in this vector/factor.
-     * If a name is not set {@code REngineServices.NA_CHAR} is used.
+     * If a name is not set {@code RCallServices.NA_CHAR} is used.
      * @return the names of this vector/factor
      */
     List<String> getNamesAsList();
