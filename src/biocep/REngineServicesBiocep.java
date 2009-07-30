@@ -147,4 +147,10 @@ public class REngineServicesBiocep extends REngineServices {
         return null;
     }
 
+	@Override
+	public String getWarning() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

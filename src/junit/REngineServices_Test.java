@@ -17,7 +17,7 @@ public class REngineServices_Test extends MyTestCase {
     @Test
     public void testWarnings() {
     	getRServices().evalVoid("warning(\"Warning!\")");
-    	String warning = ""; // getRServices().getWarning();
+    	String warning = getRServices().getWarning();
     	assertEquals("Warning", warning);
     }
     
@@ -26,7 +26,7 @@ public class REngineServices_Test extends MyTestCase {
     	try {
     		getRServices().evalVoid("stop(\"error\")");
     	} catch(REngineException re) {
-    		String error = ""; // re.getErrorMessage();
+    		String error = re.getMessage();
         	assertEquals("error", error);	
     	}    	
     }

@@ -8,9 +8,9 @@ package jhlir;
  * Example: For a REngineServices object res the 
  * following calls should produce RErrorExceptions:
  * 
- * res.evalVoid("rnorm(100"); // missing bracket
+ * {@code res.evalVoid("rnorm(100"); // missing bracket
  * res.evalVoid("rnorm(x=100)"); // unused argument x
- * res.evalVoid("stop(\"error\")"); // explicit stop
+ * res.evalVoid("stop(\"error\")"); // explicit stop}
  *    
  */
 public class RErrorException extends RuntimeException {

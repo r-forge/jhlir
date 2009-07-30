@@ -169,5 +169,11 @@ public class REngineServicesREngine extends REngineServices {
         return null;
     }
 
+	@Override
+	public String getWarning() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

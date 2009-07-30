@@ -71,5 +71,14 @@ abstract public class REngineServices {
     public static String NA_CHAR;
     /** String value that codes a NA for a factor */
     public static String NA_FACTOR;
+    
+    /**
+     * If there was generated a warning on R side by the last {@code eval}, 
+     * {@code evalVoid}, {@code evalAndGetRef},{@code assign}, {@code call} 
+     * or {@code put} command, this method returns the warning.
+     * Otherwise it returns null. 
+     * @return the warning and null if no warning was generated. 
+     */
+	abstract public String getWarning();
 
 }
