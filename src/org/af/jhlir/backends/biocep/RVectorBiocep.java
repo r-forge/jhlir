@@ -6,7 +6,7 @@ abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, R
         extends RVectorFactorBiocep<WRAPPED_TYPE, RESOLVED_TYPE, ARR_TYPE, EL_TYPE>
         implements RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {
 
-    protected RVectorBiocep(REngineServicesBiocep rs, WRAPPED_TYPE wrapped) {
+    protected RVectorBiocep(RCallServicesBiocep rs, WRAPPED_TYPE wrapped) {
         super(rs, wrapped);
     }
 

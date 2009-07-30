@@ -9,7 +9,7 @@ public class S3ObjBiocep
         extends RObjectBiocep<org.kchine.r.RS3, org.kchine.r.RS3>
         implements S3Obj<org.kchine.r.RS3>  {
 
-    public S3ObjBiocep(REngineServicesBiocep rs, org.kchine.r.RS3 wrapped) {
+    public S3ObjBiocep(RCallServicesBiocep rs, org.kchine.r.RS3 wrapped) {
         super(rs, wrapped);
     }
 

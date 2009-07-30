@@ -13,7 +13,7 @@ public class REnvironmentREngine
             extends RObjectREngine<REXPEnvironment, REXPEnvironment>
             implements REnvironment<REXPEnvironment> {
 
-    public REnvironmentREngine(REngineServicesREngine rs, REXPEnvironment wrapped) {
+    public REnvironmentREngine(RCallServicesREngine rs, REXPEnvironment wrapped) {
         super(rs, wrapped);
     }
 

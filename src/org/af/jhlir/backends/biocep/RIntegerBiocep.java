@@ -10,7 +10,7 @@ public class RIntegerBiocep
 
 //    public static final int NA_VAL = Integer.MIN_VALUE;
     
-    public RIntegerBiocep(REngineServicesBiocep rs, org.kchine.r.RInteger wrapped) {
+    public RIntegerBiocep(RCallServicesBiocep rs, org.kchine.r.RInteger wrapped) {
         super(rs, wrapped);
     }
 

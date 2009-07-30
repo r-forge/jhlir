@@ -8,7 +8,7 @@ public class RCharBiocep
         implements RChar<org.kchine.r.RChar> {
 
 
-    public RCharBiocep(REngineServicesBiocep rs, org.kchine.r.RChar wrapped) {
+    public RCharBiocep(RCallServicesBiocep rs, org.kchine.r.RChar wrapped) {
         super(rs, wrapped);
     }
 

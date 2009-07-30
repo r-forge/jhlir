@@ -12,7 +12,7 @@ public class RFactorBiocep
         extends RVectorFactorBiocep<org.kchine.r.RFactor, org.kchine.r.RFactor, String[], String>
         implements org.af.jhlir.call.RFactor<RFactor> {
 
-    public RFactorBiocep(REngineServicesBiocep rs, org.kchine.r.RFactor wrapped) {
+    public RFactorBiocep(RCallServicesBiocep rs, org.kchine.r.RFactor wrapped) {
         super(rs, wrapped);
     }
 

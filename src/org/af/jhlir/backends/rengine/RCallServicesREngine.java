@@ -7,7 +7,7 @@ import org.rosuda.REngine.*;
 import java.rmi.RemoteException;
 
 
-public class REngineServicesREngine extends RCallServices {
+public class RCallServicesREngine extends RCallServices {
 
     static {
         RCallServices.NA_RINTEGER = Integer.MIN_VALUE;
@@ -20,7 +20,7 @@ public class REngineServicesREngine extends RCallServices {
     private REngine rs;
     private REXP globalEnv;
 
-    public REngineServicesREngine(REngine rs) {
+    public RCallServicesREngine(REngine rs) {
         this.rs = rs;
         try {
             globalEnv = rs.parseAndEval(".GlobalEnv");

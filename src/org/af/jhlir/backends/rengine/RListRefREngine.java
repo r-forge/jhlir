@@ -8,7 +8,7 @@ public class RListRefREngine
         extends RListREngine
     implements RListRef<REXPReference, REXPGenericVector> {
 
-    public RListRefREngine(REngineServicesREngine rs, REXPReference wrapped) {
+    public RListRefREngine(RCallServicesREngine rs, REXPReference wrapped) {
         super(rs, wrapped);
     }
 }

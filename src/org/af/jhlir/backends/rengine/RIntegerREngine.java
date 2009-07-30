@@ -8,7 +8,7 @@ public class RIntegerREngine
         extends RVectorREngine<REXPInteger, REXPInteger, int[], Integer>
         implements RInteger<REXPInteger> {
 
-    public RIntegerREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPInteger wrapped) {
+    public RIntegerREngine(RCallServicesREngine rs, org.rosuda.REngine.REXPInteger wrapped) {
         super(rs, wrapped);
     }
 

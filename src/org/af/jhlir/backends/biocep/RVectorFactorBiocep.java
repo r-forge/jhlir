@@ -10,7 +10,7 @@ abstract public class RVectorFactorBiocep<WRAPPED_TYPE extends RObject, RESOLVED
         extends RObjectBiocep<WRAPPED_TYPE, RESOLVED_TYPE>
         implements RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {
 
-    protected RVectorFactorBiocep(REngineServicesBiocep rs, WRAPPED_TYPE wrapped) {
+    protected RVectorFactorBiocep(RCallServicesBiocep rs, WRAPPED_TYPE wrapped) {
         super(rs, wrapped);
     }
 

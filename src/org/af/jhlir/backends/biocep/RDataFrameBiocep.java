@@ -11,7 +11,7 @@ public class RDataFrameBiocep
         extends RObjectBiocep<org.kchine.r.RDataFrame, org.kchine.r.RDataFrame>
     implements org.af.jhlir.call.RDataFrame<RDataFrame> {
 
-    public RDataFrameBiocep(REngineServicesBiocep rs, RDataFrame wrapped) {
+    public RDataFrameBiocep(RCallServicesBiocep rs, RDataFrame wrapped) {
         super(rs, wrapped);
     }
 

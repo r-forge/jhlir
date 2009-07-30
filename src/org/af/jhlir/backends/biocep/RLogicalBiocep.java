@@ -10,7 +10,7 @@ public class RLogicalBiocep
 
     // NB: biocep does return boolean:false for NAs
 
-    public RLogicalBiocep(REngineServicesBiocep rs, org.kchine.r.RLogical wrapped) {
+    public RLogicalBiocep(RCallServicesBiocep rs, org.kchine.r.RLogical wrapped) {
         super(rs, wrapped);
     }
 

@@ -7,7 +7,7 @@ public class RNumericBiocep
         extends RVectorBiocep<org.kchine.r.RNumeric, org.kchine.r.RNumeric, double[], Double>
         implements org.af.jhlir.call.RNumeric<RNumeric> {
 
-    public RNumericBiocep(REngineServicesBiocep rs, org.kchine.r.RNumeric wrapped) {
+    public RNumericBiocep(RCallServicesBiocep rs, org.kchine.r.RNumeric wrapped) {
         super(rs, wrapped);
     }
 

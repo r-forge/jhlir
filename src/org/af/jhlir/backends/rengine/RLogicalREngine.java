@@ -8,7 +8,7 @@ public class RLogicalREngine
         extends RVectorREngine<REXPLogical, REXPLogical, boolean[], Boolean>
         implements RLogical<REXPLogical> {
 
-    public RLogicalREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPLogical wrapped) {
+    public RLogicalREngine(RCallServicesREngine rs, org.rosuda.REngine.REXPLogical wrapped) {
         super(rs, wrapped);
     }
 

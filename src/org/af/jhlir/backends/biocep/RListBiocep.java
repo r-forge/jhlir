@@ -12,7 +12,7 @@ public class RListBiocep
         extends RObjectBiocep<org.kchine.r.RList, org.kchine.r.RList>
         implements RList<org.kchine.r.RList> {
 
-    public RListBiocep(REngineServicesBiocep rs, org.kchine.r.RList rList) {
+    public RListBiocep(RCallServicesBiocep rs, org.kchine.r.RList rList) {
         super(rs, rList);
     }
 

@@ -6,12 +6,12 @@ import org.af.jhlir.call.RRef;
 
 public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject, RESOLVED_TYPE extends org.kchine.r.RObject>
         implements RObj<WRAPPED_TYPE> {
-    protected REngineServicesBiocep rs;
+    protected RCallServicesBiocep rs;
     private RESOLVED_TYPE cached;
     private org.kchine.r.server.ReferenceInterface ref;
 
     // TODO find a way that this is never called
-    protected RObjectBiocep(REngineServicesBiocep rs, WRAPPED_TYPE wrapped) {
+    protected RObjectBiocep(RCallServicesBiocep rs, WRAPPED_TYPE wrapped) {
         if (wrapped == null)
             throw new RuntimeException("Tried to create RObhjectWrapper on null!");
         this.rs = rs;

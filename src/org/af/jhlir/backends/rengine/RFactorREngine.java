@@ -11,7 +11,7 @@ public class RFactorREngine
           extends RVectorFactorREngine<REXPFactor, REXPFactor, String[], String>
         implements RFactor<org.rosuda.REngine.REXPFactor> {
 
-    public RFactorREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPFactor wrapped) {
+    public RFactorREngine(RCallServicesREngine rs, org.rosuda.REngine.REXPFactor wrapped) {
         super(rs, wrapped);
     }
 

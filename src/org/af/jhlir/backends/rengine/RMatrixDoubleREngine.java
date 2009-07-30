@@ -9,7 +9,7 @@ public class RMatrixDoubleREngine
         extends RMatrixREngine<REXPDouble, REXPDouble, double[][], Double>
         implements RMatrixDouble<REXPDouble> {
 
-    public RMatrixDoubleREngine(REngineServicesREngine rs, REXPDouble wrapped) {
+    public RMatrixDoubleREngine(RCallServicesREngine rs, REXPDouble wrapped) {
         super(rs, wrapped);
     }
 

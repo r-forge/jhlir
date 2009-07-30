@@ -6,7 +6,7 @@ import org.kchine.r.server.RServices;
 
 import java.rmi.RemoteException;
 
-public class REngineServicesBiocep extends RCallServices {
+public class RCallServicesBiocep extends RCallServices {
 
     static {
         RCallServices.NA_RINTEGER = Integer.MIN_VALUE;
@@ -18,7 +18,7 @@ public class REngineServicesBiocep extends RCallServices {
 
     private RServices rs;
 
-    public REngineServicesBiocep(RServices rs) {
+    public RCallServicesBiocep(RServices rs) {
         this.rs = rs;
         try {
 			rs.evaluate("options(error = function() {sgtk.global.err <<- geterrmessage()})");

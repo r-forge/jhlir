@@ -9,7 +9,7 @@ public class RNumericREngine
         extends RVectorREngine<REXPDouble, REXPDouble, double[], Double>
         implements RNumeric<REXPDouble> {
 
-    public RNumericREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPDouble wrapped) {
+    public RNumericREngine(RCallServicesREngine rs, org.rosuda.REngine.REXPDouble wrapped) {
         super(rs, wrapped);
     }
 

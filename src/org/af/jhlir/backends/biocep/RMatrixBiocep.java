@@ -11,7 +11,7 @@ public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
         extends RObjectBiocep<org.kchine.r.RMatrix, org.kchine.r.RMatrix>
         implements org.af.jhlir.call.RMatrix<org.kchine.r.RMatrix, ARR_TYPE, EL_TYPE> {
 
-    public RMatrixBiocep(REngineServicesBiocep rs, org.kchine.r.RMatrix wrapped) {
+    public RMatrixBiocep(RCallServicesBiocep rs, org.kchine.r.RMatrix wrapped) {
         super(rs, wrapped);
     }
 

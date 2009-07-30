@@ -10,7 +10,7 @@ public class RCharREngine
         implements RChar<REXPString> {
 
 
-    public RCharREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPString wrapped) {
+    public RCharREngine(RCallServicesREngine rs, org.rosuda.REngine.REXPString wrapped) {
         super(rs, wrapped);
     }
 

@@ -8,7 +8,7 @@ public class RMatrixDoubleBiocep
         extends RMatrixBiocep<double[][], Double>
         implements RMatrixDouble<RMatrix> {
 
-    public RMatrixDoubleBiocep(REngineServicesBiocep rs, RMatrix wrapped) {
+    public RMatrixDoubleBiocep(RCallServicesBiocep rs, RMatrix wrapped) {
         super(rs, wrapped);
     }
 

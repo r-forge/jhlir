@@ -13,11 +13,11 @@ public class RListREngine
         implements RList<REXPGenericVector> {
 
 
-    protected RListREngine(REngineServicesREngine rs, REXPGenericVector wrapped) {
+    protected RListREngine(RCallServicesREngine rs, REXPGenericVector wrapped) {
         super(rs, wrapped);
     }
 
-    protected RListREngine(REngineServicesREngine rs, REXPReference wrapped) {
+    protected RListREngine(RCallServicesREngine rs, REXPReference wrapped) {
         super(rs, wrapped);
     }
 
