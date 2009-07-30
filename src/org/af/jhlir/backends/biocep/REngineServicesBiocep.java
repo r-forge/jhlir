@@ -182,15 +182,21 @@ public class REngineServicesBiocep extends RCallServices {
         return null;
     }
 
-	@Override
+    @Override
 	public String[] getWarning() {
 		String[] warning;
 		try {
-			warning = (String[]) rs.callAndConvert("names(warnings())");
+			Object o = rs.getObjectConverted("names(warnings())");
+			if (o instanceof String[]) {
+				warning = (String[]) o;
+			} else {
+				warning = new String[1];
+				warning[0] = (String) o;
+			}
 		} catch (Exception e) {
 			throw new REngineException(e);
 		}
-		if (warning.length>0 && !warning[0].equals("NO_WARNING")) return warning;	
+		if (warning!=null && warning.length>0 && warning[0]!=null && !warning[0].equals("NO_WARNING")) return warning;	
 		return null;
 	}
 

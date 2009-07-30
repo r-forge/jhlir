@@ -1,11 +1,18 @@
 package test;
 
+import org.af.jhlir.backends.biocep.REngineServicesBiocep;
+import org.af.jhlir.call.RCallServices;
+import org.kchine.r.server.DirectJNI;
 import org.rosuda.REngine.JRI.JRIEngine;
 import org.rosuda.REngine.REngine;
 
 public class TestRengine {
     public static void main(String[] args) {
 
+    	RCallServices rs = new REngineServicesBiocep(DirectJNI.getInstance().getRServices());
+    	
+    	
+    	
         try {
 //            Rengine re = new Rengine();
             REngine re = new JRIEngine();
