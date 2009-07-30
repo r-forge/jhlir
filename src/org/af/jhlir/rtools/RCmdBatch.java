@@ -245,12 +245,12 @@ public class RCmdBatch {
         input.add("ver <-  paste(sessionInfo()$R.version$major, sessionInfo()$R.version$minor, sep=\".\")");
 
         List<String> output = new ArrayList<String>();
-        int exitCode = exec(input, output);
-        if (exitCode != 0)
-            throw new RuntimeException("Could not retrieve R settings!");
-
-        int i = 0;
-        while(!output.get(i).startsWith("<VAR_CONTENT>")) i++;
+//        int exitCode = exec(input, output);
+//        if (exitCode != 0)
+//            throw new RuntimeException("Could not retrieve R settings!");
+//
+//        int i = 0;
+//        while(!output.get(i).startsWith("<VAR_CONTENT>")) i++;
 
 //        logger.info(" - retrieved R settings, home: " + rs_home + " (arch=" + rs_arch + ", libs=" + rs_libs + ")");
     }

@@ -22,14 +22,14 @@ public class TestRCmdBatch {
 //                System.out.println(i + ": " + os.get(i));
 //            }
 
-            System.out.println("\n\n\n");
-            os2 = rcb.getInstalledPackInfo("kernlab");
-            for (int i=0; i<os2.length; i++) {
-                System.out.println(i + ": " + os2[i]);
-            }
-            System.out.println("\n\n\n");
-            os2 = rcb.getInstalledPackInfo("xxx");
-            System.out.println("Package not found, return value is null: " + os2);
+//            System.out.println("\n\n\n");
+//            os2 = rcb.getInstalledPackInfo("kernlab");
+//            for (int i=0; i<os2.length; i++) {
+//                System.out.println(i + ": " + os2[i]);
+//            }
+//            System.out.println("\n\n\n");
+//            os2 = rcb.getInstalledPackInfo("xxx");
+//            System.out.println("Package not found, return value is null: " + os2);
 
 
         } catch (Exception e) {
