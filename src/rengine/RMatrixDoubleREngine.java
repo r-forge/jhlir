@@ -1,7 +1,7 @@
 package rengine;
 
-import jhlir.RCallServices;
-import jhlir.RMatrixDouble;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RMatrixDouble;
 import org.rosuda.REngine.REXPDouble;
 import org.rosuda.REngine.REXPMismatchException;
 

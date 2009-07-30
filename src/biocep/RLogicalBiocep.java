@@ -1,11 +1,12 @@
 package biocep;
 
-import jhlir.RCallServices;
+import org.af.jhlir.call.RCallServices;
 import org.apache.commons.lang.ArrayUtils;
+import org.kchine.r.RLogical;
 
 public class RLogicalBiocep
         extends RVectorBiocep<org.kchine.r.RLogical, org.kchine.r.RLogical, boolean[], Boolean>
-        implements jhlir.RLogical<org.kchine.r.RLogical> {
+        implements org.af.jhlir.call.RLogical<RLogical> {
 
     // NB: biocep does return boolean:false for NAs
 

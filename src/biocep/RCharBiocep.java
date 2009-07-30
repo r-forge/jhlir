@@ -1,7 +1,7 @@
 package biocep;
 
-import jhlir.RCallServices;
-import jhlir.RChar;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RChar;
 
 public class RCharBiocep
         extends RVectorBiocep<org.kchine.r.RChar, org.kchine.r.RChar, String[], String>

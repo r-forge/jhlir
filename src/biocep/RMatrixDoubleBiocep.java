@@ -1,7 +1,7 @@
 package biocep;
 
-import jhlir.RCallServices;
-import jhlir.RMatrixDouble;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RMatrixDouble;
 import org.kchine.r.RMatrix;
 
 public class RMatrixDoubleBiocep

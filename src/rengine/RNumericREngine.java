@@ -1,12 +1,13 @@
 package rengine;
 
+import org.af.jhlir.call.RNumeric;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPDouble;
 
 
 public class RNumericREngine
         extends RVectorREngine<REXPDouble, REXPDouble, double[], Double>
-        implements jhlir.RNumeric<org.rosuda.REngine.REXPDouble>{
+        implements RNumeric<REXPDouble> {
 
     public RNumericREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPDouble wrapped) {
         super(rs, wrapped);

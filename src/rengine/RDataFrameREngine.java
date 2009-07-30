@@ -1,5 +1,6 @@
 package rengine;
 
+import org.af.jhlir.call.RDataFrame;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPReference;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class RDataFrameREngine
         extends RObjectREngine<REXPGenericVector, REXPGenericVector>
-    implements jhlir.RDataFrame<REXPGenericVector> {
+    implements RDataFrame<REXPGenericVector> {
 
     //todo: some row stuff, names, etc
     public RDataFrameREngine(REngineServicesREngine rs, REXPGenericVector wrapped) {

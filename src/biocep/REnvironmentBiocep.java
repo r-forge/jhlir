@@ -1,7 +1,7 @@
 package biocep;
 
-import jhlir.REnvironment;
-import jhlir.RObj;
+import org.af.jhlir.call.REnvironment;
+import org.af.jhlir.call.RObj;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class REnvironmentBiocep
             extends RObjectBiocep<org.kchine.r.REnvironment, org.kchine.r.REnvironment>
-            implements REnvironment<org.kchine.r.REnvironment> {
+            implements org.af.jhlir.call.REnvironment<REnvironment> {
 
     public REnvironmentBiocep(REngineServicesBiocep rs, org.kchine.r.REnvironment wrapped) {
         super(rs, wrapped);

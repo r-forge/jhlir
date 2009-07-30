@@ -1,9 +1,9 @@
 package rengine;
 
-import jhlir.RDataFrame;
-import jhlir.REnvironment;
-import jhlir.RObj;
-import jhlir.RRef;
+import org.af.jhlir.call.RDataFrame;
+import org.af.jhlir.call.REnvironment;
+import org.af.jhlir.call.RObj;
+import org.af.jhlir.call.RRef;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPReference;
 

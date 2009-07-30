@@ -1,6 +1,6 @@
 package rengine;
 
-import jhlir.RMatrix;
+import org.af.jhlir.call.RMatrix;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPMismatchException;

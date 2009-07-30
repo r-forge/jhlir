@@ -1,11 +1,12 @@
 package rengine;
 
+import org.af.jhlir.call.RInteger;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPInteger;
 
 public class RIntegerREngine
         extends RVectorREngine<REXPInteger, REXPInteger, int[], Integer>
-        implements jhlir.RInteger<org.rosuda.REngine.REXPInteger>{
+        implements RInteger<REXPInteger> {
 
     public RIntegerREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPInteger wrapped) {
         super(rs, wrapped);

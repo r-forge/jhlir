@@ -1,11 +1,12 @@
 package biocep;
 
-import jhlir.RCallServices;
+import org.af.jhlir.call.RCallServices;
 import org.apache.commons.lang.ArrayUtils;
+import org.kchine.r.RInteger;
 
 public class RIntegerBiocep
         extends RVectorBiocep<org.kchine.r.RInteger, org.kchine.r.RInteger, int[], Integer>
-        implements jhlir.RInteger<org.kchine.r.RInteger> {
+        implements org.af.jhlir.call.RInteger<RInteger> {
 
 //    public static final int NA_VAL = Integer.MIN_VALUE;
     

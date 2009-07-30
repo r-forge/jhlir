@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RDataFrameBiocep 
         extends RObjectBiocep<org.kchine.r.RDataFrame, org.kchine.r.RDataFrame>
-    implements jhlir.RDataFrame<RDataFrame> {
+    implements org.af.jhlir.call.RDataFrame<RDataFrame> {
 
     public RDataFrameBiocep(REngineServicesBiocep rs, RDataFrame wrapped) {
         super(rs, wrapped);

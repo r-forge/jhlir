@@ -1,6 +1,7 @@
 package rengine;
 
-import jhlir.RObj;
+import org.af.jhlir.call.REnvironment;
+import org.af.jhlir.call.RObj;
 import org.rosuda.REngine.REXPEnvironment;
 import org.rosuda.REngine.REngineException;
 
@@ -10,7 +11,7 @@ import java.util.List;
 //todo handle excs
 public class REnvironmentREngine
             extends RObjectREngine<REXPEnvironment, REXPEnvironment>
-            implements jhlir.REnvironment<REXPEnvironment> {
+            implements REnvironment<REXPEnvironment> {
 
     public REnvironmentREngine(REngineServicesREngine rs, REXPEnvironment wrapped) {
         super(rs, wrapped);

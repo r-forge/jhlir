@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.RVectorFactor;
+import org.af.jhlir.call.RVectorFactor;
 
 abstract public class RVectorBiocep<WRAPPED_TYPE extends org.kchine.r.RVector, RESOLVED_TYPE extends org.kchine.r.RVector, ARR_TYPE, EL_TYPE>
         extends RVectorFactorBiocep<WRAPPED_TYPE, RESOLVED_TYPE, ARR_TYPE, EL_TYPE>

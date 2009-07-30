@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.*;
+import org.af.jhlir.call.*;
 import org.kchine.r.RMatrix;
 import org.kchine.r.server.RServices;
 
@@ -49,7 +49,7 @@ public class REngineServicesBiocep extends RCallServices {
             throw new REngineException(e);
     	}	
     	if (error != null && !error.equals("")) {
-    		RErrorException e = new RErrorException(error);                
+    		RErrorException e = new RErrorException(error);
     		throw e;
     	}
     }

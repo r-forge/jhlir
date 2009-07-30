@@ -1,10 +1,11 @@
 package biocep;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.kchine.r.RNumeric;
 
 public class RNumericBiocep
         extends RVectorBiocep<org.kchine.r.RNumeric, org.kchine.r.RNumeric, double[], Double>
-        implements jhlir.RNumeric<org.kchine.r.RNumeric>{
+        implements org.af.jhlir.call.RNumeric<RNumeric> {
 
     public RNumericBiocep(REngineServicesBiocep rs, org.kchine.r.RNumeric wrapped) {
         super(rs, wrapped);

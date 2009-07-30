@@ -1,6 +1,6 @@
 package rengine;
 
-import jhlir.RVectorFactor;
+import org.af.jhlir.call.RVectorFactor;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPString;
 

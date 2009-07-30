@@ -1,8 +1,8 @@
 package biocep;
 
 
-import jhlir.RCallServices;
-import jhlir.RFactor;
+import org.af.jhlir.call.RCallServices;
+import org.kchine.r.RFactor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RFactorBiocep
         extends RVectorFactorBiocep<org.kchine.r.RFactor, org.kchine.r.RFactor, String[], String>
-        implements RFactor<org.kchine.r.RFactor> {
+        implements org.af.jhlir.call.RFactor<RFactor> {
 
     public RFactorBiocep(REngineServicesBiocep rs, org.kchine.r.RFactor wrapped) {
         super(rs, wrapped);

@@ -1,6 +1,6 @@
 package biocep;
 
-import jhlir.RMatrix;
+import org.af.jhlir.call.RMatrix;
 import org.apache.commons.lang.ArrayUtils;
 import org.kchine.r.RChar;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
         extends RObjectBiocep<org.kchine.r.RMatrix, org.kchine.r.RMatrix>
-        implements RMatrix<org.kchine.r.RMatrix, ARR_TYPE, EL_TYPE> {
+        implements org.af.jhlir.call.RMatrix<RMatrix, ARR_TYPE, EL_TYPE> {
 
     public RMatrixBiocep(REngineServicesBiocep rs, org.kchine.r.RMatrix wrapped) {
         super(rs, wrapped);

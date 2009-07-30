@@ -1,6 +1,6 @@
 package rengine;
 
-import jhlir.S3Obj;
+import org.af.jhlir.call.S3Obj;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPMismatchException;
 

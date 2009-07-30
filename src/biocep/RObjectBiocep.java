@@ -1,8 +1,8 @@
 package biocep;
 
-import jhlir.REnvironment;
-import jhlir.RObj;
-import jhlir.RRef;
+import org.af.jhlir.call.REnvironment;
+import org.af.jhlir.call.RObj;
+import org.af.jhlir.call.RRef;
 
 public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject, RESOLVED_TYPE extends org.kchine.r.RObject>
         implements RObj<WRAPPED_TYPE> {

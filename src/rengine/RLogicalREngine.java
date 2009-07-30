@@ -1,11 +1,12 @@
 package rengine;
 
-import jhlir.RCallServices;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RLogical;
 import org.rosuda.REngine.REXPLogical;
 
 public class RLogicalREngine
         extends RVectorREngine<REXPLogical, REXPLogical, boolean[], Boolean>
-        implements jhlir.RLogical<REXPLogical>{
+        implements RLogical<REXPLogical> {
 
     public RLogicalREngine(REngineServicesREngine rs, org.rosuda.REngine.REXPLogical wrapped) {
         super(rs, wrapped);
