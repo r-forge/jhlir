@@ -7,8 +7,6 @@ import jhlir.RObj;
 import jhlir.RRef;
 import org.kchine.r.RMatrix;
 import org.kchine.r.server.RServices;
-import org.rosuda.REngine.REXP;
-import org.rosuda.REngine.REXPNull;
 
 import java.rmi.RemoteException;
 

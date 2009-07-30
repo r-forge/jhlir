@@ -73,11 +73,11 @@ abstract public class REngineServices {
     public static String NA_FACTOR;
     
     /**
-     * If there was generated a warning on R side by the last {@code eval}, 
+     * If there was generated at least one warning on R side by the last {@code eval}, 
      * {@code evalVoid}, {@code evalAndGetRef},{@code assign}, {@code call} 
-     * or {@code put} command, this method returns the warning.
+     * or {@code put} command, this method returns the warnings.
      * Otherwise it returns null. 
-     * @return the warning and null if no warning was generated. 
+     * @return the warnings and null if no warning was generated. 
      */
 	abstract public String[] getWarning();
 

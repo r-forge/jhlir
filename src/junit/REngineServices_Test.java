@@ -1,7 +1,6 @@
 package junit;
 
 import static org.junit.Assert.*;
-import jhlir.REngineException;
 import jhlir.RErrorException;
 
 import org.junit.Before;
