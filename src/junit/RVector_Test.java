@@ -1,7 +1,7 @@
 package junit;
 
-import jhlir.RCallServices;
-import jhlir.RVector;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RVector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;

@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.RListRef;
+import org.af.jhlir.call.RListRef;
 import org.junit.Before;
 
 public class RListRef_Test extends RList_Test {

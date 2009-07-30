@@ -1,8 +1,8 @@
 package junit;
 
-import jhlir.RDataFrame;
-import jhlir.RInteger;
-import jhlir.RNumeric;
+import org.af.jhlir.call.RDataFrame;
+import org.af.jhlir.call.RInteger;
+import org.af.jhlir.call.RNumeric;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;

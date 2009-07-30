@@ -1,7 +1,7 @@
 package junit;
 
-import jhlir.REnvironment;
-import jhlir.RInteger;
+import org.af.jhlir.call.REnvironment;
+import org.af.jhlir.call.RInteger;
 import org.apache.commons.lang.ArrayUtils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

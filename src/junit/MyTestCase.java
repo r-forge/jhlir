@@ -1,12 +1,11 @@
 package junit;
 
-import biocep.REngineServicesBiocep;
-import jhlir.RCallServices;
+import org.af.jhlir.backends.biocep.REngineServicesBiocep;
+import org.af.jhlir.backends.rengine.REngineServicesREngine;
+import org.af.jhlir.call.RCallServices;
 import org.junit.Before;
 import org.kchine.r.server.DirectJNI;
 import org.rosuda.REngine.JRI.JRIEngine;
-import rengine.REngineServicesREngine;
-
 
 
 public abstract class MyTestCase {

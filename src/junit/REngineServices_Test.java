@@ -1,8 +1,7 @@
 package junit;
 
-import static org.junit.Assert.*;
-import jhlir.RErrorException;
-
+import org.af.jhlir.call.RErrorException;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +36,7 @@ public class REngineServices_Test extends MyTestCase {
         /* missing bracket ) */
     }
 
-    @Test(expected=RErrorException.class)
+    @Test(expected= RErrorException.class)
     public void testMissingBracket2() {        
         getRServices().evalVoid("{rnorm(100)");
         /* missing bracket } */

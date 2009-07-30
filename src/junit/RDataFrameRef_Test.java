@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.RDataFrameRef;
+import org.af.jhlir.call.RDataFrameRef;
 import org.junit.Before;
 
 public class RDataFrameRef_Test extends RDataFrame_Test {

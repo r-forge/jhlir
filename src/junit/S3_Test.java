@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.S3Obj;
+import org.af.jhlir.call.S3Obj;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package junit.biocep;
 
-import biocep.REngineServicesBiocep;
-import jhlir.RCallServices;
+import org.af.jhlir.backends.biocep.REngineServicesBiocep;
+import org.af.jhlir.call.RCallServices;
 import org.kchine.r.server.DirectJNI;
 
 

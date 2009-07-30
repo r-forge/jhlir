@@ -1,7 +1,7 @@
 package junit;
 
-import jhlir.RCallServices;
-import jhlir.RFactor;
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RFactor;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;

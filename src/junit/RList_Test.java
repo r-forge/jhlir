@@ -1,6 +1,6 @@
 package junit;
 
-import jhlir.*;
+import org.af.jhlir.call.*;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;

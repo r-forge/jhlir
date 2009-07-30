@@ -1,7 +1,6 @@
 package junit;
 
-import jhlir.RObj;
-
+import org.af.jhlir.call.RObj;
 import org.junit.Before;
 import org.junit.Test;
 
