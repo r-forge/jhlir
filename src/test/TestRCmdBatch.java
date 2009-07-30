@@ -1,6 +1,6 @@
 package test;
 
-import rtools.RCmdBatch;
+import org.af.jhlir.rtools.RCmdBatch;
 
 import java.util.List;
 
