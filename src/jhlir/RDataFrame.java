@@ -12,13 +12,13 @@ public interface RDataFrame<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE>{
 	 * Returns the number of rows in the data frame.
 	 * @return the number of rows in the data frame
 	 */
-    int getRowNr();
+    int getRowCount();
     
 	/**
 	 * Returns the number of columns in the data frame.
 	 * @return the number of columns in the data frame
 	 */
-    int getColNr();
+    int getColumnCount();
 
     /**
      * Returns the names of the rows.

@@ -13,13 +13,13 @@ public class RMatrixDoubleBiocep
     }
 
     protected Double[][] createArr(int rows, int cols) {
-        return new Double[getRowNr()][getColNr()];
+        return new Double[getRowCount()][getColumnCount()];
     }
 
     public double[][] getData() {
-        double[][] res = new double[getRowNr()][getColNr()];
-        for (int i = 0; i < getRowNr(); i++)
-            for (int j = 0; j < getColNr(); j++) {
+        double[][] res = new double[getRowCount()][getColumnCount()];
+        for (int i = 0; i < getRowCount(); i++)
+            for (int j = 0; j < getColumnCount(); j++) {
                 res[i][j] = get(i, j);
             }
         return res;

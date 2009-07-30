@@ -15,11 +15,11 @@ public class RDataFrameBiocep
         super(rs, wrapped);
     }
 
-    public int getRowNr() {
+    public int getRowCount() {
         return getResolved().getRowNames().length;
     }
 
-    public int getColNr() {
+    public int getColumnCount() {
        return  getResolved().getData().getValue().length;
     }
 

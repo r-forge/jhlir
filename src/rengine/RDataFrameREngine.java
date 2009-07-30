@@ -21,12 +21,12 @@ public class RDataFrameREngine
         super(rs, wrapped);
     }
 
-    public int getRowNr() {
-        return getColNr() == 0 ? 0 : getCol(0).getLength(); 
+    public int getRowCount() {
+        return getColumnCount() == 0 ? 0 : getCol(0).getLength(); 
 //        return getWrapped().length();
     }
 
-    public int getColNr() {
+    public int getColumnCount() {
         return getResolved().length();
     }
 

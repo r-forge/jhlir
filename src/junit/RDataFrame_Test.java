@@ -19,8 +19,8 @@ public class RDataFrame_Test extends MyTestCase{
 
     @Test
     public void testAt()  {
-        assertEquals(rDf1.getRowNr(), 3);
-        assertEquals(rDf1.getColNr(), 4);
+        assertEquals(rDf1.getRowCount(), 3);
+        assertEquals(rDf1.getColumnCount(), 4);
 
         Object[] cns = rDf1.getColNames();
 

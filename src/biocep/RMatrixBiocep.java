@@ -16,11 +16,11 @@ public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
         super(rs, wrapped);
     }
 
-    public int getRowNr() {
+    public int getRowCount() {
         return getResolved().getDim()[0];
     }
 
-    public int getColNr() {
+    public int getColumnCount() {
         return getResolved().getDim()[1];
     }
 
@@ -50,16 +50,16 @@ public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
 
     protected int getIndex(int i, int j) {
         // biocep orders entries by columns
-        return j*getRowNr() + i;
+        return j*getRowCount() + i;
     }
 
 
     protected abstract EL_TYPE[][] createArr(int rows, int cols);
 
     public EL_TYPE[][] getDataAsObjArr() {
-        EL_TYPE[][] res = createArr(getRowNr(), getColNr());
-        for (int i = 0; i < getRowNr(); i++)
-            for (int j = 0; j < getColNr(); j++) {
+        EL_TYPE[][] res = createArr(getRowCount(), getColumnCount());
+        for (int i = 0; i < getRowCount(); i++)
+            for (int j = 0; j < getColumnCount(); j++) {
                 res[i][j] = get(i, j);
             }
         return res;

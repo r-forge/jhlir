@@ -17,8 +17,8 @@ public class RMatrixDouble_Test extends MyTestCase{
 
      @Test
      public void testAt()  {
-         assertEquals(rMat1.getRowNr(), 2);
-         assertEquals(rMat1.getColNr(), 3);
+         assertEquals(rMat1.getRowCount(), 2);
+         assertEquals(rMat1.getColumnCount(), 3);
 
          assertEquals(rMat1.get(0,0), 1.1);
          assertEquals(rMat1.get(1,0), 2.0);
