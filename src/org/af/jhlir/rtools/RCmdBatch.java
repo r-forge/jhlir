@@ -1,10 +1,11 @@
 package org.af.jhlir.rtools;
 
+
+import org.af.jhlir.packages.CantFindPackageException;
+import org.af.jhlir.packages.RPackage;
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -68,6 +69,7 @@ public class RCmdBatch {
         commands.add(getRExePath().getAbsolutePath());
         commands.add("CMD");
         commands.add("BATCH");
+        commands.add("--no-timing");
         for (String arg : R_ARGS) {
             commands.add(arg);
         }
@@ -124,19 +126,27 @@ public class RCmdBatch {
         p.close();
     }
 
+    // works only with one line print
+    public String retrieveInfo(List<String> input, String var) throws RCmdBatchException{
+        return retrieveInfo(input, Arrays.asList(var)).get(var);
+    }
 
-    public List<String> retrieveInfo(List<String> input, List<String> vars) throws RCmdBatchException{
+    // works only with one line print
+    public Map<String, String> retrieveInfo(List<String> input, List<String> vars) throws RCmdBatchException{
 
-        List<String> res = new ArrayList<String>(vars.size());
+        Map<String, String> res = new HashMap<String, String>();
         List<String> is = new ArrayList<String>();
         is.addAll(input);
         for (String v:vars) {
-            is.add("print(" + vars);
+            is.add("print(paste(\"<var>\"," + v + "))");
         }
         List<String> os = exec(is);
 
-        for (int i=vars.size()-1; i >=0; i--) {
-            res.set(i, os.get(i));
+        for (int i=0; i < vars.size(); i++) {
+            String s = os.get(os.size() - 1 - i);
+            int n1 = s.indexOf("<var>");
+            int n2 = s.lastIndexOf("\"");
+            res.put(vars.get(vars.size() - 1 - i), s.substring(n1+6, n2));
         }
         return res;
     }
@@ -145,39 +155,55 @@ public class RCmdBatch {
         return new File(new File(rHome, "bin"), "R");
     }
 
-    public List<String> getInstalledPackInfo(String p) throws RCmdBatchException {
+    public RPackage getInstalledPackInfo(String p) throws RCmdBatchException {
 
         List<String> is = Arrays.asList(
-                "ip <- installed.packages(noCache=TRUE)",
+                "ip <- installed.packages(noCache=TRUE, fields='Title')",
                 "found <- \"" + p + "\" %in% rownames(ip)",
-                "lp <- ifelse(found, ip[\"" + p + "\", \"LibPath\"], \"\")",
-                "ver <- ifelse(found, ip[\"" + p + "\", \"Version\"], \"\")"
+                "title <- ifelse(found, ip['" + p + "', 'Title'], '')",
+                "lp <- ifelse(found, ip['" + p + "', 'LibPath'], '')",
+                "ver <- ifelse(found, ip['" + p + "', 'Version'], '')"
         );
 
-        List<String> os = retrieveInfo(is, Arrays.asList("lp", "ver"));
-        if (os.get(0).trim().equals(""))
+
+        Map<String, String> m = retrieveInfo(is, Arrays.asList("title", "lp", "ver"));
+        if (m.get("lp").trim().equals(""))
             return null;
-        return os;
+        return new RPackage(p, m.get("title"), new File(m.get("lp")), m.get("ver"));
     }
 
-    public List<String> installCranPackage(String p) throws RCmdBatchException {
-        String cmd = "install.packages(\"" +
-                p + "\"" + 
-                ", repos=\"http://cran.r-project.org\"" +
-                ")";
-        List<String> is = Arrays.asList(cmd);
-        List<String> os = exec(is);
-        return os;
+    public List<String> getInstalledPackages() throws RCmdBatchException {
+        List<String> is = Arrays.asList(
+                "ps <- installed.packages(noCache=TRUE)[,'Package']",
+                "names(ps) <- NULL",
+                "ps <- paste(ps, collapse=';')"
+        );
+        String ps = retrieveInfo(is, "ps");
+        String[] names = ps.split(";");
+        return Arrays.asList(names);
     }
 
-    public List<String> installRForgePackage(String p) throws RCmdBatchException {
-        String cmd = "install.packages(\"" +
-                p + "\"" + 
-                ", repos=\"http://R-Forge.R-project.org\"" +
-                ")";
-        List<String> is = Arrays.asList(cmd);
+
+    private RPackage installPackage(String p , String repos) throws CantFindPackageException, RCmdBatchException {
+        List<String> is = Arrays.asList(
+                "install.packages('" +
+                p + "'" +
+                ", repos='" + repos + "')"
+        );
         List<String> os = exec(is);
-        return os;
+        for (String s:os) {
+            if (s.contains(p) && s.contains("is not available"))
+                throw new CantFindPackageException("Can't find package " + p +" on repository " + repos + "!");
+        }
+        return getInstalledPackInfo(p);
+    }
+
+    public RPackage installCranPackage(String p) throws CantFindPackageException, RCmdBatchException {
+        return installPackage(p, "http://cran.r-project.org");
+    }
+
+    public RPackage installRForgePackage(String p) throws CantFindPackageException, RCmdBatchException {
+        return installPackage(p, "http://R-Forge.R-project.org");
     }
 
 //
@@ -239,23 +265,23 @@ public class RCmdBatch {
 //
 //
 
-    private void getRSettings() throws IOException, InterruptedException{
+    public void retrieveRInfo() throws RCmdBatchException{
         List<String> input = new ArrayList<String>();
         input.add("lp <-  paste(.libPaths(),collapse=.Platform$path.sep)");
         input.add("ver <-  paste(sessionInfo()$R.version$major, sessionInfo()$R.version$minor, sep=\".\")");
 
-        List<String> output = new ArrayList<String>();
-//        int exitCode = exec(input, output);
-//        if (exitCode != 0)
-//            throw new RuntimeException("Could not retrieve R settings!");
-//
-//        int i = 0;
-//        while(!output.get(i).startsWith("<VAR_CONTENT>")) i++;
-
-//        logger.info(" - retrieved R settings, home: " + rs_home + " (arch=" + rs_arch + ", libs=" + rs_libs + ")");
+        Map<String, String> m = retrieveInfo(input, Arrays.asList("lp", "ver"));
+        libPaths = m.get("lp");
+        rVersion = m.get("ver");
     }
 
+    public String getRVersion() {
+        return rVersion;
+    }
 
+    public String getLibPaths() {
+        return libPaths;
+    }
 }
 
 
