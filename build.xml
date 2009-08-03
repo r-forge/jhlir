@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="jhlir">
+
+  <!-- property definitions -->
+
+  <dirname property="content.root" file="${ant.file.imported}"/>
+
+  <property name="build.dir" value="${content.root}/classes"/>
+  <property name="lib.dir" location="${content.root}/lib"/>
+
+  <path id="sourcepath">
+    <dirset dir="${content.root}">
+      <include name="src"/>
+    </dirset>
+  </path>
+
+
+  <!-- Compiler options -->
+
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+
+  <!-- Project Libraries -->
+
+    <path id="libraries.classpath">
+        <fileset dir="${lib.dir}">
+        	<include name="afcommons.jar"/>
+        	<include name="commons-lang-2.4.jar"/>
+            <include name="commons-collections-3.2.1.jar"/>
+            <include name="junit-4.4.jar"/>
+            <include name="biocepunsigned.jar"/>
+            <include name="REngine.jar"/>
+            <include name="JRIEngine.jar"/>
+        </fileset>
+    </path>
+
+   <target name="clean" description="cleanup all">
+      <delete dir="${build.dir}"/>
+    </target>
+
+
+
+    <target name="compile" depends="clean">
+  	<mkdir dir="${build.dir}"/>
+    <javac destdir="${build.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
+           memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args}"/>
+      <classpath refid="libraries.classpath"/>
+      <src refid="sourcepath"/>
+    </javac>
+  </target>
+
+
+  <target name="distrib" depends="compile">
+
+    <jar destfile="${content.root}/jhlir.jar">
+    	<fileset dir="${build.dir}">
+            <include name="*/**"/>
+        </fileset>
+    </jar>
+  </target>
+
+
+</project>
