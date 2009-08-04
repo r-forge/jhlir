@@ -1,4 +1,4 @@
-package org.af.jhlir.rtools;
+package org.af.jhlir.tools;
 
 
 import org.af.jhlir.packages.CantFindPackageException;
@@ -10,13 +10,13 @@ import java.util.*;
 
 /**
  * Execute R in batch mode. Use this to query R for information / set up stuff / install packages,
- * before you can properly connect to it through jhlir. Only prerequisite to invoke this class
- * is knowledge of the path to R_HOME.
+ * before you can properly connect to it through jhlir. Don't rely on this class too much and try to connect
+ * to R properly as aerly as possibly as error recognition and handling is shaky, as one can only use
+ * the textual output of the R batch script.
+ * Only prerequisite to invoke this class is knowledge of the path to R_HOME.
  */
 
 public class RCmdBatch {
-
-
 
     public static final String[] R_ARGS = {"--vanilla", "--slave"};
     //	= {"--no-site-file","--no-init-file","--no-restore","--no-save"};
@@ -25,8 +25,6 @@ public class RCmdBatch {
 
     protected String libPaths;
     protected String rVersion;
-
-
 
     /**
      * Constructor
@@ -202,24 +200,11 @@ public class RCmdBatch {
         return installPackage(p, "http://cran.r-project.org");
     }
 
+
     public RPackage installRForgePackage(String p) throws CantFindPackageException, RCmdBatchException {
         return installPackage(p, "http://R-Forge.R-project.org");
     }
 
-//
-//    public String getRHome() {
-//        return rs_home;
-//    }
-//
-//    public String getLibPaths() {
-//        return rs_libs;
-//    }
-//
-//    public String getRVersion() {
-//        return rVersion;
-//    }
-//
-//
 
 //    /*
 //     *  CMD INSTALL [options] [-l lib] pkgs
@@ -261,11 +246,15 @@ public class RCmdBatch {
 //        	logger.error("Process error: "+line);
         }
     }
-//
-//
-//
 
-    public void retrieveRInfo() throws RCmdBatchException{
+    /**
+     * Collects information of the used R engine and stores it in this object.
+     * @throws RCmdBatchException
+     * @see this.getRVersion
+     * @see this.getLibPaths
+     *
+     */
+    public void retrieveRInfo() throws RCmdBatchException {
         List<String> input = new ArrayList<String>();
         input.add("lp <-  paste(.libPaths(),collapse=.Platform$path.sep)");
         input.add("ver <-  paste(sessionInfo()$R.version$major, sessionInfo()$R.version$minor, sep=\".\")");
@@ -275,13 +264,41 @@ public class RCmdBatch {
         rVersion = m.get("ver");
     }
 
+    /**
+     * Get R version as a String.
+     * Call retrieveRInfo() before this.
+     *
+     * @return R version.
+     */
     public String getRVersion() {
         return rVersion;
     }
 
+    /**
+     * Get the R lib paths, separated by the path separator of your platform.
+     * Call retrieveRInfo() before this.
+     *
+     * @return R lib paths.
+     */
     public String getLibPaths() {
         return libPaths;
     }
+
+
+//    protected String getRJavaPath() throws IOException, InterruptedException{
+//
+//        RExecutor rExecutor = RExecutor.getRExecutor(rHomeDir.getAbsolutePath());
+//
+//        List<String> input = Arrays.asList(
+//               "installed.packages(noCache=TRUE)['rJava','LibPath']"
+//        );
+//        ArrayList<String> output = new ArrayList();
+//
+//        rExecutor.exec(input, output);
+//        Logger.log(output.get(0));
+//        Logger.log(output.get(1));
+//        return output.get(0);
+//    }
 }
 
 
