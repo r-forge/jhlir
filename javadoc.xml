@@ -13,7 +13,7 @@
 	<property name="server.algo.htdocs" value="/var/www/rjavaclient/jhlir/doc/"/>
 	
     <target name="javadoc">
-        <javadoc access="public" author="true" destdir="doc" doctitle="Java High-Level Interface to R" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="org.af.jhlir.rtools,org.af.jhlir.call,org.af.jhlir.backends.rengine,org.af.jhlir.backends.biocep" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+        <javadoc access="public" author="true" destdir="doc" doctitle="Java High-Level Interface to R" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="org.af.jhlir.rtools,org.af.jhlir.call,org.af.jhlir.packages" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
     	<scp trust="true" todir="${server.algo.login}:${server.algo.pass}@${server.algo.ip}:${server.algo.htdocs}" verbose="true">
     	   	<fileset dir="${javadoc.dir}">
     	 		<include name="**/**"/>
