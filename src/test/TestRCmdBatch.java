@@ -1,7 +1,7 @@
 package test;
 
 import org.af.jhlir.packages.RPackage;
-import org.af.jhlir.rtools.RCmdBatch;
+import org.af.jhlir.tools.RCmdBatch;
 
 import java.util.Arrays;
 import java.util.List;
