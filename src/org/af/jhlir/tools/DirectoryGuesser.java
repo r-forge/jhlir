@@ -1,7 +1,7 @@
 package org.af.jhlir.tools;
 
-import af.commons.OSTools;
-import af.commons.io.FilterContains;
+import org.af.commons.OSTools;
+import org.af.commons.io.FilterContains;
 
 import java.io.File;
 import java.util.Arrays;
