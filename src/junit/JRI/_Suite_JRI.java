@@ -17,6 +17,7 @@ import org.junit.runners.Suite;
         RLogical_Test_JRI.class,
         RMatrixDouble_Test_JRI.class,
         RNumeric_Test_JRI.class,
+        RNumericRef_Test_JRI.class,
         RObj_Test_JRI.class,
         S3_Test_JRI.class,
         REngineServices_Test_JRI.class

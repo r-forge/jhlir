@@ -16,8 +16,11 @@ public abstract class RNumeric_Test extends RVector_Test {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        rNumW1 = getRServices().eval("c(1.1, 5, NA, 3, 10.1, NA)").asRNumeric();
-        rNumW2 = getRServices().eval("c(1.2, 2, 3)").asRNumeric();
+
+        getRServices().assign("rnum1", "c(1.1, 5, NA, 3, 10.1, NA)");
+        getRServices().assign("rnum2", "c(1.2, 2, 3)");
+        rNumW1 = getRServices().eval("rnum1").asRNumeric();
+        rNumW2 = getRServices().eval("rnum2").asRNumeric();
         registerVecs(rNumW1, rNumW2);
     }
 

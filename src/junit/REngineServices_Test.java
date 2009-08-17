@@ -2,6 +2,7 @@ package junit;
 
 import org.af.jhlir.call.RErrorException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class REngineServices_Test extends MyTestCase {
     	} catch(RErrorException re) {
     		error = re.getMessage();        		
     	}    	
-    	assertEquals("error", error.substring(error.length()-6, error.length()-1));
+    	assertTrue(error.endsWith("error\n"));
     }
 
     @Test(expected=RErrorException.class)

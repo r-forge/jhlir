@@ -16,6 +16,7 @@ import org.junit.runners.Suite;
         RLogical_Test_Biocep.class,
         RMatrixDouble_Test_Biocep.class,
         RNumeric_Test_Biocep.class,
+        RNumericRef_Test_Biocep.class,
         RObj_Test_Biocep.class,
         S3_Test_Biocep.class,
         REngineServices_Test_Biocep.class
