@@ -75,7 +75,7 @@ public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>
     }
 
     public boolean isNA(int i, int j) {
-        return get(i,j).equals(getNAVal());
+        return get(i,j).equals(RCallServicesBiocep.NA_RNUMERIC);
     }
 
     //    public RDataFrameBiocep asRDataFrameW() throws RemoteException {

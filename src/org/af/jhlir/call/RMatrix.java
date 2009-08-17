@@ -58,6 +58,4 @@ public interface RMatrix<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> extends RObj<WRAPPED_T
      * @return true if the specified element is NA
      */
     boolean isNA(int row, int col);
-    
-    EL_TYPE getNAVal();    
 }

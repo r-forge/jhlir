@@ -2,8 +2,15 @@ package org.af.jhlir.call;
 
 import java.rmi.RemoteException;
 
+
+//todo build in java streams?
+// todo handlers for warning and errors
+
 abstract public class RCallServices {
-	
+
+    protected static final String WARNING_VAR = ".jhlir.warnings";
+    protected static final String ERROR_VAR = ".jhlir.errors";
+
 	/**
 	 * Evaluates an expression.
 	 * @param expression

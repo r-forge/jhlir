@@ -91,9 +91,6 @@ public abstract class RMatrixREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE ex
         return get(i, j);
     }
 
-    public boolean isNA(int i, int j) {
-        return get(i,j).equals(getNAVal());
-    }
 
     //    public RDataFrameBiocep asRDataFrameW() throws RemoteException {
 //        return new RDataFrameBiocep(rs, (RDataFrame) rs.call("as.data.frame", getRObject())) ;

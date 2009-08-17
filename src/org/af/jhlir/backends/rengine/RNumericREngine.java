@@ -26,7 +26,7 @@ public class RNumericREngine
     }
 
     public boolean isNA(int i) {
-        return Double.isNaN(get(i));
+        return REXPDouble.isNA(get(i));
     }
 
 }

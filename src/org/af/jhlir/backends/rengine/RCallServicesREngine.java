@@ -30,75 +30,60 @@ public class RCallServicesREngine extends RCallServices {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         try {
-			rs.parseAndEval("options(error = function() {sgtk.global.err <<- geterrmessage()})");
-		} catch (org.rosuda.REngine.REngineException e) {
-			throw new REngineException(e);
-		} catch (REXPMismatchException e) {
-			throw new REngineException(e);
-		}
+            rs.parseAndEval("options(error = function() {" + ERROR_VAR + "<<- geterrmessage()})");
+        } catch (org.rosuda.REngine.REngineException e) {
+            throw new REngineException(e);
+        } catch (REXPMismatchException e) {
+            throw new REngineException(e);
+        }
     }
 
     public REngine getREngine() {
         return rs;
     }
-    
-    public void beforeCall() throws REngineException {
-    	try {
-    		rs.parseAndEval("sgtk.global.err <<- NULL");
-    		rs.parseAndEval("warning(\"NO_WARNING\")");
-    	} catch (Exception e) {
-            throw new REngineException(e);
-        }	
-    }
-    
-    public void afterCall() throws REngineException {
-    	String error = null;
-    	try {
-    		REXP rexp = rs.parseAndEval("sgtk.global.err");
-    		if (rexp instanceof REXPNull) return;
-    		error = rs.parseAndEval("sgtk.global.err").asString();
-    	} catch (Exception e) {
-            throw new REngineException(e);
-    	}	
-    	if (error != null) {
-    		RErrorException e = new RErrorException(error);
-    		throw e;
-    	}
-    }
 
     public void evalVoid(String expression) throws REngineException {
-    	beforeCall();
-        try {
-            rs.parseAndEval(expression);
-        } catch (Exception e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+        engineEval(expression, true);
     }
 
     public RObj eval(String expression) throws REngineException {
-    	beforeCall();
-        org.rosuda.REngine.REXP robj = null;
-        try {
-            robj = rs.parseAndEval(expression);
-        } catch (Exception e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+        REXP robj = engineEval(expression, true);
         return wrapObject(robj);
     }
 
-    public RRef evalAndGetRef(String expression) throws RemoteException {
-    	beforeCall();
-        REXPReference rr = null;
-        try {
-            rr = (REXPReference) rs.parseAndEval(expression, globalEnv, false);
-        } catch (Exception e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+    public RRef evalAndGetRef(String expression) throws REngineException {
+        REXPReference rr = (REXPReference) engineEval(expression, false);
         return wrapObject(rr);
     }
+
+    public REXP engineEval(String expression, boolean resolve) {
+        try {
+            rs.parseAndEval(ERROR_VAR + " <<- NULL");
+            String expression2 = expression.replace("\"", "\\\"");
+             String s1 = "parse(text=\"" + expression2 + "\")";
+            System.out.println(s1);
+            REXP rexp = rs.parseAndEval(s1);
+            REXP errRexp = rs.parseAndEval(ERROR_VAR);
+            if (!(errRexp instanceof REXPNull)) {
+                String error = errRexp.asString();
+                throw new RErrorException(error);
+            }
+            REXP res = rs.parseAndEval(expression, globalEnv, resolve);
+            errRexp = rs.parseAndEval(ERROR_VAR);
+            if (!(errRexp instanceof REXPNull)) {
+                String error = errRexp.asString();
+                throw new RErrorException(error);
+            }
+            return res;
+        } catch (org.rosuda.REngine.REngineException e) {
+            e.printStackTrace();
+        } catch (REXPMismatchException e) {
+            // should not happen
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
 
     public void assign(String varName, String expression) throws RemoteException {
         evalVoid(varName + "<-" + expression);
@@ -127,15 +112,13 @@ public class RCallServicesREngine extends RCallServices {
     //
 
     public void put(String varName, Object obj) throws REngineException {
-    	beforeCall();
         try {
             if (obj instanceof RObjectREngine) {
-                rs.assign(varName, ((RObjectREngine)obj).getWrapped());
+                rs.assign(varName, ((RObjectREngine) obj).getWrapped());
             }
         } catch (Exception e) {
             throw new REngineException(e);
         }
-        afterCall();
     }
 //
 //    public boolean symbolExists(String symbol) throws RemoteException {
@@ -154,7 +137,7 @@ public class RCallServicesREngine extends RCallServices {
     public RRef wrapObject(REXPReference ref) {
         REXP robj = ref.resolve();
         if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
-            if (robj.hasAttribute("class") && ((REXPString)robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
+            if (robj.hasAttribute("class") && ((REXPString) robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
                 return new RDataFrameRefREngine(this, ref);
 //            if (robj.hasAttribute("class")) // should we better call is.object here?
 //                return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
@@ -194,7 +177,7 @@ public class RCallServicesREngine extends RCallServices {
 //            return w.asFactorW();
 //
         else if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
-            if (robj.hasAttribute("class") && ((REXPString)robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
+            if (robj.hasAttribute("class") && ((REXPString) robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
                 return new RDataFrameREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
             if (robj.hasAttribute("class")) // should we better call is.object here?
                 return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
@@ -205,17 +188,19 @@ public class RCallServicesREngine extends RCallServices {
         return null;
     }
 
-	@Override
-	public String[] getWarning() {
-		String[] warning;
-		try {
-			warning = rs.parseAndEval("names(warnings())").asStrings();
-		} catch (Exception e) {
-			throw new REngineException(e);
-		}
-		if (warning.length>0 && !warning[0].equals("NO_WARNING")) return warning;	
-		return null;
-	}
+    @Override
+    public String[] getWarning() {
+        String[] warning;
+        try {
+            // dont know what happens here, check this. if i dont call this twice i get null.
+            rs.parseAndEval("last.warning");
+            warning = rs.parseAndEval("last.warning").asList().keys();
+        } catch (Exception e) {
+            throw new REngineException(e);
+        }
+        if (warning.length > 0 && !warning[0].equals("NO_WARNING")) return warning;
+        return null;
+    }
 
 
 }

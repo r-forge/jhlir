@@ -106,6 +106,10 @@ public class RObjectREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REX
         return new RMatrixDoubleREngine(rs, (org.rosuda.REngine.REXPDouble) getWrapped());
     }
 
+//    public RMatrixCharREngine asRMatrixChar() {
+//        return new RMatrixCharREngine(rs, (REXPString) getWrapped());
+//    }
+
     public RListREngine asRList() {
         return new RListREngine(rs, (org.rosuda.REngine.REXPGenericVector) getWrapped());
     }

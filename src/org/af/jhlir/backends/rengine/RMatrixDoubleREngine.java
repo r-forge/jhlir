@@ -1,6 +1,5 @@
 package org.af.jhlir.backends.rengine;
 
-import org.af.jhlir.call.RCallServices;
 import org.af.jhlir.call.RMatrixDouble;
 import org.rosuda.REngine.REXPDouble;
 import org.rosuda.REngine.REXPMismatchException;
@@ -29,7 +28,7 @@ public class RMatrixDoubleREngine
         return getResolved().asDoubles()[getIndex(i,j)];
     }
 
-    public Double getNAVal() {
-        return RCallServices.NA_RNUMERIC;
+    public boolean isNA(int i, int j) {
+        return REXPDouble.isNA(get(i,j));
     }
 }

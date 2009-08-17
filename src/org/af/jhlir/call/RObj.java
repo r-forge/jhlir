@@ -14,6 +14,7 @@ public interface RObj<WRAPPED_TYPE> {
     RChar asRChar();
     RFactor asRFactor();
     RMatrixDouble asRMatrixDouble();
+//    RMatrixChar asRMatrixChar();
     RList asRList();
     RDataFrame asRDataFrame();
     REnvironment asREnvironment();

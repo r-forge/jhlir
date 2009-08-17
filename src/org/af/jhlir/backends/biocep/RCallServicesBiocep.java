@@ -2,6 +2,7 @@ package org.af.jhlir.backends.biocep;
 
 import org.af.jhlir.call.*;
 import org.kchine.r.RMatrix;
+import org.kchine.r.RObject;
 import org.kchine.r.server.RServices;
 
 import java.rmi.RemoteException;
@@ -21,74 +22,57 @@ public class RCallServicesBiocep extends RCallServices {
     public RCallServicesBiocep(RServices rs) {
         this.rs = rs;
         try {
-			rs.evaluate("options(error = function() {sgtk.global.err <<- geterrmessage()})");
-		} catch (RemoteException e) {
-			throw new REngineException(e);
-		}
+            rs.evaluate("options(error = function() {" + ERROR_VAR + " <<- geterrmessage()})");
+        } catch (RemoteException e) {
+            throw new REngineException(e);
+        }
     }
 
     public RServices getRServices() {
         return rs;
     }
-    
-    
-    public void beforeCall() throws REngineException {
-    	try {
-    		rs.evaluate("sgtk.global.err <<- NULL");
-    		rs.evaluate("warning(\"NO_WARNING\")");
-    	} catch (Exception e) {
-            throw new REngineException(e);
-        }	
-    }
-    
-    public void afterCall() throws REngineException {
-    	String error = null;
-    	try {
-    		error = (String) rs.getObjectConverted("sgtk.global.err");    		
-    	} catch (Exception e) {
-            throw new REngineException(e);
-    	}	
-    	if (error != null && !error.equals("")) {
-    		RErrorException e = new RErrorException(error);
-    		throw e;
-    	}
+
+    public RObject engineEval(String expression, boolean resolve) {
+        try {
+            RObject res = null;
+            rs.evaluate(ERROR_VAR + " <<- NULL");
+            String expression2 = expression.replace("\"", "\\\"");
+            String s1 = "parse(text=\"" + expression2 + "\")";
+            System.out.println(s1);
+            rs.evaluate(s1);
+            Object error = rs.getObjectConverted(ERROR_VAR);
+            if (error != null) {
+                throw new RErrorException(error.toString());
+            }
+            if (resolve)
+                res = rs.getObject(expression);
+            else
+                res = rs.getReference(expression);
+            error = rs.getObjectConverted(ERROR_VAR);
+            if (error != null) {
+                throw new RErrorException(error.toString());
+            }
+            return res;
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+
     public void evalVoid(String expression) throws REngineException {
-    	beforeCall();
-        try {
-            rs.evaluate(expression);
-        } catch (RemoteException e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+        engineEval(expression, false);
     }
 
     public RObj eval(String expression) throws REngineException {
-    	beforeCall();
-        org.kchine.r.RObject robj = null;
-        try {
-            robj = rs.getObject(expression);
-        } catch (RemoteException e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+        org.kchine.r.RObject robj = engineEval(expression, true);
         return wrapObject(robj);
     }
 
     public RRef evalAndGetRef(String expression) throws RemoteException {
-    	beforeCall();
-        org.kchine.r.server.ReferenceInterface ref = null;
-        try {
-            ref = (org.kchine.r.server.ReferenceInterface) rs.getReference(expression);
-        } catch (Exception e) {
-            throw new REngineException(e);
-        }
-        afterCall();
+        org.kchine.r.server.ReferenceInterface ref = (org.kchine.r.server.ReferenceInterface) engineEval(expression, false);
         return wrapObject(ref);
     }
 
-    //
     public void assign(String varName, String expression) throws RemoteException {
         evalVoid(varName + "<-" + expression);
     }
@@ -98,11 +82,9 @@ public class RCallServicesBiocep extends RCallServices {
 //    }
 
     //
+
     public RObj call(String function, Object... args) throws RemoteException {
-    	beforeCall();
-        org.kchine.r.RObject robj = null;
-        robj = rs.call(function, args);
-        afterCall();
+        org.kchine.r.RObject robj = rs.call(function, args);
         return wrapObject(robj);
     }
 //
@@ -116,7 +98,6 @@ public class RCallServicesBiocep extends RCallServices {
 //
 
     public void put(String varName, Object obj) throws REngineException {
-    	beforeCall();
         try {
             if (obj instanceof RObjectBiocep) {
                 rs.putAndAssign(((RObjectBiocep) obj).getWrapped(), varName);
@@ -124,7 +105,6 @@ public class RCallServicesBiocep extends RCallServices {
         } catch (RemoteException e) {
             throw new REngineException(e);
         }
-        afterCall();
     }
 
 //
@@ -183,21 +163,22 @@ public class RCallServicesBiocep extends RCallServices {
     }
 
     @Override
-	public String[] getWarning() {
-		String[] warning;
-		try {
-			Object o = rs.getObjectConverted("names(warnings())");
-			if (o instanceof String[]) {
-				warning = (String[]) o;
-			} else {
-				warning = new String[1];
-				warning[0] = (String) o;
-			}
-		} catch (Exception e) {
-			throw new REngineException(e);
-		}
-		if (warning!=null && warning.length>0 && warning[0]!=null && !warning[0].equals("NO_WARNING")) return warning;	
-		return null;
-	}
+    public String[] getWarning() {
+        String[] warning;
+        try {
+            Object o = rs.getObjectConverted("names(warnings())");
+            if (o instanceof String[]) {
+                warning = (String[]) o;
+            } else {
+                warning = new String[1];
+                warning[0] = (String) o;
+            }
+        } catch (Exception e) {
+            throw new REngineException(e);
+        }
+        if (warning != null && warning.length > 0 && warning[0] != null && !warning[0].equals("NO_WARNING"))
+            return warning;
+        return null;
+    }
 
 }
