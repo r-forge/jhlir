@@ -182,11 +182,13 @@ public class RCmdBatch {
     }
 
 
-    private RPackage installPackage(String p , String repos) throws CantFindPackageException, RCmdBatchException {
+    private RPackage installPackage(String p , String repos, File where) throws CantFindPackageException, RCmdBatchException {
         List<String> is = Arrays.asList(
                 "install.packages('" +
                 p + "'" +
-                ", repos='" + repos + "')"
+                ", repos='" + repos + "'" +
+                (where == null ? "" : "destdir=\"" + where.getAbsolutePath() + "\", lib=\"" + where.getAbsolutePath() + "\"") +                         
+                 ")"
         );
         List<String> os = exec(is);
         for (String s:os) {
@@ -196,13 +198,25 @@ public class RCmdBatch {
         return getInstalledPackInfo(p);
     }
 
+    private RPackage installPackage(String p , String repos) throws CantFindPackageException, RCmdBatchException {
+        return installPackage(p, repos, null);
+    }
+
+
     public RPackage installCranPackage(String p) throws CantFindPackageException, RCmdBatchException {
         return installPackage(p, "http://cran.r-project.org");
     }
 
+    public RPackage installCranPackage(String p, File where) throws CantFindPackageException, RCmdBatchException {
+        return installPackage(p, "http://cran.r-project.org", where);
+    }
 
     public RPackage installRForgePackage(String p) throws CantFindPackageException, RCmdBatchException {
         return installPackage(p, "http://R-Forge.R-project.org");
+    }
+
+    public RPackage installRForgePackage(String p, File where ) throws CantFindPackageException, RCmdBatchException {
+        return installPackage(p, "http://R-Forge.R-project.org", where);
     }
 
 

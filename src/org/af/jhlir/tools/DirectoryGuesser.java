@@ -15,8 +15,6 @@ import java.util.List;
  * and our own applications
  */
 
-//TODO use Swingworker
-
 public class DirectoryGuesser {
 
     public abstract static class Predicate {
