@@ -1,6 +1,6 @@
 package org.af.jhlir.tools;
 
-import org.af.commons.OSTools;
+import org.af.commons.tools.OSTools;
 import org.af.commons.io.FilterContains;
 
 import java.io.File;
