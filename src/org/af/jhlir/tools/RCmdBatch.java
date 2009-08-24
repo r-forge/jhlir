@@ -187,7 +187,7 @@ public class RCmdBatch {
                 "install.packages('" +
                 p + "'" +
                 ", repos='" + repos + "'" +
-                (where == null ? "" : "destdir=\"" + where.getAbsolutePath() + "\", lib=\"" + where.getAbsolutePath() + "\"") +                         
+                (where == null ? "" : ", destdir='" + where.getAbsolutePath().replace("\\", "/") + "', lib='" + where.getAbsolutePath().replace("\\", "/") + "'") +
                  ")"
         );
         List<String> os = exec(is);
