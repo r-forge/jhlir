@@ -134,6 +134,9 @@ public class RCmdBatch {
 
         Map<String, String> res = new HashMap<String, String>();
         List<String> is = new ArrayList<String>();
+        for (String v:vars) {
+            is.add(v + "<- ''");
+        }
         is.addAll(input);
         for (String v:vars) {
             is.add("print(paste(\"<var>\"," + v + "))");
@@ -153,14 +156,17 @@ public class RCmdBatch {
         return new File(new File(rHome, "bin"), "R");
     }
 
-    public RPackage getInstalledPackInfo(String p) throws RCmdBatchException {
 
+
+    public RPackage getInstalledPackInfo(String p) throws RCmdBatchException {
         List<String> is = Arrays.asList(
-                "ip <- installed.packages(noCache=TRUE, fields='Title')",
-                "found <- \"" + p + "\" %in% rownames(ip)",
-                "title <- ifelse(found, ip['" + p + "', 'Title'], '')",
-                "lp <- ifelse(found, ip['" + p + "', 'LibPath'], '')",
-                "ver <- ifelse(found, ip['" + p + "', 'Version'], '')"
+                "found <- require('" + p + "')",
+                "if (found) {",
+                "desc <- packageDescription('" + p + "')",
+                "title <- desc$Title",
+                "ver <- desc$Version",
+                "lp <- dirname(dirname(dirname(attr(desc, 'file'))))",
+                "}"
         );
 
 
