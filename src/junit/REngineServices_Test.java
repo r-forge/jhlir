@@ -1,6 +1,10 @@
 package junit;
 
+import java.rmi.RemoteException;
+
 import org.af.jhlir.call.RErrorException;
+import org.af.jhlir.call.RObj;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -65,5 +69,24 @@ public class REngineServices_Test extends MyTestCase {
     public void testStop() {        
         getRServices().evalVoid("stop(\"error\")");        
     }
+    
+    @Test
+    public void testCall() {        
+    	RObj n = getRServices().eval("5");
+    	RObj mean = getRServices().eval("11");
+    	RObj sd = getRServices().eval("0.01");
+    	RObj result = null;
+        try {        	
+        	System.out.println(n);
+        	System.out.println(mean);
+        	System.out.println(sd);
+			result = getRServices().call("list", n, mean, sd);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
+		//System.out.println(result);
+    }
+    
     
 }

@@ -5,6 +5,7 @@ import org.af.jhlir.call.REngineException;
 import org.rosuda.REngine.*;
 
 import java.rmi.RemoteException;
+import java.util.Random;
 
 
 public class RCallServicesREngine extends RCallServices {
@@ -60,7 +61,7 @@ public class RCallServicesREngine extends RCallServices {
         try {
             rs.parseAndEval(ERROR_VAR + " <<- NULL");
             String expression2 = expression.replace("\"", "\\\"");
-             String s1 = "parse(text=\"" + expression2 + "\")";
+            String s1 = "parse(text=\"" + expression2 + "\")";
             System.out.println(s1);
             REXP rexp = rs.parseAndEval(s1);
             REXP errRexp = rs.parseAndEval(ERROR_VAR);
@@ -98,8 +99,27 @@ public class RCallServicesREngine extends RCallServices {
     //
 
     public RObj call(String function, Object... args) throws RemoteException {
-        return null;
+    	String argStr = "";
+        for (Object o : args) {
+        	argStr += getString(o)+",";
+        }
+        argStr = argStr.substring(0, argStr.length()-1);        
+        return eval(function+"("+argStr+")");
     }
+    
+    public String getString(Object o) {    
+    	if (o instanceof RObjectREngine) {
+    		String tmpname = ".JHLIRtmp"+Math.abs((new Random()).nextInt());
+    		put(tmpname, o);
+    		String result = eval("paste(capture.output(dput("+tmpname+")), collapse=\"\")").asRChar().getData()[0];
+    		eval("rm("+tmpname+")");
+    		return result;
+    	} else if (o instanceof RNamedArgument) {
+    		return ((RNamedArgument) o).getName()+"="+getString(((RNamedArgument) o).getRobj());
+    	}
+		return null;
+	}
+
 //
 //    public RRef callAndGetRef(String function, Object... args) throws RemoteException {
 //        return null;  //To change body of implemented methods use File | Settings | File Templates.

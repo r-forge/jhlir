@@ -33,6 +33,14 @@ public interface RList<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE> {
      * @return first element of the specified name in this list or null
      */
     RObj get(String name);
+    
+    /**
+     * Returns the elements in this list
+     *
+     * @param name name of the element to return
+     * @return the elements in this list
+     */
+    List<RObj> getElements();
 
     /**
      * List can either be named or unnamed. The first case implies that there is always a name for each position of the list (possibly ""),

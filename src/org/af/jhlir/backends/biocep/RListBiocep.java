@@ -2,10 +2,12 @@ package org.af.jhlir.backends.biocep;
 
 
 import org.af.jhlir.call.RList;
+import org.af.jhlir.call.RObj;
 import org.apache.commons.lang.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 
 public class RListBiocep
@@ -52,4 +54,13 @@ public class RListBiocep
     public List<String> getNamesAsList() {
         return Arrays.asList(getNames());
     }
+
+	public List<RObj> getElements() {
+		List<RObj> list = new Vector<RObj>();
+		for (int i=0; i<getLength(); i++) {
+			list.add(get(i));
+		}	
+		return list;
+	}
+
 }

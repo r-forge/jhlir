@@ -1,11 +1,13 @@
 package org.af.jhlir.backends.rengine;
 
 import org.af.jhlir.call.RList;
+import org.af.jhlir.call.RObj;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPReference;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 
 public class RListREngine
@@ -50,6 +52,14 @@ public class RListREngine
     public List<String> getNamesAsList() {
         return Arrays.asList(getNames());
     }
+
+	public List<RObj> getElements() {
+		List<RObj> list = new Vector<RObj>();
+		for (int i=0; i<getLength(); i++) {
+			list.add(get(i));
+		}	
+		return list;
+	}
 }
 
 

@@ -1,6 +1,8 @@
 package test;
 
 import org.af.jhlir.backends.rengine.RCallServicesREngine;
+import org.af.jhlir.call.RNamedArgument;
+import org.af.jhlir.call.RObj;
 import org.rosuda.REngine.JRI.JRIEngine;
 
 public class TestRengine {
@@ -11,7 +13,13 @@ public class TestRengine {
     	
         try {
             RCallServicesREngine rs = new RCallServicesREngine(new JRIEngine());
-            rs.engineEval("rnorm(10", true);
+            rs.engineEval("rnorm(10)", true);
+            RObj o1 = rs.eval("list(a=c(\"a\"),xx=1:3)");
+            RObj o2 = rs.eval("5");
+        	RObj o3 = rs.eval("c(\"sosos\")");
+        	RObj o4 = rs.eval("0.01");
+        	RObj result = rs.call("list", new Object[] {new RNamedArgument("list", o1), o2, new RNamedArgument("so", o3)});
+            System.out.println(rs.getString(result));
 
 ////            Rengine re = new Rengine();
 //            REngine re = new JRIEngine();
