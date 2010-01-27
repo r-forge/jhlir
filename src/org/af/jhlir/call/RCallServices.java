@@ -51,7 +51,7 @@ abstract public class RCallServices {
       * @param args arguments to be part of the call
       * @throws RemoteException
       */
-     abstract public RObj call(String function, Object... args) throws RemoteException;
+     abstract public RObj call(String function, Object... args);
      
 //     public RRef callAndGetRef(String function, Object... args) throws RemoteException;
 //     public void callAndAssign(String varName, String function, Object... args) throws RemoteException;

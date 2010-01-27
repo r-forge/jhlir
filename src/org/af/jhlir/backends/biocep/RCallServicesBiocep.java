@@ -83,8 +83,13 @@ public class RCallServicesBiocep extends RCallServices {
 
     //
 
-    public RObj call(String function, Object... args) throws RemoteException {
-        org.kchine.r.RObject robj = rs.call(function, args);
+    public RObj call(String function, Object... args) {
+        org.kchine.r.RObject robj;
+		try {
+			robj = rs.call(function, args);
+		} catch (RemoteException e) {
+			throw new REngineException(e);
+		}
         return wrapObject(robj);
     }
 //

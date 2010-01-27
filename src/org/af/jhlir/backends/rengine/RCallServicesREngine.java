@@ -98,7 +98,7 @@ public class RCallServicesREngine extends RCallServices {
 
     //
 
-    public RObj call(String function, Object... args) throws RemoteException {
+    public RObj call(String function, Object... args) {
     	String argStr = "";
         for (Object o : args) {
         	argStr += getString(o)+",";

@@ -76,16 +76,11 @@ public class REngineServices_Test extends MyTestCase {
     	RObj mean = getRServices().eval("11");
     	RObj sd = getRServices().eval("0.01");
     	RObj result = null;
-        try {        	
-        	System.out.println(n);
-        	System.out.println(mean);
-        	System.out.println(sd);
-			result = getRServices().call("list", n, mean, sd);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}   
-		//System.out.println(result);
+    	System.out.println(n);
+    	System.out.println(mean);
+    	System.out.println(sd);
+    	result = getRServices().call("list", n, mean, sd);
+    	//System.out.println(result);
     }
     
     
