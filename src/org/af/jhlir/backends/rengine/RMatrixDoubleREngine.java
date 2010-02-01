@@ -1,6 +1,7 @@
 package org.af.jhlir.backends.rengine;
 
 import org.af.jhlir.call.RMatrixDouble;
+import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPDouble;
 import org.rosuda.REngine.REXPMismatchException;
 
@@ -23,7 +24,9 @@ public class RMatrixDoubleREngine
         return new Double[rows][cols];
     }
 
-
+    /**
+     * Get element in row i and column j.
+     */
     public Double get(int i, int j) {
         return getResolved().asDoubles()[getIndex(i,j)];
     }
@@ -31,4 +34,28 @@ public class RMatrixDoubleREngine
     public boolean isNA(int i, int j) {
         return REXPDouble.isNA(get(i,j));
     }
+
+	@Override
+	public Double[] getCol(int j) {
+		Double[] row = new Double[ncol()];
+		for (int nr=0; nr<ncol();nr++) {
+			row[nr] = get(nr, j);
+		}
+		return row;
+	}
+
+	@Override
+	public Double[] getRow(int i) {
+		return ArrayUtils.toObject(getData()[i]);
+	}
+
+	@Override
+	public int ncol() {		
+		return getData()[0].length;
+	}
+
+	@Override
+	public int nrow() {
+		return getData().length;
+	}
 }

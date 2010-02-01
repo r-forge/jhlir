@@ -47,6 +47,12 @@ public class RMatrixDouble_Test extends MyTestCase{
          assertEquals(rMat1.getDataAsObjArr()[1][1], RCallServices.NA_RNUMERIC);
          assertEquals(rMat1.getDataAsObjArr()[0][2], 5.1);
          assertEquals(rMat1.getDataAsObjArr()[1][2], 66.0);
+         
+         assertEquals(rMat1.ncol(), 3);
+         assertEquals(rMat1.nrow(), 2);
+         
+         assertEquals(rMat1.getCol(1)[0], new Double(3));
+         assertEquals(rMat1.getCol(0)[1], new Double(2));
      }
 
 }

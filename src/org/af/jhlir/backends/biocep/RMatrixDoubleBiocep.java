@@ -32,4 +32,28 @@ public class RMatrixDoubleBiocep
     public Double getNAVal() {
         return RCallServices.NA_RNUMERIC;
     }
+
+	@Override
+	public Double[] getCol(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double[] getRow(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int ncol() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int nrow() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
