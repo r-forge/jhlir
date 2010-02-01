@@ -1,10 +1,17 @@
 package org.af.jhlir.backends.rengine;
 
+import org.af.jhlir.call.RChar;
 import org.af.jhlir.call.RDataFrame;
+import org.af.jhlir.call.RFactor;
+import org.af.jhlir.call.RInteger;
+import org.af.jhlir.call.RLegalName;
+import org.af.jhlir.call.RLogical;
+import org.af.jhlir.call.RNumeric;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPReference;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -92,6 +99,86 @@ public class RDataFrameREngine
     public Object get(int row, int col) {
         return getCol(col).get(row);
     }
+	
+    public List<String> getFactorVars() {
+        List<String> result = new ArrayList<String>();
+        for (int i=0; i<getColumnCount(); i++)
+            if (isRFactor(i))
+                result.add(getColName(i));
+        return result;
+    }
+    
+
+	@Override
+	public List<String> getIntegerVars() {
+        List<String> result = new ArrayList<String>();
+        for (int i=0; i<getColumnCount(); i++)
+            if (this.isRInt(i))
+                result.add(getColName(i));
+        return result;
+	}
+
+    
+	@Override
+	public List<RLegalName> getColNamesLN() {
+		return RLegalName.makeRLegalNamesUnchecked(getColNames());
+	}
+
+	@Override
+	public List<RLegalName> getFactorVarsLN() {
+		return RLegalName.makeRLegalNamesUnchecked(getFactorVars());
+	}
+
+    public List<RLegalName> getIntegerVarsLN() {
+        return RLegalName.makeRLegalNamesUnchecked(getIntegerVars());
+    }
+
+    public List<RLegalName> getNumberVarsLN() {
+        return RLegalName.makeRLegalNamesUnchecked(getNumberVars());
+    }
+
+    private List<String> getNumberVars() {
+        List<String> result = new ArrayList<String>();
+        for (int i=0; i<getColumnCount(); i++)
+            if (this.isRInt(i)||this.isRNum(i))
+                result.add(getColName(i));
+        return result;
+	}
+
+	public List<RLegalName> getNumericVarsLN() {
+        return RLegalName.makeRLegalNamesUnchecked(getNumericVars());
+    }
+
+	
+	
+    private List<String> getNumericVars() {
+        List<String> result = new ArrayList<String>();
+        for (int i=0; i<getColumnCount(); i++)
+            if (this.isRNum(i))
+                result.add(getColName(i));
+        return result;
+	}
+
+	public boolean isRNum(int i) {
+        return (getCol(i) instanceof RNumeric) || (getCol(i) instanceof RInteger);
+    }
+
+    public boolean isRInt(int i) {
+        return getCol(i) instanceof RInteger;
+    }
+
+    public boolean isRFactor(int i) {
+        return getCol(i) instanceof RFactor;
+    }
+
+    public boolean isRChar(int i) {
+        return getCol(i) instanceof RChar;
+    }
+
+    public boolean isRLogical(int i) {
+        return getCol(i) instanceof RLogical;
+    }
+
 
 
 //    public void setCol(int i, RVectorFactorBiocep v) {

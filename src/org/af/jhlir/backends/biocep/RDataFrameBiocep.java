@@ -1,6 +1,7 @@
 package org.af.jhlir.backends.biocep;
 
 
+import org.af.jhlir.call.RLegalName;
 import org.apache.commons.lang.ArrayUtils;
 import org.kchine.r.RDataFrame;
 
@@ -84,6 +85,48 @@ public class RDataFrameBiocep
     public Object get(int row, int col) {
         return getCol(col).get(row);
     }
+
+	@Override
+	public List<RLegalName> getColNamesLN() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getFactorVars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RLegalName> getFactorVarsLN() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getIntegerVars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RLegalName> getIntegerVarsLN() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RLegalName> getNumberVarsLN() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RLegalName> getNumericVarsLN() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 //    public void setCol(int i, RVectorFactorBiocep v) {

@@ -1,5 +1,6 @@
 package org.af.jhlir.call;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -94,6 +95,19 @@ public interface RDataFrame<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE>{
      */
     Object get(int row, int col);
 
+	List<RLegalName> getNumberVarsLN();
+	
+	List<RLegalName> getIntegerVarsLN();
+	
+	List<RLegalName> getNumericVarsLN();
+
+	List<RLegalName> getColNamesLN();
+
+	List<RLegalName> getFactorVarsLN();
+
+	List<String> getFactorVars();
+
+	List<String> getIntegerVars();
 
 //    public boolean isRNum(int i) {
 //        return getCol(i) instanceof RNumeric;
