@@ -128,6 +128,12 @@ public class RDataFrameBiocep
 		return null;
 	}
 
+	@Override
+	public List<String> getNumberVars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 //    public void setCol(int i, RVectorFactorBiocep v) {
 //        RList list = getWrapped().getData();

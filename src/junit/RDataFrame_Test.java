@@ -1,13 +1,18 @@
 package junit;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.af.jhlir.call.RDataFrame;
 import org.af.jhlir.call.RInteger;
 import org.af.jhlir.call.RNumeric;
+import org.af.jhlir.call.RVectorFactor;
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RDataFrame_Test extends MyTestCase{
+public class RDataFrame_Test extends MyTestCase {
     protected RDataFrame rDf1;
 
     @Before
@@ -57,6 +62,18 @@ public class RDataFrame_Test extends MyTestCase{
         assertEquals(rn.get(0), 1.5);
         assertEquals(rn.get(1), 5.0);
         assertEquals(rn.get(2), -4.0);
+        
+        
+        RVectorFactor zz = (RVectorFactor) rDf1.getCol(2);
+        assertEquals(zz.getLength(), 3);
+        zz = rDf1.getCol("zz");
+        assertEquals(zz.getLength(), 3);
+        
+        String[] levels = rDf1.getCol("zz").asRFactor().getLevels();
+        assertEquals(levels[0], "bar");
+        assertEquals(levels[0], "bla");
+        assertEquals(levels[2], "foo");
+        
     }
 
 }

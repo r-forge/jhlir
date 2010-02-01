@@ -38,8 +38,8 @@ public class RDataFrameREngine
         return getResolved().length();
     }
 
-    public String[] getRowNames() {
-        return null;
+    public String[] getRowNames() {    	
+        return rs.call("row.names", this.getWrapped()).asRChar().getData();
     }
 
     public String[] getColNames() {
@@ -55,7 +55,7 @@ public class RDataFrameREngine
     }
 
     public String getRowName(int i) {
-        return null;
+        return getRowNames()[i];
     }
 
     public String getColName(int i) {
@@ -93,7 +93,7 @@ public class RDataFrameREngine
     }
 
     public RVectorFactorREngine getCol(String name) {
-        return getCol(getRowIndex(name));
+        return getCol(getColIndex(name));
     }
 
     public Object get(int row, int col) {
@@ -137,7 +137,7 @@ public class RDataFrameREngine
         return RLegalName.makeRLegalNamesUnchecked(getNumberVars());
     }
 
-    private List<String> getNumberVars() {
+    public List<String> getNumberVars() {
         List<String> result = new ArrayList<String>();
         for (int i=0; i<getColumnCount(); i++)
             if (this.isRInt(i)||this.isRNum(i))

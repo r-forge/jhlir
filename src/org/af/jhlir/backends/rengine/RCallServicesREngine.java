@@ -5,6 +5,7 @@ import org.af.jhlir.call.REngineException;
 import org.rosuda.REngine.*;
 
 import java.rmi.RemoteException;
+import java.util.List;
 import java.util.Random;
 
 
@@ -116,6 +117,17 @@ public class RCallServicesREngine extends RCallServices {
     		return result;
     	} else if (o instanceof RNamedArgument) {
     		return ((RNamedArgument) o).getName()+"="+getString(((RNamedArgument) o).getRobj());
+    	} else if (o instanceof String) {
+    		return "\""+(String)o+"\"";
+    	} else if (o instanceof List) {    		
+    		if (((List)o).get(0) instanceof String) {
+    			List l = (List<String>) o;
+    			String result = "c(\""+l.get(0)+"\"";
+    			for (int i=1; i < l.size(); i++) {
+    				result += ", \""+l.get(i)+"\"";
+    			}
+    			return result+")";
+    		}
     	}
 		return null;
 	}
