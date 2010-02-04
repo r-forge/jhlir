@@ -234,5 +234,25 @@ public class RCallServicesREngine extends RCallServices {
         return null;
     }
 
+	@Override
+	public RNumeric createRObject(double[] val) {		
+		return new RNumericREngine(this, new REXPDouble(val));
+	}
+
+	@Override
+	public RInteger createRObject(int[] val) {		
+		return new RIntegerREngine(this, new REXPInteger(val));
+	}
+
+	@Override
+	public RChar createRChar(String[] val) {
+		return new RCharREngine(this, new REXPString(val));
+	}
+
+	@Override
+	public RLogical createRObject(boolean[] val) {
+		return new RLogicalREngine(this, new REXPLogical(val));
+	}
+
 
 }

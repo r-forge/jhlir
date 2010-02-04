@@ -7,6 +7,8 @@ import org.af.jhlir.call.RInteger;
 import org.af.jhlir.call.RLegalName;
 import org.af.jhlir.call.RLogical;
 import org.af.jhlir.call.RNumeric;
+import org.af.jhlir.call.RVector;
+import org.af.jhlir.call.RVectorFactor;
 import org.apache.commons.lang.ArrayUtils;
 import org.rosuda.REngine.REXPGenericVector;
 import org.rosuda.REngine.REXPReference;
@@ -178,6 +180,54 @@ public class RDataFrameREngine
     public boolean isRLogical(int i) {
         return getCol(i) instanceof RLogical;
     }
+
+	@Override
+	public void addCol(int col, RLegalName name, RVector v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addCol(int col, RLegalName name, RFactor v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addCol(RLegalName name, RVectorFactor v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addRow(int row) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addRow(int row, RLegalName name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delCol(int col) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delRow(int row) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValue(int row, int col, Object value) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 

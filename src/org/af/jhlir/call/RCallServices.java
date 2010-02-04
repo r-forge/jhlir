@@ -2,6 +2,8 @@ package org.af.jhlir.call;
 
 import java.rmi.RemoteException;
 
+import org.apache.commons.lang.ArrayUtils;
+
 
 //todo build in java streams?
 // todo handlers for warning and errors
@@ -87,5 +89,24 @@ abstract public class RCallServices {
      * @return the warnings and null if no warning was generated. 
      */
 	abstract public String[] getWarning();
+	
+	public abstract RNumeric createRObject(double[] val);
+	
+	public RNumeric createRObject(Double[] val) {
+		return createRObject(ArrayUtils.toPrimitive(val));
+	}
+	
+	public abstract RInteger createRObject(int[] val);
+	
+	public RInteger createRObject(Integer[] val) {
+		return createRObject(ArrayUtils.toPrimitive(val));
+	}	
+	public abstract RChar createRChar(String[] val);
+	
+	public abstract RLogical createRObject(boolean[] val);
+	
+	public RLogical createRObject(Boolean[] val) {
+		return createRObject(ArrayUtils.toPrimitive(val));
+	}
 
 }

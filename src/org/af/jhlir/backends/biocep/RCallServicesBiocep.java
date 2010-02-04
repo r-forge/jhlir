@@ -186,4 +186,28 @@ public class RCallServicesBiocep extends RCallServices {
         return null;
     }
 
+	@Override
+	public RNumeric createRObject(double[] val) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RInteger createRObject(int[] val) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RChar createRChar(String[] val) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RLogical createRObject(boolean[] val) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

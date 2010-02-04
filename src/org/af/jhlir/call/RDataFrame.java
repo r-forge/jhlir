@@ -85,7 +85,7 @@ public interface RDataFrame<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE>{
 
 //    RObj getRow(int i);
 //    RObj getRow(String name);
-    RObj getCol(int i);
+    RVectorFactor getCol(int i);
     RVectorFactor getCol(String name);
     
     /**
@@ -111,6 +111,22 @@ public interface RDataFrame<WRAPPED_TYPE> extends RObj<WRAPPED_TYPE>{
 	List<String> getIntegerVars();
 
 	List<String> getNumberVars();
+
+	void setValue(int row, int col, Object value);
+
+	void addRow(int row);
+
+	void addRow(int row, RLegalName name);
+
+	void addCol(int col, RLegalName name, RVector v);
+
+	void addCol(int col, RLegalName name, RFactor v);
+
+	void addCol(RLegalName name, RVectorFactor v);
+
+	void delRow(int row);
+
+	void delCol(int col);
 
 //    public boolean isRNum(int i) {
 //        return getCol(i) instanceof RNumeric;
