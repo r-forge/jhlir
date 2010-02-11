@@ -104,7 +104,7 @@ public class RCallServicesREngine extends RCallServices {
         for (Object o : args) {
         	argStr += getString(o)+",";
         }
-        argStr = argStr.substring(0, argStr.length()-1);        
+        if (argStr.length()>1) argStr = argStr.substring(0, argStr.length()-1);        
         return eval(function+"("+argStr+")");
     }
     
@@ -113,8 +113,9 @@ public class RCallServicesREngine extends RCallServices {
     		String tmpname = ".JHLIRtmp"+Math.abs((new Random()).nextInt());
     		put(tmpname, o);
     		String result = eval("paste(capture.output(dput("+tmpname+")), collapse=\"\")").asRChar().getData()[0];
-    		eval("rm("+tmpname+")");
-    		return result;
+    		return tmpname;
+    		//eval("rm("+tmpname+")");
+    		//return result;
     	} else if (o instanceof RNamedArgument) {
     		return ((RNamedArgument) o).getName()+"="+getString(((RNamedArgument) o).getRobj());
     	} else if (o instanceof String) {
@@ -245,7 +246,7 @@ public class RCallServicesREngine extends RCallServices {
 	}
 
 	@Override
-	public RChar createRChar(String[] val) {
+	public RChar createRObject(String[] val) {
 		return new RCharREngine(this, new REXPString(val));
 	}
 

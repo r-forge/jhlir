@@ -101,7 +101,12 @@ abstract public class RCallServices {
 	public RInteger createRObject(Integer[] val) {
 		return createRObject(ArrayUtils.toPrimitive(val));
 	}	
-	public abstract RChar createRChar(String[] val);
+	
+	public abstract RChar createRObject(String[] val);
+	
+	public RChar createRObject(String val) {
+		return createRObject(new String[] {val});
+	}
 	
 	public abstract RLogical createRObject(boolean[] val);
 	

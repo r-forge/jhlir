@@ -199,7 +199,7 @@ public class RCallServicesBiocep extends RCallServices {
 	}
 
 	@Override
-	public RChar createRChar(String[] val) {
+	public RChar createRObject(String[] val) {
 		// TODO Auto-generated method stub
 		return null;
 	}
