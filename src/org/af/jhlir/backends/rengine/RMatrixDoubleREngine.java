@@ -35,7 +35,6 @@ public class RMatrixDoubleREngine
         return REXPDouble.isNA(get(i,j));
     }
 
-	@Override
 	public Double[] getCol(int j) {
 		Double[] row = new Double[ncol()];
 		for (int nr=0; nr<ncol();nr++) {
@@ -44,17 +43,14 @@ public class RMatrixDoubleREngine
 		return row;
 	}
 
-	@Override
 	public Double[] getRow(int i) {
 		return ArrayUtils.toObject(getData()[i]);
 	}
 
-	@Override
 	public int ncol() {		
 		return getData()[0].length;
 	}
 
-	@Override
 	public int nrow() {
 		return getData().length;
 	}

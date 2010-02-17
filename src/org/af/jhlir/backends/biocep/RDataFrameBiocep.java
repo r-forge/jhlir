@@ -89,97 +89,81 @@ public class RDataFrameBiocep
         return getCol(col).get(row);
     }
 
-	@Override
 	public List<RLegalName> getColNamesLN() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<String> getFactorVars() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<RLegalName> getFactorVarsLN() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<String> getIntegerVars() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<RLegalName> getIntegerVarsLN() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<RLegalName> getNumberVarsLN() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<RLegalName> getNumericVarsLN() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<String> getNumberVars() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void addCol(int col, RLegalName name, RVector v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addCol(int col, RLegalName name, RFactor v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addCol(RLegalName name, RVectorFactor v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addRow(int row) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addRow(int row, RLegalName name) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delCol(int col) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delRow(int row) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void setValue(int row, int col, Object value) {
 		// TODO Auto-generated method stub
 		

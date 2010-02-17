@@ -111,7 +111,6 @@ public class RDataFrameREngine
     }
     
 
-	@Override
 	public List<String> getIntegerVars() {
         List<String> result = new ArrayList<String>();
         for (int i=0; i<getColumnCount(); i++)
@@ -120,13 +119,11 @@ public class RDataFrameREngine
         return result;
 	}
 
-    
-	@Override
+
 	public List<RLegalName> getColNamesLN() {
 		return RLegalName.makeRLegalNamesUnchecked(getColNames());
 	}
 
-	@Override
 	public List<RLegalName> getFactorVarsLN() {
 		return RLegalName.makeRLegalNamesUnchecked(getFactorVars());
 	}
@@ -181,49 +178,41 @@ public class RDataFrameREngine
         return getCol(i) instanceof RLogical;
     }
 
-	@Override
 	public void addCol(int col, RLegalName name, RVector v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addCol(int col, RLegalName name, RFactor v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addCol(RLegalName name, RVectorFactor v) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addRow(int row) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addRow(int row, RLegalName name) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delCol(int col) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delRow(int row) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void setValue(int row, int col, Object value) {
 		// TODO Auto-generated method stub
 		
