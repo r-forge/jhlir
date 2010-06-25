@@ -96,6 +96,10 @@ abstract public class RCallServices {
 		return createRObject(ArrayUtils.toPrimitive(val));
 	}
 	
+	public RNumeric createRObject(double val) {
+		return createRObject(new double[] {val});
+	}
+	
 	public abstract RInteger createRObject(int[] val);
 	
 	public RInteger createRObject(Integer[] val) {
