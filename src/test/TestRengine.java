@@ -3,13 +3,11 @@ package test;
 import org.af.jhlir.backends.rengine.RCallServicesREngine;
 import org.af.jhlir.call.RNamedArgument;
 import org.af.jhlir.call.RObj;
+import org.af.jhlir.call.S4Obj;
 import org.rosuda.REngine.JRI.JRIEngine;
 
 public class TestRengine {
     public static void main(String[] args) {
-
-
-    	
     	
         try {
             RCallServicesREngine rs = new RCallServicesREngine(new JRIEngine());
@@ -19,6 +17,9 @@ public class TestRengine {
         	RObj o3 = rs.eval("c(\"sosos\")");
         	RObj o4 = rs.eval("0.01");
         	RObj result = rs.call("list", new Object[] {new RNamedArgument("list", o1), o2, new RNamedArgument("so", o3)});
+            rs.eval("setClass(\"test\", representation(x=\"numeric\", y=\"numeric\"))");
+            RObj x = rs.eval("(try(new(\"test\",x=1,y=2)))");
+            x = rs.eval("getClass(\"MethodDefinition\")");        
             System.out.println(rs.getString(result));
 
 ////            Rengine re = new Rengine();

@@ -1,11 +1,11 @@
 package org.af.jhlir.backends.rengine;
 
 
-import org.af.jhlir.call.RFactor;
-import org.rosuda.REngine.REXPFactor;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.af.jhlir.call.RFactor;
+import org.rosuda.REngine.REXPFactor;
 
 public class RFactorREngine
           extends RVectorFactorREngine<REXPFactor, REXPFactor, String[], String>

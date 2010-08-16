@@ -1,9 +1,5 @@
 package junit.packages;
 
-import junit.framework.TestCase;
-
-import org.af.jhlir.packages.RPackage;
-import org.junit.Test;
 
 /*
 

@@ -1,7 +1,14 @@
 package junit;
 
-import org.af.jhlir.call.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RChar;
+import org.af.jhlir.call.RInteger;
+import org.af.jhlir.call.RList;
+import org.af.jhlir.call.RMatrix;
 import org.junit.Before;
 import org.junit.Test;
 

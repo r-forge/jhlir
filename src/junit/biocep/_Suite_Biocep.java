@@ -19,6 +19,7 @@ import org.junit.runners.Suite;
         RNumericRef_Test_Biocep.class,
         RObj_Test_Biocep.class,
         S3_Test_Biocep.class,
+        S4_Test_Biocep.class,
         REngineServices_Test_Biocep.class
 })
 

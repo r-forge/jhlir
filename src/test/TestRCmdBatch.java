@@ -1,11 +1,11 @@
 package test;
 
-import org.af.jhlir.packages.RPackage;
-import org.af.jhlir.tools.RCmdBatch;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import org.af.jhlir.packages.RPackage;
+import org.af.jhlir.tools.RCmdBatch;
 
 public class TestRCmdBatch {
     public static void main(String[] args) {

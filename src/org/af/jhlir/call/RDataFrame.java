@@ -1,7 +1,5 @@
 package org.af.jhlir.call;
 
-import java.awt.Component;
-import java.util.Collection;
 import java.util.List;
 
 /**

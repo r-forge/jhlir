@@ -1,9 +1,9 @@
 package org.af.jhlir.backends.rengine;
 
-import org.af.jhlir.call.RTypeFactory;
 import org.af.jhlir.call.RNumeric;
-import org.rosuda.REngine.REXPDouble;
+import org.af.jhlir.call.RTypeFactory;
 import org.apache.commons.lang.ArrayUtils;
+import org.rosuda.REngine.REXPDouble;
 
 public class RTypeFactoryREngine extends RTypeFactory{
     private RCallServicesREngine rs;

@@ -19,5 +19,6 @@ public interface RObj<WRAPPED_TYPE> {
     RDataFrame asRDataFrame();
     REnvironment asREnvironment();
     S3Obj asS3Obj();
+	S4Obj asS4Obj();
     
 }

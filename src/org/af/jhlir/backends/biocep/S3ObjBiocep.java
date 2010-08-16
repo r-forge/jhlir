@@ -1,9 +1,9 @@
 package org.af.jhlir.backends.biocep;
 
-import org.af.jhlir.call.S3Obj;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.af.jhlir.call.S3Obj;
 
 public class S3ObjBiocep
         extends RObjectBiocep<org.kchine.r.RS3, org.kchine.r.RS3>

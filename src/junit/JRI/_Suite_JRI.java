@@ -20,6 +20,7 @@ import org.junit.runners.Suite;
         RNumericRef_Test_JRI.class,
         RObj_Test_JRI.class,
         S3_Test_JRI.class,
+        S4_Test_JRI.class,
         REngineServices_Test_JRI.class
 })
 

@@ -3,6 +3,7 @@ package org.af.jhlir.backends.biocep;
 import org.af.jhlir.call.REnvironment;
 import org.af.jhlir.call.RObj;
 import org.af.jhlir.call.RRef;
+import org.af.jhlir.call.S4Obj;
 
 public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject, RESOLVED_TYPE extends org.kchine.r.RObject>
         implements RObj<WRAPPED_TYPE> {
@@ -148,6 +149,11 @@ public class RObjectBiocep<WRAPPED_TYPE extends org.kchine.r.RObject, RESOLVED_T
     public S3ObjBiocep asS3Obj() {
         return new S3ObjBiocep(rs, (org.kchine.r.RS3) getWrapped());
     }
+    
+	public S4Obj asS4Obj() { //TODO
+		if (true) throw new RuntimeException("Not yet implemented!");
+		return null;
+	}
 
 //
 //    public RListRef asListRef() {

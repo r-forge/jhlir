@@ -1,11 +1,11 @@
 package org.af.jhlir.backends.rengine;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.af.jhlir.call.RVectorFactor;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPString;
-
-import java.util.Arrays;
-import java.util.List;
 
 abstract public class RVectorFactorREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REXP, ARR_TYPE, EL_TYPE>
         extends RObjectREngine<WRAPPED_TYPE, RESOLVED_TYPE> implements RVectorFactor<WRAPPED_TYPE, ARR_TYPE, EL_TYPE> {

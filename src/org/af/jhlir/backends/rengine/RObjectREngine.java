@@ -4,6 +4,7 @@ import org.af.jhlir.call.RDataFrame;
 import org.af.jhlir.call.REnvironment;
 import org.af.jhlir.call.RObj;
 import org.af.jhlir.call.RRef;
+import org.af.jhlir.call.S4Obj;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPReference;
 
@@ -125,5 +126,9 @@ public class RObjectREngine<WRAPPED_TYPE extends REXP, RESOLVED_TYPE extends REX
     public S3ObjREngine asS3Obj() {
         return new S3ObjREngine(rs, (org.rosuda.REngine.REXPGenericVector) getWrapped());
     }
+
+	public S4Obj asS4Obj() {
+		return new S4ObjREngine(rs, (REXP) getWrapped());
+	}
 }
 

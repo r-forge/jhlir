@@ -1,10 +1,10 @@
 package org.af.jhlir.backends.biocep;
 
-import org.af.jhlir.call.RVectorFactor;
-import org.kchine.r.RObject;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.af.jhlir.call.RVectorFactor;
+import org.kchine.r.RObject;
 
 abstract public class RVectorFactorBiocep<WRAPPED_TYPE extends RObject, RESOLVED_TYPE extends RObject, ARR_TYPE, EL_TYPE>
         extends RObjectBiocep<WRAPPED_TYPE, RESOLVED_TYPE>

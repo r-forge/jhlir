@@ -1,12 +1,15 @@
 package junit;
 
-import org.af.jhlir.call.RCallServices;
-import org.af.jhlir.call.RChar;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RChar;
+import org.junit.Before;
+import org.junit.Test;
 
 public class RChar_Test extends RVector_Test{
     private RChar rChar1;

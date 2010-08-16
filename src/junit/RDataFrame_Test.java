@@ -1,14 +1,11 @@
 package junit;
 
-import java.util.Arrays;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
 import org.af.jhlir.call.RDataFrame;
 import org.af.jhlir.call.RInteger;
 import org.af.jhlir.call.RNumeric;
 import org.af.jhlir.call.RVectorFactor;
-
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 

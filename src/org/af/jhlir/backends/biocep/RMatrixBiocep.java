@@ -1,10 +1,10 @@
 package org.af.jhlir.backends.biocep;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.kchine.r.RChar;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.kchine.r.RChar;
 
 
 public abstract class RMatrixBiocep<ARR_TYPE, EL_TYPE>

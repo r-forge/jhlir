@@ -1,12 +1,13 @@
 package junit;
 
-import org.af.jhlir.call.RCallServices;
-import org.af.jhlir.call.RVector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import org.junit.Test;
 
 import java.util.List;
+
+import org.af.jhlir.call.RCallServices;
+import org.af.jhlir.call.RVector;
+import org.junit.Test;
 
 public class RVector_Test extends MyTestCase {
     private RVector rUnnamedVec;
