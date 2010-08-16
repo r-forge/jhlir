@@ -198,43 +198,49 @@ public class RCallServicesREngine extends RCallServices {
 
 
     public RObjectREngine wrapObject(org.rosuda.REngine.REXP robj) {
-        if (robj == null)
-            return null;
-//        RObjectBiocep w = new RObjectBiocep(rs, obj);
-//        w.rClass = rClass;
-//        if (obj instanceof RInteger)
-//            return w.asIntW();
-        else if (robj instanceof org.rosuda.REngine.REXPDouble) {
-            try {
-                if (robj.hasAttribute("dim") && robj.getAttribute("dim").asIntegers().length == 2)
-                    return new RMatrixDoubleREngine(this, (org.rosuda.REngine.REXPDouble) robj);
-            } catch (REXPMismatchException e) {
-            }
-            // default
-            return new RNumericREngine(this, (org.rosuda.REngine.REXPDouble) robj);
-        } else if (robj instanceof org.rosuda.REngine.REXPFactor)
-            return new RFactorREngine(this, (org.rosuda.REngine.REXPFactor) robj);
-            // factor inherist from integer in REngine
-        else if (robj instanceof org.rosuda.REngine.REXPInteger && !(robj instanceof org.rosuda.REngine.REXPFactor))
-            return new RIntegerREngine(this, (org.rosuda.REngine.REXPInteger) robj);
-        else if (robj instanceof org.rosuda.REngine.REXPLogical)
-            return new RLogicalREngine(this, (org.rosuda.REngine.REXPLogical) robj);
+    	if (robj == null) {
+    		return null;
+    		//        RObjectBiocep w = new RObjectBiocep(rs, obj);
+    		//        w.rClass = rClass;
+    		//        if (obj instanceof RInteger)
+    		//            return w.asIntW();
+    	} else if (robj instanceof org.rosuda.REngine.REXPDouble) {
+    		try {
+    			if (robj.hasAttribute("dim") && robj.getAttribute("dim").asIntegers().length == 2)
+    				return new RMatrixDoubleREngine(this, (org.rosuda.REngine.REXPDouble) robj);
+    		} catch (REXPMismatchException e) {
+    		}
+    		// default
+    		return new RNumericREngine(this, (org.rosuda.REngine.REXPDouble) robj);
+    	} else if (robj instanceof org.rosuda.REngine.REXPFactor) {
+    		return new RFactorREngine(this, (org.rosuda.REngine.REXPFactor) robj);
+    		// factor inherist from integer in REngine
+    	} else if (robj instanceof org.rosuda.REngine.REXPInteger && !(robj instanceof org.rosuda.REngine.REXPFactor)) {
+    		return new RIntegerREngine(this, (org.rosuda.REngine.REXPInteger) robj);
+    	} else if (robj instanceof org.rosuda.REngine.REXPLogical) {
+    		return new RLogicalREngine(this, (org.rosuda.REngine.REXPLogical) robj);
 
-        else if (robj instanceof org.rosuda.REngine.REXPString)
-            return new RCharREngine(this, (org.rosuda.REngine.REXPString) robj);
-//        else if (obj instanceof RFactor)
-//            return w.asFactorW();
-//
-        else if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
-            if (robj.hasAttribute("class") && ((REXPString) robj.getAttribute("class")).asStrings()[0].equals("data.frame"))
-                return new RDataFrameREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
-            if (robj.hasAttribute("class")) // should we better call is.object here?
-                return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
-            // default
-            return new RListREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
-        } else if (robj instanceof org.rosuda.REngine.REXPEnvironment)
-            return new REnvironmentREngine(this, (org.rosuda.REngine.REXPEnvironment) robj);
-        return null;
+    	} else if (robj instanceof org.rosuda.REngine.REXPString) {
+    		return new RCharREngine(this, (org.rosuda.REngine.REXPString) robj);
+
+    		//        else if (obj instanceof RFactor)
+    		//            return w.asFactorW();
+    		//
+    	} else if (robj instanceof org.rosuda.REngine.REXPGenericVector) {
+    		if (robj.hasAttribute("class") && ((REXPString) robj.getAttribute("class")).asStrings()[0].equals("data.frame")) {
+    			return new RDataFrameREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
+    		}
+    		if (robj.hasAttribute("class")) { // should we better call is.object here? 
+    			return new S3ObjREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
+    		}    		
+    		// default
+    		return new RListREngine(this, (org.rosuda.REngine.REXPGenericVector) robj);
+    	} else if (robj instanceof org.rosuda.REngine.REXPEnvironment) {
+    		return new REnvironmentREngine(this, (org.rosuda.REngine.REXPEnvironment) robj);
+    	} else if (false /* TODO: How do we test for S4-Objects? */) {
+			return new S4ObjREngine(this, robj);
+		}
+    	return null;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class S4_Test extends MyTestCase {
 
     @Test
     public void testAt()  {
-        //assertEquals(s4Obj.getS4Class(), "test");
+        assertEquals(s4Obj.getS4Class(), "test");
     }
 
 }
