@@ -1,6 +1,7 @@
 package org.af.jhlir.call;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
 
@@ -117,5 +118,7 @@ abstract public class RCallServices {
 	public RLogical createRObject(Boolean[] val) {
 		return createRObject(ArrayUtils.toPrimitive(val));
 	}
-
+	
+	public abstract List<String> getHistory();
+	
 }

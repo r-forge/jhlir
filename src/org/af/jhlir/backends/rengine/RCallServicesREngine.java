@@ -3,6 +3,7 @@ package org.af.jhlir.backends.rengine;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Random;
+import java.util.Vector;
 
 import org.af.jhlir.call.RCallServices;
 import org.af.jhlir.call.RChar;
@@ -37,6 +38,7 @@ public class RCallServicesREngine extends RCallServices {
 
     private REngine rs;
     private REXP globalEnv;
+    private List<String> history = new Vector<String>();
 
     public RCallServicesREngine(REngine rs) {
         this.rs = rs;
@@ -60,7 +62,7 @@ public class RCallServicesREngine extends RCallServices {
         return rs;
     }
 
-    public void evalVoid(String expression) throws REngineException {
+    public void evalVoid(String expression) throws REngineException {    	
         engineEval(expression, true);
     }
 
@@ -75,6 +77,7 @@ public class RCallServicesREngine extends RCallServices {
     }
 
     public REXP engineEval(String expression, boolean resolve) {
+    	history.add(expression);
         try {
             rs.parseAndEval(ERROR_VAR + " <<- NULL");
             String expression2 = expression.replace("\"", "\\\"");
@@ -161,6 +164,7 @@ public class RCallServicesREngine extends RCallServices {
     //
 
     public void put(String varName, Object obj) throws REngineException {
+    	history.add("# Assigning "+obj.toString()+" to "+varName);
         try {
             if (obj instanceof RObjectREngine) {
                 rs.assign(varName, ((RObjectREngine) obj).getWrapped());
@@ -275,6 +279,11 @@ public class RCallServicesREngine extends RCallServices {
 	@Override
 	public RLogical createRObject(boolean[] val) {
 		return new RLogicalREngine(this, new REXPLogical(val));
+	}
+
+	@Override
+	public List<String> getHistory() {		
+		return history;
 	}
 
 

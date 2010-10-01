@@ -1,6 +1,8 @@
 package org.af.jhlir.backends.biocep;
 
 import java.rmi.RemoteException;
+import java.util.List;
+import java.util.Vector;
 
 import org.af.jhlir.call.RCallServices;
 import org.af.jhlir.call.RChar;
@@ -26,6 +28,7 @@ public class RCallServicesBiocep extends RCallServices {
     }
 
     private RServices rs;
+    private List<String> history = new Vector<String>();
 
     public RCallServicesBiocep(RServices rs) {
         this.rs = rs;
@@ -218,4 +221,8 @@ public class RCallServicesBiocep extends RCallServices {
 		return null;
 	}
 
+	@Override
+	public List<String> getHistory() {		
+		return history;
+	}
 }
