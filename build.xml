@@ -53,7 +53,7 @@
     <target name="compile" depends="clean">
   	<mkdir dir="${build.dir}"/>
     <javac destdir="${build.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
-           memorymaximumsize="${compiler.max.memory}" fork="true">
+           memorymaximumsize="${compiler.max.memory}" fork="true" excludes="biocep/**,junit/**,test/**,rengine/**">
       <compilerarg line="${compiler.args}"/>
       <classpath refid="libraries.classpath"/>
       <src refid="sourcepath"/>
