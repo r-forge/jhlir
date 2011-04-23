@@ -80,17 +80,17 @@ public class RCallServicesREngine extends RCallServices {
     	history.add(expression);
         try {
             rs.parseAndEval(ERROR_VAR + " <<- NULL");
-            String expression2 = expression.replace("\"", "\\\"");
-            String s1 = "parse(text=\"" + expression2 + "\")";
-            System.out.println(s1);
-            REXP rexp = rs.parseAndEval(s1);
+            //String expression2 = expression.replace("\"", "\\\"");
+            //String s1 = "parse(text=\"" + expression2 + "\")";
+            //System.out.println(s1);
+            /*REXP rexp = rs.parseAndEval(expression);
             REXP errRexp = rs.parseAndEval(ERROR_VAR);
             if (!(errRexp instanceof REXPNull)) {
                 String error = errRexp.asString();
                 throw new RErrorException(error);
-            }
+            }*/
             REXP res = rs.parseAndEval(expression, globalEnv, resolve);
-            errRexp = rs.parseAndEval(ERROR_VAR);
+            REXP errRexp = rs.parseAndEval(ERROR_VAR);
             if (!(errRexp instanceof REXPNull)) {
                 String error = errRexp.asString();
                 throw new RErrorException(error);
