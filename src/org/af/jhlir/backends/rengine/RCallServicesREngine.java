@@ -97,12 +97,11 @@ public class RCallServicesREngine extends RCallServices {
             }
             return res;
         } catch (org.rosuda.REngine.REngineException e) {
-            e.printStackTrace();
+        	throw new RuntimeException(e);
         } catch (REXPMismatchException e) {
             // should not happen
             throw new RuntimeException(e);
         }
-        return null;
     }
 
 
